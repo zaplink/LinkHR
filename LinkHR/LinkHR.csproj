@@ -8,4 +8,9 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Bunifu.UI.WinForms" Version="8.0.0" />
+    <PackageReference Include="Bunifu.Utils" Version="1.0.5" />
+  </ItemGroup>
+
 </Project>
