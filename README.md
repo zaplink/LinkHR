@@ -1,6 +1,6 @@
 # Human Resource Management System for ZapLink
 
-A modern, lightweight **C# WinForms-based desktop application** for managing employee records, attendance, leaves, and reporting. Designed specifically for small-sized companies to streamline and digitalize HR tasks.
+**C# WinForms-based desktop application** for managing employee records, attendance, leaves, and reporting. Designed specifically for small-sized companies to streamline and digitalize HR tasks.
 
 ---
 
@@ -61,15 +61,8 @@ HRMSApp/
 - 📅 **Attendance Tracking**
 - 📝 **Leave Management**
 - 📊 **Reports Generation**
-- 🎨 Modern UI using third-party frameworks (optional)
-
----
-
-
-
-## 🧱 Suggested Folder Structure (Project Side)
 
 
 ---
 
-Let me know which modules you'd like to start implementing first (e.g., Login, Employee CRUD), and I’ll walk you through it step-by-step — UI + database + logic.
+
