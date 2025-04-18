@@ -64,7 +64,11 @@ namespace LinkHR
 
         private void button2_Click_1(object sender, EventArgs e)
         {
-
+            Dashboard dashboard = new Dashboard();
+            dashboard.Show();
+            // close the app entirely when Dashboard is closed
+            dashboard.FormClosed += (s, args) => this.Close();
+            this.Hide();
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
