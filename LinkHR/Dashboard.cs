@@ -10,11 +10,21 @@ using System.Windows.Forms;
 
 namespace LinkHR
 {
-    public partial class Dashboard: Form
+    public partial class Dashboard : Form
     {
         public Dashboard()
         {
             InitializeComponent();
+        }
+
+        private void detailsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
         }
     }
 }
