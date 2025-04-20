@@ -1,6 +1,6 @@
 ﻿namespace LinkHR
 {
-    partial class LeaveForm
+    partial class AttendenceForm
     {
         /// <summary>
         /// Required designer variable.
@@ -35,21 +35,20 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 12F);
-            label1.Location = new Point(12, 9);
+            label1.Location = new Point(26, 22);
             label1.Name = "label1";
-            label1.Size = new Size(151, 28);
+            label1.Size = new Size(389, 28);
             label1.TabIndex = 0;
-            label1.Text = "Leave form here";
-            label1.Click += label1_Click;
+            label1.Text = "Mark daily or shift Attendence of employee";
             // 
-            // LeaveForm
+            // Attendence
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
             Controls.Add(label1);
-            Name = "LeaveForm";
-            Text = "LeaveForm";
+            Name = "Attendence";
+            Text = "Attendence";
             ResumeLayout(false);
             PerformLayout();
         }

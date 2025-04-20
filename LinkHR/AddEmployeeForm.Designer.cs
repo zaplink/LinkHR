@@ -28,12 +28,34 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "AddEmployeeForm";
+            label1 = new Label();
+            SuspendLayout();
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 12F);
+            label1.Location = new Point(12, 9);
+            label1.Name = "label1";
+            label1.Size = new Size(247, 28);
+            label1.TabIndex = 0;
+            label1.Text = "Employee registration here";
+            label1.Click += label1_Click;
+            // 
+            // AddEmployeeForm
+            // 
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(800, 450);
+            Controls.Add(label1);
+            Name = "AddEmployeeForm";
+            Text = "AddEmployeeForm";
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
+
+        private Label label1;
     }
 }

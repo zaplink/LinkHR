@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace LinkHR
 {
-    public partial class AddEmployeeForm: Form
+    public partial class AddEmployeeForm : Form
     {
         public AddEmployeeForm()
         {
             InitializeComponent();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace LinkHR
 {
-    partial class LeaveForm
+    partial class RemoveEmployeeForm
     {
         /// <summary>
         /// Required designer variable.
@@ -37,19 +37,18 @@
             label1.Font = new Font("Segoe UI", 12F);
             label1.Location = new Point(12, 9);
             label1.Name = "label1";
-            label1.Size = new Size(151, 28);
+            label1.Size = new Size(326, 28);
             label1.TabIndex = 0;
-            label1.Text = "Leave form here";
-            label1.Click += label1_Click;
+            label1.Text = "Able to remove exsisting employees";
             // 
-            // LeaveForm
+            // RemoveEmployee
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
             Controls.Add(label1);
-            Name = "LeaveForm";
-            Text = "LeaveForm";
+            Name = "RemoveEmployee";
+            Text = "RemoveEmployee";
             ResumeLayout(false);
             PerformLayout();
         }

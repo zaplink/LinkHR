@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace LinkHR
 {
-    public partial class LeaveForm : Form
+    public partial class RemoveEmployeeForm : Form
     {
-        public LeaveForm()
+        public RemoveEmployeeForm()
         {
             InitializeComponent();
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

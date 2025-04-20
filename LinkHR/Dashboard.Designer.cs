@@ -33,10 +33,12 @@
             employeesToolStripMenuItem = new ToolStripMenuItem();
             detailsToolStripMenuItem = new ToolStripMenuItem();
             removeEmployeeToolStripMenuItem = new ToolStripMenuItem();
+            viewEmployeeToolStripMenuItem = new ToolStripMenuItem();
             attendenceToolStripMenuItem = new ToolStripMenuItem();
             leavesToolStripMenuItem = new ToolStripMenuItem();
             reportsToolStripMenuItem = new ToolStripMenuItem();
-            panel1 = new Panel();
+            sidepanel = new Panel();
+            mainPanel = new Panel();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -48,7 +50,7 @@
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.RenderMode = ToolStripRenderMode.Professional;
-            menuStrip1.Size = new Size(1186, 28);
+            menuStrip1.Size = new Size(1151, 28);
             menuStrip1.TabIndex = 0;
             menuStrip1.Text = "menuStrip1";
             menuStrip1.ItemClicked += menuStrip1_ItemClicked;
@@ -61,7 +63,7 @@
             // 
             // employeesToolStripMenuItem
             // 
-            employeesToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { detailsToolStripMenuItem, removeEmployeeToolStripMenuItem });
+            employeesToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { detailsToolStripMenuItem, removeEmployeeToolStripMenuItem, viewEmployeeToolStripMenuItem });
             employeesToolStripMenuItem.Name = "employeesToolStripMenuItem";
             employeesToolStripMenuItem.Size = new Size(95, 24);
             employeesToolStripMenuItem.Text = "Employees";
@@ -69,50 +71,71 @@
             // detailsToolStripMenuItem
             // 
             detailsToolStripMenuItem.Name = "detailsToolStripMenuItem";
-            detailsToolStripMenuItem.Size = new Size(224, 26);
+            detailsToolStripMenuItem.Size = new Size(216, 26);
             detailsToolStripMenuItem.Text = "Register Employee";
             detailsToolStripMenuItem.Click += detailsToolStripMenuItem_Click;
             // 
             // removeEmployeeToolStripMenuItem
             // 
             removeEmployeeToolStripMenuItem.Name = "removeEmployeeToolStripMenuItem";
-            removeEmployeeToolStripMenuItem.Size = new Size(224, 26);
+            removeEmployeeToolStripMenuItem.Size = new Size(216, 26);
             removeEmployeeToolStripMenuItem.Text = "Remove Employee";
+            removeEmployeeToolStripMenuItem.Click += removeEmployeeToolStripMenuItem_Click;
+            // 
+            // viewEmployeeToolStripMenuItem
+            // 
+            viewEmployeeToolStripMenuItem.Name = "viewEmployeeToolStripMenuItem";
+            viewEmployeeToolStripMenuItem.Size = new Size(216, 26);
+            viewEmployeeToolStripMenuItem.Text = "View Employee";
+            viewEmployeeToolStripMenuItem.Click += viewEmployeeToolStripMenuItem_Click;
             // 
             // attendenceToolStripMenuItem
             // 
             attendenceToolStripMenuItem.Name = "attendenceToolStripMenuItem";
             attendenceToolStripMenuItem.Size = new Size(99, 24);
             attendenceToolStripMenuItem.Text = "Attendence";
+            attendenceToolStripMenuItem.Click += attendenceToolStripMenuItem_Click;
             // 
             // leavesToolStripMenuItem
             // 
             leavesToolStripMenuItem.Name = "leavesToolStripMenuItem";
             leavesToolStripMenuItem.Size = new Size(67, 24);
             leavesToolStripMenuItem.Text = "Leaves";
+            leavesToolStripMenuItem.Click += leavesToolStripMenuItem_Click;
             // 
             // reportsToolStripMenuItem
             // 
             reportsToolStripMenuItem.Name = "reportsToolStripMenuItem";
             reportsToolStripMenuItem.Size = new Size(74, 24);
             reportsToolStripMenuItem.Text = "Reports";
+            reportsToolStripMenuItem.Click += reportsToolStripMenuItem_Click;
             // 
-            // panel1
+            // sidepanel
             // 
-            panel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
-            panel1.BackColor = SystemColors.AppWorkspace;
-            panel1.Location = new Point(0, 28);
-            panel1.Margin = new Padding(0);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(328, 729);
-            panel1.TabIndex = 1;
+            sidepanel.BackColor = SystemColors.AppWorkspace;
+            sidepanel.Dock = DockStyle.Left;
+            sidepanel.Location = new Point(0, 28);
+            sidepanel.Margin = new Padding(0);
+            sidepanel.Name = "sidepanel";
+            sidepanel.Size = new Size(250, 617);
+            sidepanel.TabIndex = 1;
+            // 
+            // mainPanel
+            // 
+            mainPanel.Dock = DockStyle.Fill;
+            mainPanel.Location = new Point(250, 28);
+            mainPanel.Margin = new Padding(0);
+            mainPanel.Name = "mainPanel";
+            mainPanel.Size = new Size(901, 617);
+            mainPanel.TabIndex = 2;
             // 
             // Dashboard
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1186, 753);
-            Controls.Add(panel1);
+            ClientSize = new Size(1151, 645);
+            Controls.Add(mainPanel);
+            Controls.Add(sidepanel);
             Controls.Add(menuStrip1);
             Name = "Dashboard";
             Text = "LinkHR";
@@ -133,6 +156,8 @@
         private ToolStripMenuItem attendenceToolStripMenuItem;
         private ToolStripMenuItem leavesToolStripMenuItem;
         private ToolStripMenuItem reportsToolStripMenuItem;
-        private Panel panel1;
+        private Panel sidepanel;
+        private Panel mainPanel;
+        private ToolStripMenuItem viewEmployeeToolStripMenuItem;
     }
 }

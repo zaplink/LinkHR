@@ -17,14 +17,58 @@ namespace LinkHR
             InitializeComponent();
         }
 
+        private Form activeForm = null;
+
+        private void loadform(Form childForm)
+        {
+            if (activeForm != null)
+                activeForm.Close();
+
+            activeForm = childForm;
+            childForm.TopLevel = false;
+            childForm.FormBorderStyle = FormBorderStyle.None;
+            childForm.Dock = DockStyle.Fill;
+
+            mainPanel.Controls.Add(childForm);
+            mainPanel.Tag = childForm;
+            childForm.BringToFront();
+            childForm.Show();
+        }
+
+
         private void detailsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            loadform(new AttendenceForm());
         }
 
         private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
 
+        }
+
+        private void leavesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            loadform(new LeaveForm());
+        }
+
+        private void removeEmployeeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            loadform(new RemoveEmployeeForm());
+        }
+
+        private void viewEmployeeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            loadform(new EmployeeListForm());
+        }
+
+        private void attendenceToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            loadform(new AttendenceForm());
+        }
+
+        private void reportsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            loadform(new RemoveEmployeeForm());
         }
     }
 }
