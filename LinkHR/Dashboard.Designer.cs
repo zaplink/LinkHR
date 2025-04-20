@@ -38,15 +38,17 @@
             leavesToolStripMenuItem = new ToolStripMenuItem();
             reportsToolStripMenuItem = new ToolStripMenuItem();
             sidepanel = new Panel();
+            button3 = new Button();
+            button2 = new Button();
+            button1 = new Button();
             logoutButton = new Button();
             img = new Panel();
             label1 = new Label();
             mainPanel = new Panel();
-            button1 = new Button();
-            button2 = new Button();
-            button3 = new Button();
+            label2 = new Label();
             menuStrip1.SuspendLayout();
             sidepanel.SuspendLayout();
+            mainPanel.SuspendLayout();
             SuspendLayout();
             // 
             // menuStrip1
@@ -133,6 +135,37 @@
             sidepanel.Size = new Size(250, 617);
             sidepanel.TabIndex = 1;
             // 
+            // button3
+            // 
+            button3.BackColor = SystemColors.ActiveBorder;
+            button3.Location = new Point(54, 291);
+            button3.Name = "button3";
+            button3.Size = new Size(120, 29);
+            button3.TabIndex = 2;
+            button3.Text = "Attendence";
+            button3.UseVisualStyleBackColor = false;
+            // 
+            // button2
+            // 
+            button2.BackColor = SystemColors.ActiveBorder;
+            button2.Location = new Point(54, 326);
+            button2.Name = "button2";
+            button2.Size = new Size(120, 29);
+            button2.TabIndex = 1;
+            button2.Text = "Add a Note";
+            button2.UseVisualStyleBackColor = false;
+            // 
+            // button1
+            // 
+            button1.BackColor = SystemColors.ActiveBorder;
+            button1.Location = new Point(54, 361);
+            button1.Name = "button1";
+            button1.Size = new Size(120, 29);
+            button1.TabIndex = 0;
+            button1.Text = "Calendar";
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
+            // 
             // logoutButton
             // 
             logoutButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
@@ -169,6 +202,7 @@
             // 
             // mainPanel
             // 
+            mainPanel.Controls.Add(label2);
             mainPanel.Dock = DockStyle.Fill;
             mainPanel.Location = new Point(250, 28);
             mainPanel.Margin = new Padding(0);
@@ -176,36 +210,14 @@
             mainPanel.Size = new Size(901, 617);
             mainPanel.TabIndex = 2;
             // 
-            // button1
+            // label2
             // 
-            button1.BackColor = SystemColors.ActiveBorder;
-            button1.Location = new Point(54, 361);
-            button1.Name = "button1";
-            button1.Size = new Size(120, 29);
-            button1.TabIndex = 0;
-            button1.Text = "Calendar";
-            button1.UseVisualStyleBackColor = false;
-            button1.Click += button1_Click;
-            // 
-            // button2
-            // 
-            button2.BackColor = SystemColors.ActiveBorder;
-            button2.Location = new Point(54, 326);
-            button2.Name = "button2";
-            button2.Size = new Size(120, 29);
-            button2.TabIndex = 1;
-            button2.Text = "Add a Note";
-            button2.UseVisualStyleBackColor = false;
-            // 
-            // button3
-            // 
-            button3.BackColor = SystemColors.ActiveBorder;
-            button3.Location = new Point(54, 291);
-            button3.Name = "button3";
-            button3.Size = new Size(120, 29);
-            button3.TabIndex = 2;
-            button3.Text = "Attendence";
-            button3.UseVisualStyleBackColor = false;
+            label2.AutoSize = true;
+            label2.Location = new Point(26, 34);
+            label2.Name = "label2";
+            label2.Size = new Size(239, 20);
+            label2.TabIndex = 3;
+            label2.Text = "customize dashboard here (Home)";
             // 
             // Dashboard
             // 
@@ -222,6 +234,8 @@
             menuStrip1.PerformLayout();
             sidepanel.ResumeLayout(false);
             sidepanel.PerformLayout();
+            mainPanel.ResumeLayout(false);
+            mainPanel.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -245,5 +259,6 @@
         private Button button1;
         private Button button3;
         private Button button2;
+        private Label label2;
     }
 }
