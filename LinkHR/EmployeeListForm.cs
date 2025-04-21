@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace LinkHR
 {
-    public partial class EmployeeListForm: Form
+    public partial class EmployeeListForm : Form
     {
         public EmployeeListForm()
         {
             InitializeComponent();
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
