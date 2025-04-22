@@ -29,23 +29,45 @@
         private void InitializeComponent()
         {
             label1 = new Label();
+            label2 = new Label();
+            comboBox1 = new ComboBox();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 12F);
+            label1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
             label1.Location = new Point(23, 20);
             label1.Name = "label1";
-            label1.Size = new Size(371, 28);
+            label1.Size = new Size(158, 28);
             label1.TabIndex = 0;
-            label1.Text = "Report and details of department and HR";
+            label1.Text = "Generate Report";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 10F);
+            label2.Location = new Point(23, 97);
+            label2.Name = "label2";
+            label2.Size = new Size(149, 23);
+            label2.TabIndex = 1;
+            label2.Text = "Select Report type";
+            // 
+            // comboBox1
+            // 
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Location = new Point(203, 92);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(288, 28);
+            comboBox1.TabIndex = 2;
             // 
             // ReportsForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(940, 556);
+            Controls.Add(comboBox1);
+            Controls.Add(label2);
             Controls.Add(label1);
             Name = "ReportsForm";
             Text = "ReportsForm";
@@ -56,5 +78,7 @@
         #endregion
 
         private Label label1;
+        private Label label2;
+        private ComboBox comboBox1;
     }
 }
