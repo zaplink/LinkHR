@@ -31,6 +31,10 @@
             label1 = new Label();
             label2 = new Label();
             comboBox1 = new ComboBox();
+            reportPanel = new Panel();
+            label3 = new Label();
+            comboBox2 = new ComboBox();
+            button1 = new Button();
             SuspendLayout();
             // 
             // label1
@@ -55,22 +59,66 @@
             // 
             // comboBox1
             // 
+            comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBox1.FormattingEnabled = true;
+            comboBox1.Items.AddRange(new object[] { "Attendance", "Payroll" });
             comboBox1.Location = new Point(203, 92);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(288, 28);
             comboBox1.TabIndex = 2;
+            comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
+            // 
+            // reportPanel
+            // 
+            reportPanel.Location = new Point(23, 144);
+            reportPanel.Name = "reportPanel";
+            reportPanel.Size = new Size(886, 341);
+            reportPanel.TabIndex = 3;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(23, 549);
+            label3.Name = "label3";
+            label3.Size = new Size(94, 20);
+            label3.TabIndex = 4;
+            label3.Text = "Export Type :";
+            // 
+            // comboBox2
+            // 
+            comboBox2.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBox2.FormattingEnabled = true;
+            comboBox2.Items.AddRange(new object[] { "PDF", "Excel" });
+            comboBox2.Location = new Point(235, 541);
+            comboBox2.Name = "comboBox2";
+            comboBox2.Size = new Size(151, 28);
+            comboBox2.TabIndex = 5;
+            // 
+            // button1
+            // 
+            button1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button1.Location = new Point(521, 540);
+            button1.Name = "button1";
+            button1.Size = new Size(108, 29);
+            button1.TabIndex = 6;
+            button1.Text = "Generate";
+            button1.UseVisualStyleBackColor = true;
             // 
             // ReportsForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(940, 556);
+            ClientSize = new Size(987, 682);
+            Controls.Add(button1);
+            Controls.Add(comboBox2);
+            Controls.Add(label3);
+            Controls.Add(reportPanel);
             Controls.Add(comboBox1);
             Controls.Add(label2);
             Controls.Add(label1);
             Name = "ReportsForm";
             Text = "ReportsForm";
+            Load += ReportsForm_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -80,5 +128,9 @@
         private Label label1;
         private Label label2;
         private ComboBox comboBox1;
+        private Panel reportPanel;
+        private Label label3;
+        private ComboBox comboBox2;
+        private Button button1;
     }
 }
