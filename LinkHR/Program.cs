@@ -1,5 +1,8 @@
+using DotNetEnv;
+
 namespace LinkHR
 {
+    
     internal static class Program
     {
         /// <summary>
@@ -8,6 +11,9 @@ namespace LinkHR
         [STAThread]
         static void Main()
         {
+
+            DotNetEnv.Env.Load();
+
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();

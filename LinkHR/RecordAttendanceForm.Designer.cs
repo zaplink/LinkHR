@@ -37,6 +37,7 @@
             dateTimePicker2 = new DateTimePicker();
             dateTimePicker3 = new DateTimePicker();
             button1 = new Button();
+            dbtestbtn = new Button();
             SuspendLayout();
             // 
             // label1
@@ -117,11 +118,22 @@
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 
+            // dbtestbtn
+            // 
+            dbtestbtn.Location = new Point(584, 29);
+            dbtestbtn.Name = "dbtestbtn";
+            dbtestbtn.Size = new Size(75, 23);
+            dbtestbtn.TabIndex = 9;
+            dbtestbtn.Text = "DB";
+            dbtestbtn.UseVisualStyleBackColor = true;
+            dbtestbtn.Click += dbtestbtn_Click;
+            // 
             // RecordAttendanceForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(dbtestbtn);
             Controls.Add(button1);
             Controls.Add(dateTimePicker3);
             Controls.Add(dateTimePicker2);
@@ -148,5 +160,6 @@
         private DateTimePicker dateTimePicker2;
         private DateTimePicker dateTimePicker3;
         private Button button1;
+        private Button dbtestbtn;
     }
 }
