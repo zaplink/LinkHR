@@ -34,6 +34,11 @@
             button1 = new Button();
             label3 = new Label();
             textBox2 = new TextBox();
+            label4 = new Label();
+            label5 = new Label();
+            label6 = new Label();
+            label7 = new Label();
+            label8 = new Label();
             SuspendLayout();
             // 
             // label1
@@ -87,11 +92,63 @@
             textBox2.Size = new Size(289, 183);
             textBox2.TabIndex = 5;
             // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(336, 261);
+            label4.Name = "label4";
+            label4.Size = new Size(101, 20);
+            label4.TabIndex = 6;
+            label4.Text = "Employee ID :";
+            label4.Click += label4_Click;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(336, 296);
+            label5.Name = "label5";
+            label5.Size = new Size(56, 20);
+            label5.TabIndex = 7;
+            label5.Text = "Name :";
+            label5.Click += label5_Click;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(336, 334);
+            label6.Name = "label6";
+            label6.Size = new Size(96, 20);
+            label6.TabIndex = 8;
+            label6.Text = "Department :";
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new Point(336, 367);
+            label7.Name = "label7";
+            label7.Size = new Size(68, 20);
+            label7.TabIndex = 9;
+            label7.Text = "Position :";
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new Point(160, 455);
+            label8.Name = "label8";
+            label8.Size = new Size(329, 20);
+            label8.TabIndex = 10;
+            label8.Text = "Warning: Removing this employee is irreversible.";
+            // 
             // RemoveEmployeeForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1011, 596);
+            Controls.Add(label8);
+            Controls.Add(label7);
+            Controls.Add(label6);
+            Controls.Add(label5);
+            Controls.Add(label4);
             Controls.Add(textBox2);
             Controls.Add(label3);
             Controls.Add(button1);
@@ -112,5 +169,10 @@
         private Button button1;
         private Label label3;
         private TextBox textBox2;
+        private Label label4;
+        private Label label5;
+        private Label label6;
+        private Label label7;
+        private Label label8;
     }
 }
