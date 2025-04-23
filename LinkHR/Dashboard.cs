@@ -38,7 +38,7 @@ namespace LinkHR
 
         private void detailsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            loadform(new AttendenceForm());
+            loadform(new AddEmployeeForm());
         }
 
         private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
