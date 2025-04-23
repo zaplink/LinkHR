@@ -41,6 +41,7 @@
             CheckOut = new DataGridViewTextBoxColumn();
             HoursWorked = new DataGridViewTextBoxColumn();
             button1 = new Button();
+            label5 = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -110,7 +111,7 @@
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Date, CheckIn, CheckOut, HoursWorked });
-            dataGridView1.Location = new Point(23, 149);
+            dataGridView1.Location = new Point(23, 193);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.Size = new Size(443, 66);
             dataGridView1.TabIndex = 7;
@@ -144,11 +145,22 @@
             button1.Text = "View Attendance";
             button1.UseVisualStyleBackColor = true;
             // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(23, 152);
+            label5.Name = "label5";
+            label5.Size = new Size(121, 15);
+            label5.TabIndex = 9;
+            label5.Text = "Total Working Hours: ";
+            label5.Click += label5_Click;
+            // 
             // ViewAttendanceForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(label5);
             Controls.Add(button1);
             Controls.Add(dataGridView1);
             Controls.Add(textBox1);
@@ -180,5 +192,6 @@
         private DataGridViewTextBoxColumn CheckOut;
         private DataGridViewTextBoxColumn HoursWorked;
         private Button button1;
+        private Label label5;
     }
 }
