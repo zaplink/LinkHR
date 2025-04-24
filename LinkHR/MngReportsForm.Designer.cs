@@ -1,6 +1,6 @@
 ﻿namespace LinkHR
 {
-    partial class ReportsForm
+    partial class MngReportsForm
     {
         /// <summary>
         /// Required designer variable.
