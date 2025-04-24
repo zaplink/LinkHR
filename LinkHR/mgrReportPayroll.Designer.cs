@@ -1,6 +1,6 @@
 ﻿namespace LinkHR
 {
-    partial class ReportPayroll
+    partial class mgrReportPayroll
     {
         /// <summary>
         /// Required designer variable.

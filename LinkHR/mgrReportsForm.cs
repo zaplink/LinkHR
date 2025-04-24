@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace LinkHR
 {
-    public partial class ReportsForm : Form
+    public partial class mgrReportsForm : Form
     {
-        public ReportsForm()
+        public mgrReportsForm()
         {
             InitializeComponent();
         }
@@ -41,10 +41,10 @@ namespace LinkHR
             switch (comboBox1.SelectedIndex)
             {
                 case 0:
-                    loadform(new ReportAttendence());
+                    loadform(new mgrReportAttendence());
                     break;
                 case 1:
-                    loadform(new ReportPayroll());
+                    loadform(new mgrReportPayroll());
                     break;
                 default:
                     MessageBox.Show("Invalid selection");

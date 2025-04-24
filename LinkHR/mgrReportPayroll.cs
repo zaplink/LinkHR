@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace LinkHR
 {
-    public partial class ReportAttendence : Form
+    public partial class mgrReportPayroll : Form
     {
-        public ReportAttendence()
+        public mgrReportPayroll()
         {
             InitializeComponent();
         }

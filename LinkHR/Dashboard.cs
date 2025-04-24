@@ -68,7 +68,7 @@ namespace LinkHR
 
         private void reportsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            loadform(new ReportsForm());
+            loadform(new mgrReportsForm());
         }
 
         private void label1_Click(object sender, EventArgs e)

@@ -1,6 +1,6 @@
 ﻿namespace LinkHR
 {
-    partial class ReportAttendence
+    partial class mgrReportAttendence
     {
         /// <summary>
         /// Required designer variable.
