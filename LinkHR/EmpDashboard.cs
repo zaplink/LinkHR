@@ -20,9 +20,10 @@ namespace LinkHR
 
         private void logoutButton_Click(object sender, EventArgs e)
         {
-            LoginForm loginform = new LoginForm();
-            loginform.Show();
-            //this.Close();
+            LoginForm loginForm = new LoginForm();
+            loginForm.Show();
+            loginForm.ResetForm();
+            this.Close();
         }
     }
 }

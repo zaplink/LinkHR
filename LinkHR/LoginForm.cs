@@ -130,9 +130,23 @@ namespace LinkHR
         private void OpenDashboard(Form dashboardForm)
         {
             dashboardForm.Show();
-            // Close the app entirely when the dashboard is closed
-            dashboardForm.FormClosed += (s, args) => this.Close();
             this.Hide();
+        }
+
+        // Handle LoginForm closing to exit the application
+        private void LoginForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                Application.Exit(); // Exit the application when the user closes the LoginForm
+            }
+        }
+
+        // Method to reset the form's state (clear username and password fields)
+        public void ResetForm()
+        {
+            textBox1.Text = string.Empty;
+            textBox2.Text = string.Empty;
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
