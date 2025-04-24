@@ -124,7 +124,7 @@
             Controls.Add(label1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "LoginForm";
-            Text = "Login";
+            Text = " ";
             Load += Form1_Load;
             ResumeLayout(false);
             PerformLayout();

@@ -78,9 +78,9 @@
             menuStrip1.Items.AddRange(new ToolStripItem[] { homeToolStripMenuItem, employeesToolStripMenuItem, attendenceToolStripMenuItem, leavesToolStripMenuItem, reportsToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Padding = new Padding(5, 2, 0, 2);
+            menuStrip1.Padding = new Padding(6, 3, 0, 3);
             menuStrip1.RenderMode = ToolStripRenderMode.Professional;
-            menuStrip1.Size = new Size(1159, 24);
+            menuStrip1.Size = new Size(1332, 30);
             menuStrip1.TabIndex = 0;
             menuStrip1.Text = "menuStrip1";
             menuStrip1.ItemClicked += menuStrip1_ItemClicked;
@@ -88,34 +88,34 @@
             // homeToolStripMenuItem
             // 
             homeToolStripMenuItem.Name = "homeToolStripMenuItem";
-            homeToolStripMenuItem.Size = new Size(52, 20);
+            homeToolStripMenuItem.Size = new Size(64, 24);
             homeToolStripMenuItem.Text = "Home";
             // 
             // employeesToolStripMenuItem
             // 
             employeesToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { detailsToolStripMenuItem, removeEmployeeToolStripMenuItem, viewEmployeeToolStripMenuItem });
             employeesToolStripMenuItem.Name = "employeesToolStripMenuItem";
-            employeesToolStripMenuItem.Size = new Size(76, 20);
+            employeesToolStripMenuItem.Size = new Size(95, 24);
             employeesToolStripMenuItem.Text = "Employees";
             // 
             // detailsToolStripMenuItem
             // 
             detailsToolStripMenuItem.Name = "detailsToolStripMenuItem";
-            detailsToolStripMenuItem.Size = new Size(172, 22);
+            detailsToolStripMenuItem.Size = new Size(216, 26);
             detailsToolStripMenuItem.Text = "Register Employee";
             detailsToolStripMenuItem.Click += detailsToolStripMenuItem_Click;
             // 
             // removeEmployeeToolStripMenuItem
             // 
             removeEmployeeToolStripMenuItem.Name = "removeEmployeeToolStripMenuItem";
-            removeEmployeeToolStripMenuItem.Size = new Size(172, 22);
+            removeEmployeeToolStripMenuItem.Size = new Size(216, 26);
             removeEmployeeToolStripMenuItem.Text = "Remove Employee";
             removeEmployeeToolStripMenuItem.Click += removeEmployeeToolStripMenuItem_Click;
             // 
             // viewEmployeeToolStripMenuItem
             // 
             viewEmployeeToolStripMenuItem.Name = "viewEmployeeToolStripMenuItem";
-            viewEmployeeToolStripMenuItem.Size = new Size(172, 22);
+            viewEmployeeToolStripMenuItem.Size = new Size(216, 26);
             viewEmployeeToolStripMenuItem.Text = "View Employee";
             viewEmployeeToolStripMenuItem.Click += viewEmployeeToolStripMenuItem_Click;
             // 
@@ -123,35 +123,35 @@
             // 
             attendenceToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { recordAttendanceToolStripMenuItem, viewAttendanceToolStripMenuItem });
             attendenceToolStripMenuItem.Name = "attendenceToolStripMenuItem";
-            attendenceToolStripMenuItem.Size = new Size(80, 20);
+            attendenceToolStripMenuItem.Size = new Size(99, 24);
             attendenceToolStripMenuItem.Text = "Attendence";
             attendenceToolStripMenuItem.Click += attendenceToolStripMenuItem_Click;
             // 
             // recordAttendanceToolStripMenuItem
             // 
             recordAttendanceToolStripMenuItem.Name = "recordAttendanceToolStripMenuItem";
-            recordAttendanceToolStripMenuItem.Size = new Size(180, 22);
+            recordAttendanceToolStripMenuItem.Size = new Size(219, 26);
             recordAttendanceToolStripMenuItem.Text = "Record Attendance";
             recordAttendanceToolStripMenuItem.Click += recordAttendanceToolStripMenuItem_Click;
             // 
             // viewAttendanceToolStripMenuItem
             // 
             viewAttendanceToolStripMenuItem.Name = "viewAttendanceToolStripMenuItem";
-            viewAttendanceToolStripMenuItem.Size = new Size(180, 22);
+            viewAttendanceToolStripMenuItem.Size = new Size(219, 26);
             viewAttendanceToolStripMenuItem.Text = "View Attendance";
             viewAttendanceToolStripMenuItem.Click += viewAttendanceToolStripMenuItem_Click;
             // 
             // leavesToolStripMenuItem
             // 
             leavesToolStripMenuItem.Name = "leavesToolStripMenuItem";
-            leavesToolStripMenuItem.Size = new Size(54, 20);
+            leavesToolStripMenuItem.Size = new Size(67, 24);
             leavesToolStripMenuItem.Text = "Leaves";
             leavesToolStripMenuItem.Click += leavesToolStripMenuItem_Click;
             // 
             // reportsToolStripMenuItem
             // 
             reportsToolStripMenuItem.Name = "reportsToolStripMenuItem";
-            reportsToolStripMenuItem.Size = new Size(59, 20);
+            reportsToolStripMenuItem.Size = new Size(74, 24);
             reportsToolStripMenuItem.Text = "Reports";
             reportsToolStripMenuItem.Click += reportsToolStripMenuItem_Click;
             // 
@@ -165,10 +165,10 @@
             sidepanel.Controls.Add(img);
             sidepanel.Controls.Add(label1);
             sidepanel.Dock = DockStyle.Left;
-            sidepanel.Location = new Point(0, 24);
+            sidepanel.Location = new Point(0, 30);
             sidepanel.Margin = new Padding(0);
             sidepanel.Name = "sidepanel";
-            sidepanel.Size = new Size(219, 538);
+            sidepanel.Size = new Size(250, 723);
             sidepanel.TabIndex = 1;
             // 
             // button2
@@ -177,10 +177,9 @@
             button2.BackColor = SystemColors.ControlDarkDark;
             button2.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button2.ForeColor = SystemColors.Window;
-            button2.Location = new Point(35, 274);
-            button2.Margin = new Padding(3, 2, 3, 2);
+            button2.Location = new Point(40, 365);
             button2.Name = "button2";
-            button2.Size = new Size(136, 38);
+            button2.Size = new Size(155, 51);
             button2.TabIndex = 4;
             button2.Text = "Administration";
             button2.UseVisualStyleBackColor = false;
@@ -191,10 +190,9 @@
             button1.BackColor = SystemColors.ControlDarkDark;
             button1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button1.ForeColor = SystemColors.Window;
-            button1.Location = new Point(35, 332);
-            button1.Margin = new Padding(3, 2, 3, 2);
+            button1.Location = new Point(40, 443);
             button1.Name = "button1";
-            button1.Size = new Size(136, 38);
+            button1.Size = new Size(155, 51);
             button1.TabIndex = 3;
             button1.Text = "Payroll ";
             button1.UseVisualStyleBackColor = false;
@@ -206,10 +204,9 @@
             button3.BackColor = SystemColors.ControlDarkDark;
             button3.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button3.ForeColor = SystemColors.Window;
-            button3.Location = new Point(35, 219);
-            button3.Margin = new Padding(3, 2, 3, 2);
+            button3.Location = new Point(40, 292);
             button3.Name = "button3";
-            button3.Size = new Size(136, 38);
+            button3.Size = new Size(155, 51);
             button3.TabIndex = 2;
             button3.Text = "Departments";
             button3.UseVisualStyleBackColor = false;
@@ -219,10 +216,9 @@
             logoutButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             logoutButton.BackColor = SystemColors.ControlDark;
             logoutButton.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            logoutButton.Location = new Point(10, 493);
-            logoutButton.Margin = new Padding(3, 2, 3, 2);
+            logoutButton.Location = new Point(11, 663);
             logoutButton.Name = "logoutButton";
-            logoutButton.Size = new Size(197, 36);
+            logoutButton.Size = new Size(225, 48);
             logoutButton.TabIndex = 0;
             logoutButton.Text = "Logout";
             logoutButton.UseVisualStyleBackColor = false;
@@ -232,10 +228,9 @@
             // 
             img.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             img.BackgroundImage = Properties.Resources.people_together;
-            img.Location = new Point(47, 78);
-            img.Margin = new Padding(3, 2, 3, 2);
+            img.Location = new Point(54, 104);
             img.Name = "img";
-            img.Size = new Size(105, 90);
+            img.Size = new Size(120, 120);
             img.TabIndex = 0;
             // 
             // label1
@@ -243,9 +238,9 @@
             label1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 13F, FontStyle.Bold);
-            label1.Location = new Point(35, 44);
+            label1.Location = new Point(40, 59);
             label1.Name = "label1";
-            label1.Size = new Size(129, 25);
+            label1.Size = new Size(155, 30);
             label1.TabIndex = 0;
             label1.Text = "Team ZapLink";
             label1.Click += label1_Click;
@@ -258,10 +253,10 @@
             mainPanel.Controls.Add(label2);
             mainPanel.Dock = DockStyle.Fill;
             mainPanel.Font = new Font("Microsoft Sans Serif", 8.25F);
-            mainPanel.Location = new Point(219, 24);
+            mainPanel.Location = new Point(250, 30);
             mainPanel.Margin = new Padding(0);
             mainPanel.Name = "mainPanel";
-            mainPanel.Size = new Size(940, 538);
+            mainPanel.Size = new Size(1082, 723);
             mainPanel.TabIndex = 2;
             // 
             // panel3
@@ -269,10 +264,9 @@
             panel3.BackColor = SystemColors.ButtonHighlight;
             panel3.Controls.Add(panel4);
             panel3.Controls.Add(panel5);
-            panel3.Location = new Point(486, 271);
-            panel3.Margin = new Padding(3, 2, 3, 2);
+            panel3.Location = new Point(555, 361);
             panel3.Name = "panel3";
-            panel3.Size = new Size(420, 278);
+            panel3.Size = new Size(480, 371);
             panel3.TabIndex = 7;
             // 
             // panel4
@@ -280,18 +274,17 @@
             panel4.BackColor = SystemColors.ButtonShadow;
             panel4.Controls.Add(label4);
             panel4.Location = new Point(0, 0);
-            panel4.Margin = new Padding(3, 2, 3, 2);
             panel4.Name = "panel4";
-            panel4.Size = new Size(420, 41);
+            panel4.Size = new Size(480, 55);
             panel4.TabIndex = 3;
             // 
             // label4
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.Location = new Point(23, 13);
+            label4.Location = new Point(26, 17);
             label4.Name = "label4";
-            label4.Size = new Size(64, 19);
+            label4.Size = new Size(78, 23);
             label4.TabIndex = 1;
             label4.Text = "Calendar";
             // 
@@ -300,10 +293,9 @@
             panel5.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             panel5.BackColor = SystemColors.ButtonShadow;
             panel5.Controls.Add(label6);
-            panel5.Location = new Point(3, 11);
-            panel5.Margin = new Padding(3, 2, 3, 2);
+            panel5.Location = new Point(3, 15);
             panel5.Name = "panel5";
-            panel5.Size = new Size(0, 41);
+            panel5.Size = new Size(0, 55);
             panel5.TabIndex = 2;
             panel5.Paint += panel5_Paint;
             // 
@@ -311,9 +303,9 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label6.Location = new Point(11, 11);
+            label6.Location = new Point(13, 15);
             label6.Name = "label6";
-            label6.Size = new Size(90, 19);
+            label6.Size = new Size(107, 23);
             label6.TabIndex = 0;
             label6.Text = "Quick access";
             label6.Click += label6_Click;
@@ -322,10 +314,9 @@
             // 
             panel2.BackColor = SystemColors.ButtonHighlight;
             panel2.Controls.Add(panel6);
-            panel2.Location = new Point(25, 273);
-            panel2.Margin = new Padding(3, 2, 3, 2);
+            panel2.Location = new Point(29, 364);
             panel2.Name = "panel2";
-            panel2.Size = new Size(360, 276);
+            panel2.Size = new Size(411, 368);
             panel2.TabIndex = 6;
             // 
             // panel6
@@ -333,18 +324,17 @@
             panel6.BackColor = SystemColors.ButtonShadow;
             panel6.Controls.Add(label5);
             panel6.Location = new Point(0, 1);
-            panel6.Margin = new Padding(3, 2, 3, 2);
             panel6.Name = "panel6";
-            panel6.Size = new Size(360, 41);
+            panel6.Size = new Size(411, 55);
             panel6.TabIndex = 4;
             // 
             // label5
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label5.Location = new Point(24, 10);
+            label5.Location = new Point(27, 13);
             label5.Name = "label5";
-            label5.Size = new Size(80, 19);
+            label5.Size = new Size(95, 23);
             label5.TabIndex = 2;
             label5.Text = "Quick Start";
             // 
@@ -353,10 +343,9 @@
             announcements.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             announcements.BackColor = SystemColors.ButtonHighlight;
             announcements.Controls.Add(panel1);
-            announcements.Location = new Point(23, 78);
-            announcements.Margin = new Padding(3, 2, 3, 2);
+            announcements.Location = new Point(26, 104);
             announcements.Name = "announcements";
-            announcements.Size = new Size(883, 166);
+            announcements.Size = new Size(1017, 221);
             announcements.TabIndex = 4;
             // 
             // panel1
@@ -364,19 +353,18 @@
             panel1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             panel1.BackColor = SystemColors.ButtonShadow;
             panel1.Controls.Add(label3);
-            panel1.Location = new Point(3, 2);
-            panel1.Margin = new Padding(3, 2, 3, 2);
+            panel1.Location = new Point(3, 3);
             panel1.Name = "panel1";
-            panel1.Size = new Size(880, 41);
+            panel1.Size = new Size(1014, 55);
             panel1.TabIndex = 0;
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Location = new Point(11, 11);
+            label3.Location = new Point(13, 15);
             label3.Name = "label3";
-            label3.Size = new Size(110, 19);
+            label3.Size = new Size(135, 23);
             label3.TabIndex = 0;
             label3.Text = "Announcements";
             // 
@@ -384,22 +372,21 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 15F);
-            label2.Location = new Point(23, 26);
+            label2.Location = new Point(26, 35);
             label2.Name = "label2";
-            label2.Size = new Size(107, 28);
+            label2.Size = new Size(135, 35);
             label2.TabIndex = 3;
             label2.Text = "Welcome..!";
             label2.Click += label2_Click;
             // 
             // Dashboard
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1159, 562);
+            ClientSize = new Size(1332, 753);
             Controls.Add(mainPanel);
             Controls.Add(sidepanel);
             Controls.Add(menuStrip1);
-            Margin = new Padding(3, 2, 3, 2);
             Name = "Dashboard";
             Text = "LinkHR";
             WindowState = FormWindowState.Maximized;

@@ -15,6 +15,14 @@ namespace LinkHR
         public EmpDashboard()
         {
             InitializeComponent();
+            this.StartPosition = FormStartPosition.CenterScreen;
+        }
+
+        private void logoutButton_Click(object sender, EventArgs e)
+        {
+            LoginForm loginform = new LoginForm();
+            loginform.Show();
+            //this.Close();
         }
     }
 }
