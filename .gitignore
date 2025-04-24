@@ -364,3 +364,10 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+# Environment files
+.env
+.env.*
+
+# But keep the example env file
+!.env.example
