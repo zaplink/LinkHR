@@ -118,7 +118,7 @@
             comboBox1.Size = new Size(151, 28);
             comboBox1.TabIndex = 8;
             // 
-            // ReportAttendence
+            // mgrReportAttendence
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -132,8 +132,9 @@
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
-            Name = "ReportAttendence";
+            Name = "mgrReportAttendence";
             Text = "ReportAttendence";
+            Load += mgrReportAttendence_Load;
             ResumeLayout(false);
             PerformLayout();
         }

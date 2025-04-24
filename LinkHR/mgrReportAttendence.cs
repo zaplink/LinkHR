@@ -16,5 +16,10 @@ namespace LinkHR
         {
             InitializeComponent();
         }
+
+        private void mgrReportAttendence_Load(object sender, EventArgs e)
+        {
+            comboBox1.SelectedIndex = 0;
+        }
     }
 }

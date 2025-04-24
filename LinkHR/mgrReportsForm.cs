@@ -56,6 +56,7 @@ namespace LinkHR
         private void ReportsForm_Load(object sender, EventArgs e)
         {
             comboBox1.SelectedIndex = 0;  // Selects the first item
+            comboBox2.SelectedIndex = 0;
         }
     }
 }
