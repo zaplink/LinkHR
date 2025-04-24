@@ -110,5 +110,15 @@ namespace LinkHR
         {
 
         }
+
+        private void recordAttendanceToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            loadform(new RecordAttendanceForm());
+        }
+
+        private void viewAttendanceToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            loadform(new ViewAttendanceForm());
+        }
     }
 }

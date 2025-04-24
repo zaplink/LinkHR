@@ -1,0 +1,7 @@
+-- Create the TestConnection table with Username and Email columns:
+
+CREATE TABLE TestConnection (
+    Id INT IDENTITY(1,1) PRIMARY KEY,
+    Username NVARCHAR(100) NOT NULL,
+    Email NVARCHAR(255) NOT NULL
+);
