@@ -28,123 +28,131 @@
         /// </summary>
         private void InitializeComponent()
         {
+            TextBox empIdInp;
             label1 = new Label();
-            dateTimePicker1 = new DateTimePicker();
+            attendanceDateInp = new DateTimePicker();
             label2 = new Label();
-            textBox1 = new TextBox();
             label3 = new Label();
             label4 = new Label();
-            dateTimePicker2 = new DateTimePicker();
-            dateTimePicker3 = new DateTimePicker();
-            button1 = new Button();
+            checkInDateInp = new DateTimePicker();
+            checkOutDateInp = new DateTimePicker();
             dbtestbtn = new Button();
+            recordAttendanceBtn = new Button();
+            empIdInp = new TextBox();
             SuspendLayout();
+            // 
+            // empIdInp
+            // 
+            empIdInp.Location = new Point(163, 40);
+            empIdInp.Margin = new Padding(3, 4, 3, 4);
+            empIdInp.Name = "empIdInp";
+            empIdInp.Size = new Size(193, 27);
+            empIdInp.TabIndex = 3;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(35, 84);
+            label1.Location = new Point(40, 112);
             label1.Name = "label1";
-            label1.Size = new Size(37, 15);
+            label1.Size = new Size(48, 20);
             label1.TabIndex = 0;
             label1.Text = "Date :";
             // 
-            // dateTimePicker1
+            // attendanceDateInp
             // 
-            dateTimePicker1.Location = new Point(103, 78);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(200, 23);
-            dateTimePicker1.TabIndex = 1;
-            dateTimePicker1.ValueChanged += dateTimePicker1_ValueChanged;
+            attendanceDateInp.Location = new Point(118, 104);
+            attendanceDateInp.Margin = new Padding(3, 4, 3, 4);
+            attendanceDateInp.Name = "attendanceDateInp";
+            attendanceDateInp.Size = new Size(228, 27);
+            attendanceDateInp.TabIndex = 1;
+            attendanceDateInp.ValueChanged += dateTimePicker1_ValueChanged;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(36, 38);
+            label2.Location = new Point(41, 51);
             label2.Name = "label2";
-            label2.Size = new Size(65, 15);
+            label2.Size = new Size(82, 20);
             label2.TabIndex = 2;
             label2.Text = "Employee :";
             label2.Click += label2_Click;
             // 
-            // textBox1
-            // 
-            textBox1.Location = new Point(143, 30);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(169, 23);
-            textBox1.TabIndex = 3;
-            // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(36, 129);
+            label3.Location = new Point(41, 172);
             label3.Name = "label3";
-            label3.Size = new Size(64, 15);
+            label3.Size = new Size(77, 20);
             label3.TabIndex = 4;
             label3.Text = "Check-In : ";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(36, 172);
+            label4.Location = new Point(41, 229);
             label4.Name = "label4";
-            label4.Size = new Size(74, 15);
+            label4.Size = new Size(89, 20);
             label4.TabIndex = 5;
             label4.Text = "Check-Out : ";
             // 
-            // dateTimePicker2
+            // checkInDateInp
             // 
-            dateTimePicker2.Format = DateTimePickerFormat.Time;
-            dateTimePicker2.Location = new Point(143, 121);
-            dateTimePicker2.Name = "dateTimePicker2";
-            dateTimePicker2.Size = new Size(200, 23);
-            dateTimePicker2.TabIndex = 6;
+            checkInDateInp.Format = DateTimePickerFormat.Time;
+            checkInDateInp.Location = new Point(163, 161);
+            checkInDateInp.Margin = new Padding(3, 4, 3, 4);
+            checkInDateInp.Name = "checkInDateInp";
+            checkInDateInp.Size = new Size(228, 27);
+            checkInDateInp.TabIndex = 6;
             // 
-            // dateTimePicker3
+            // checkOutDateInp
             // 
-            dateTimePicker3.Format = DateTimePickerFormat.Time;
-            dateTimePicker3.Location = new Point(143, 164);
-            dateTimePicker3.Name = "dateTimePicker3";
-            dateTimePicker3.Size = new Size(200, 23);
-            dateTimePicker3.TabIndex = 7;
-            // 
-            // button1
-            // 
-            button1.Location = new Point(36, 232);
-            button1.Name = "button1";
-            button1.Size = new Size(243, 23);
-            button1.TabIndex = 8;
-            button1.Text = "Record Attendance";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            checkOutDateInp.Format = DateTimePickerFormat.Time;
+            checkOutDateInp.Location = new Point(163, 219);
+            checkOutDateInp.Margin = new Padding(3, 4, 3, 4);
+            checkOutDateInp.Name = "checkOutDateInp";
+            checkOutDateInp.Size = new Size(228, 27);
+            checkOutDateInp.TabIndex = 7;
             // 
             // dbtestbtn
             // 
-            dbtestbtn.Location = new Point(584, 29);
+            dbtestbtn.Location = new Point(667, 39);
+            dbtestbtn.Margin = new Padding(3, 4, 3, 4);
             dbtestbtn.Name = "dbtestbtn";
-            dbtestbtn.Size = new Size(75, 23);
+            dbtestbtn.Size = new Size(86, 31);
             dbtestbtn.TabIndex = 9;
             dbtestbtn.Text = "DB";
             dbtestbtn.UseVisualStyleBackColor = true;
             dbtestbtn.Click += dbtestbtn_Click;
             // 
+            // recordAttendanceBtn
+            // 
+            recordAttendanceBtn.Location = new Point(55, 362);
+            recordAttendanceBtn.Name = "recordAttendanceBtn";
+            recordAttendanceBtn.Size = new Size(357, 29);
+            recordAttendanceBtn.TabIndex = 10;
+            recordAttendanceBtn.Text = "Record Attendance";
+            recordAttendanceBtn.UseVisualStyleBackColor = true;
+            recordAttendanceBtn.Click += recordAttendanceBtn_Click;
+            // 
             // RecordAttendanceForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(914, 600);
+            Controls.Add(recordAttendanceBtn);
             Controls.Add(dbtestbtn);
-            Controls.Add(button1);
-            Controls.Add(dateTimePicker3);
-            Controls.Add(dateTimePicker2);
+            Controls.Add(checkOutDateInp);
+            Controls.Add(checkInDateInp);
             Controls.Add(label4);
             Controls.Add(label3);
-            Controls.Add(textBox1);
+            Controls.Add(empIdInp);
             Controls.Add(label2);
-            Controls.Add(dateTimePicker1);
+            Controls.Add(attendanceDateInp);
             Controls.Add(label1);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "RecordAttendanceForm";
             Text = "RecordAttendanceForm";
+            Load += RecordAttendanceForm_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -152,14 +160,14 @@
         #endregion
 
         private Label label1;
-        private DateTimePicker dateTimePicker1;
+        private DateTimePicker attendanceDateInp;
         private Label label2;
-        private TextBox textBox1;
+        private TextBox empIdInp;
         private Label label3;
         private Label label4;
-        private DateTimePicker dateTimePicker2;
-        private DateTimePicker dateTimePicker3;
-        private Button button1;
+        private DateTimePicker checkInDateInp;
+        private DateTimePicker checkOutDateInp;
         private Button dbtestbtn;
+        private Button recordAttendanceBtn;
     }
 }
