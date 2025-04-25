@@ -40,11 +40,11 @@
             leavesToolStripMenuItem = new ToolStripMenuItem();
             reportsToolStripMenuItem = new ToolStripMenuItem();
             panel1 = new Panel();
+            logoutButton = new Button();
+            panel2 = new Panel();
+            label1 = new Label();
             mngPanel = new Panel();
             label2 = new Label();
-            label1 = new Label();
-            panel2 = new Panel();
-            logoutButton = new Button();
             menuStrip1.SuspendLayout();
             panel1.SuspendLayout();
             mngPanel.SuspendLayout();
@@ -81,18 +81,21 @@
             detailsToolStripMenuItem.Name = "detailsToolStripMenuItem";
             detailsToolStripMenuItem.Size = new Size(216, 26);
             detailsToolStripMenuItem.Text = "Register Employee";
+            detailsToolStripMenuItem.Click += detailsToolStripMenuItem_Click;
             // 
             // removeEmployeeToolStripMenuItem
             // 
             removeEmployeeToolStripMenuItem.Name = "removeEmployeeToolStripMenuItem";
             removeEmployeeToolStripMenuItem.Size = new Size(216, 26);
             removeEmployeeToolStripMenuItem.Text = "Remove Employee";
+            removeEmployeeToolStripMenuItem.Click += removeEmployeeToolStripMenuItem_Click;
             // 
             // viewEmployeeToolStripMenuItem
             // 
             viewEmployeeToolStripMenuItem.Name = "viewEmployeeToolStripMenuItem";
             viewEmployeeToolStripMenuItem.Size = new Size(216, 26);
             viewEmployeeToolStripMenuItem.Text = "View Employee";
+            viewEmployeeToolStripMenuItem.Click += viewEmployeeToolStripMenuItem_Click;
             // 
             // attendenceToolStripMenuItem
             // 
@@ -100,30 +103,35 @@
             attendenceToolStripMenuItem.Name = "attendenceToolStripMenuItem";
             attendenceToolStripMenuItem.Size = new Size(99, 24);
             attendenceToolStripMenuItem.Text = "Attendence";
+            attendenceToolStripMenuItem.Click += attendenceToolStripMenuItem_Click;
             // 
             // recordAttendanceToolStripMenuItem
             // 
             recordAttendanceToolStripMenuItem.Name = "recordAttendanceToolStripMenuItem";
             recordAttendanceToolStripMenuItem.Size = new Size(219, 26);
             recordAttendanceToolStripMenuItem.Text = "Record Attendance";
+            recordAttendanceToolStripMenuItem.Click += recordAttendanceToolStripMenuItem_Click;
             // 
             // viewAttendanceToolStripMenuItem
             // 
             viewAttendanceToolStripMenuItem.Name = "viewAttendanceToolStripMenuItem";
             viewAttendanceToolStripMenuItem.Size = new Size(219, 26);
             viewAttendanceToolStripMenuItem.Text = "View Attendance";
+            viewAttendanceToolStripMenuItem.Click += viewAttendanceToolStripMenuItem_Click;
             // 
             // leavesToolStripMenuItem
             // 
             leavesToolStripMenuItem.Name = "leavesToolStripMenuItem";
             leavesToolStripMenuItem.Size = new Size(67, 24);
             leavesToolStripMenuItem.Text = "Leaves";
+            leavesToolStripMenuItem.Click += leavesToolStripMenuItem_Click;
             // 
             // reportsToolStripMenuItem
             // 
             reportsToolStripMenuItem.Name = "reportsToolStripMenuItem";
             reportsToolStripMenuItem.Size = new Size(74, 24);
             reportsToolStripMenuItem.Text = "Reports";
+            reportsToolStripMenuItem.Click += reportsToolStripMenuItem_Click;
             // 
             // panel1
             // 
@@ -136,6 +144,38 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(250, 723);
             panel1.TabIndex = 2;
+            // 
+            // logoutButton
+            // 
+            logoutButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            logoutButton.BackColor = SystemColors.ControlDark;
+            logoutButton.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            logoutButton.Location = new Point(12, 663);
+            logoutButton.Name = "logoutButton";
+            logoutButton.Size = new Size(225, 48);
+            logoutButton.TabIndex = 4;
+            logoutButton.Text = "Logout";
+            logoutButton.UseVisualStyleBackColor = false;
+            logoutButton.Click += logoutButton_Click;
+            // 
+            // panel2
+            // 
+            panel2.BackgroundImage = Properties.Resources.manager;
+            panel2.Location = new Point(51, 120);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(120, 120);
+            panel2.TabIndex = 3;
+            // 
+            // label1
+            // 
+            label1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 13F, FontStyle.Bold);
+            label1.Location = new Point(41, 61);
+            label1.Name = "label1";
+            label1.Size = new Size(155, 30);
+            label1.TabIndex = 2;
+            label1.Text = "Team ZapLink";
             // 
             // mngPanel
             // 
@@ -155,38 +195,6 @@
             label2.Size = new Size(135, 35);
             label2.TabIndex = 5;
             label2.Text = "Welcome..!";
-            // 
-            // label1
-            // 
-            label1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 13F, FontStyle.Bold);
-            label1.Location = new Point(41, 61);
-            label1.Name = "label1";
-            label1.Size = new Size(155, 30);
-            label1.TabIndex = 2;
-            label1.Text = "Team ZapLink";
-            // 
-            // panel2
-            // 
-            panel2.BackgroundImage = Properties.Resources.manager;
-            panel2.Location = new Point(51, 120);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(120, 120);
-            panel2.TabIndex = 3;
-            // 
-            // logoutButton
-            // 
-            logoutButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            logoutButton.BackColor = SystemColors.ControlDark;
-            logoutButton.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            logoutButton.Location = new Point(12, 663);
-            logoutButton.Name = "logoutButton";
-            logoutButton.Size = new Size(225, 48);
-            logoutButton.TabIndex = 4;
-            logoutButton.Text = "Logout";
-            logoutButton.UseVisualStyleBackColor = false;
-            logoutButton.Click += logoutButton_Click;
             // 
             // MngDashboard
             // 
