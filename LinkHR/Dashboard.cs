@@ -48,7 +48,7 @@ namespace LinkHR
 
         private void leavesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            loadform(new LeaveForm());
+            loadform(new EmpLeaveForm());
         }
 
         private void removeEmployeeToolStripMenuItem_Click(object sender, EventArgs e)

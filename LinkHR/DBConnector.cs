@@ -10,6 +10,8 @@ public static class DBConnector
 
         string serverName = Environment.GetEnvironmentVariable("SQL_SERVER_NAME");
         string databaseName = Environment.GetEnvironmentVariable("SQL_DATABASE_NAME");
+        string username = Environment.GetEnvironmentVariable("SQL_DATABASE_USERNAME");
+        string password = Environment.GetEnvironmentVariable("SQL_DATABASE_PASSWORD");
 
         if (string.IsNullOrEmpty(serverName))
         {
@@ -21,7 +23,7 @@ public static class DBConnector
             throw new InvalidOperationException("SQL_DATABASE_NAME environment variable is not set.");
         }
 
-        string connectionString = $"Server={serverName};Database={databaseName};Trusted_Connection=True;TrustServerCertificate=True;";
+        string connectionString = $"Server={serverName};Database={databaseName};User Id={username};Password={password};Trusted_Connection=False;TrustServerCertificate=True;";
 
         return new SqlConnection(connectionString);
     }
