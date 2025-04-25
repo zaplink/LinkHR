@@ -48,7 +48,7 @@ namespace LinkHR
 
         private void leavesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            loadform(new LeaveForm());
+            loadform(new EmpLeaveForm());
         }
 
         private void removeEmployeeToolStripMenuItem_Click(object sender, EventArgs e)
@@ -119,6 +119,11 @@ namespace LinkHR
         private void viewAttendanceToolStripMenuItem_Click(object sender, EventArgs e)
         {
             loadform(new ViewAttendanceForm());
+        }
+
+        private void announcements_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
