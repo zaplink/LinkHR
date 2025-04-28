@@ -120,5 +120,10 @@ namespace LinkHR
         {
             loadform(new ViewAttendanceForm());
         }
+
+        private void announcements_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
