@@ -11,13 +11,19 @@ namespace LinkHR
         [STAThread]
         static void Main()
         {
-
+            // load .env files
             DotNetEnv.Env.Load();
 
-            // To customize application configuration such as set high DPI settings or default font,
-            // see https://aka.ms/applicationconfiguration.
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+
             ApplicationConfiguration.Initialize();
-            Application.Run(new LoginForm());
+            // Show the LoginForm without making it the main form
+            LoginForm loginForm = new LoginForm();
+            loginForm.Show();
+
+            // Run the application without a main form
+            Application.Run();
         }
     }
 }
