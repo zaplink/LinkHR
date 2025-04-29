@@ -39,7 +39,6 @@
             CheckOutTime = new DateTimePicker();
             RecordAttendanceBtn = new Button();
             dbtestbtn = new Button();
-            recordAttendanceBtn = new Button();
             empIdInp = new TextBox();
             SuspendLayout();
             // 
@@ -66,7 +65,6 @@
             DatePicker.Name = "Date";
             DatePicker.Size = new Size(200, 23);
             DatePicker.TabIndex = 1;
-            DatePicker.ValueChanged += dateTimePicker1_ValueChanged;
             // 
             // label2
             // 
@@ -76,7 +74,6 @@
             label2.Size = new Size(82, 20);
             label2.TabIndex = 2;
             label2.Text = "Employee :";
-            label2.Click += label2_Click;
             // 
             // EmpIdTxt
             // 
@@ -137,24 +134,12 @@
             dbtestbtn.TabIndex = 9;
             dbtestbtn.Text = "DB";
             dbtestbtn.UseVisualStyleBackColor = true;
-            dbtestbtn.Click += dbtestbtn_Click;
-            // 
-            // recordAttendanceBtn
-            // 
-            recordAttendanceBtn.Location = new Point(55, 362);
-            recordAttendanceBtn.Name = "recordAttendanceBtn";
-            recordAttendanceBtn.Size = new Size(357, 29);
-            recordAttendanceBtn.TabIndex = 10;
-            recordAttendanceBtn.Text = "Record Attendance";
-            recordAttendanceBtn.UseVisualStyleBackColor = true;
-            recordAttendanceBtn.Click += recordAttendanceBtn_Click;
             // 
             // RecordAttendanceForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(914, 600);
-            Controls.Add(recordAttendanceBtn);
             Controls.Add(dbtestbtn);
             Controls.Add(RecordAttendanceBtn);
             Controls.Add(CheckOutTime);
