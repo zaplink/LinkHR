@@ -1,6 +1,6 @@
 ﻿namespace LinkHR
 {
-    partial class RecordAttendanceForm
+    partial class MngRecordAttendanceForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,28 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            TextBox empIdInp;
             label1 = new Label();
-            DatePicker = new DateTimePicker();
+            dateTimePicker1 = new DateTimePicker();
             label2 = new Label();
-            EmpIdTxt = new TextBox();
+            textBox1 = new TextBox();
             label3 = new Label();
             label4 = new Label();
-            CheckInTime = new DateTimePicker();
-            CheckOutTime = new DateTimePicker();
-            RecordAttendanceBtn = new Button();
+            dateTimePicker2 = new DateTimePicker();
+            dateTimePicker3 = new DateTimePicker();
+            button1 = new Button();
             dbtestbtn = new Button();
-            recordAttendanceBtn = new Button();
-            empIdInp = new TextBox();
             SuspendLayout();
-            // 
-            // empIdInp
-            // 
-            empIdInp.Location = new Point(163, 40);
-            empIdInp.Margin = new Padding(3, 4, 3, 4);
-            empIdInp.Name = "empIdInp";
-            empIdInp.Size = new Size(193, 27);
-            empIdInp.TabIndex = 3;
             // 
             // label1
             // 
@@ -60,13 +49,14 @@
             label1.TabIndex = 0;
             label1.Text = "Date :";
             // 
-            // Date
+            // dateTimePicker1
             // 
-            DatePicker.Location = new Point(103, 78);
-            DatePicker.Name = "Date";
-            DatePicker.Size = new Size(200, 23);
-            DatePicker.TabIndex = 1;
-            DatePicker.ValueChanged += dateTimePicker1_ValueChanged;
+            dateTimePicker1.Location = new Point(163, 105);
+            dateTimePicker1.Margin = new Padding(3, 4, 3, 4);
+            dateTimePicker1.Name = "dateTimePicker1";
+            dateTimePicker1.Size = new Size(238, 27);
+            dateTimePicker1.TabIndex = 1;
+            dateTimePicker1.ValueChanged += dateTimePicker1_ValueChanged;
             // 
             // label2
             // 
@@ -78,13 +68,15 @@
             label2.Text = "Employee :";
             label2.Click += label2_Click;
             // 
-            // EmpIdTxt
+            // textBox1
             // 
-            EmpIdTxt.Location = new Point(143, 30);
-            EmpIdTxt.Name = "EmpIdTxt";
-            EmpIdTxt.Size = new Size(169, 23);
-            EmpIdTxt.TabIndex = 3;
-            //             // label3
+            textBox1.Location = new Point(163, 48);
+            textBox1.Margin = new Padding(3, 4, 3, 4);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(238, 27);
+            textBox1.TabIndex = 3;
+            // 
+            // label3
             // 
             label3.AutoSize = true;
             label3.Location = new Point(41, 172);
@@ -102,31 +94,34 @@
             label4.TabIndex = 5;
             label4.Text = "Check-Out : ";
             // 
-            // CheckInTime
+            // dateTimePicker2
             // 
-            CheckInTime.Format = DateTimePickerFormat.Time;
-            CheckInTime.Location = new Point(143, 121);
-            CheckInTime.Name = "CheckInTime";
-            CheckInTime.Size = new Size(200, 23);
-            CheckInTime.TabIndex = 6;
+            dateTimePicker2.Format = DateTimePickerFormat.Time;
+            dateTimePicker2.Location = new Point(163, 165);
+            dateTimePicker2.Margin = new Padding(3, 4, 3, 4);
+            dateTimePicker2.Name = "dateTimePicker2";
+            dateTimePicker2.Size = new Size(238, 27);
+            dateTimePicker2.TabIndex = 6;
             // 
-            // CheckOutTime
+            // dateTimePicker3
             // 
-            CheckOutTime.Format = DateTimePickerFormat.Time;
-            CheckOutTime.Location = new Point(143, 164);
-            CheckOutTime.Name = "CheckOutTime";
-            CheckOutTime.Size = new Size(200, 23);
-            CheckOutTime.TabIndex = 7;
+            dateTimePicker3.Format = DateTimePickerFormat.Time;
+            dateTimePicker3.Location = new Point(163, 222);
+            dateTimePicker3.Margin = new Padding(3, 4, 3, 4);
+            dateTimePicker3.Name = "dateTimePicker3";
+            dateTimePicker3.Size = new Size(238, 27);
+            dateTimePicker3.TabIndex = 7;
             // 
-            // RecordAttendanceBtn
+            // button1
             // 
-            RecordAttendanceBtn.Location = new Point(36, 232);
-            RecordAttendanceBtn.Name = "RecordAttendanceBtn";
-            RecordAttendanceBtn.Size = new Size(243, 23);
-            RecordAttendanceBtn.TabIndex = 8;
-            RecordAttendanceBtn.Text = "Record Attendance";
-            RecordAttendanceBtn.UseVisualStyleBackColor = true;
-            RecordAttendanceBtn.Click += RecordAttendanceBtn_Click;
+            button1.Location = new Point(41, 292);
+            button1.Margin = new Padding(3, 4, 3, 4);
+            button1.Name = "button1";
+            button1.Size = new Size(278, 31);
+            button1.TabIndex = 8;
+            button1.Text = "Record Attendance";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // dbtestbtn
             // 
@@ -139,36 +134,24 @@
             dbtestbtn.UseVisualStyleBackColor = true;
             dbtestbtn.Click += dbtestbtn_Click;
             // 
-            // recordAttendanceBtn
-            // 
-            recordAttendanceBtn.Location = new Point(55, 362);
-            recordAttendanceBtn.Name = "recordAttendanceBtn";
-            recordAttendanceBtn.Size = new Size(357, 29);
-            recordAttendanceBtn.TabIndex = 10;
-            recordAttendanceBtn.Text = "Record Attendance";
-            recordAttendanceBtn.UseVisualStyleBackColor = true;
-            recordAttendanceBtn.Click += recordAttendanceBtn_Click;
-            // 
-            // RecordAttendanceForm
+            // MngRecordAttendanceForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(914, 600);
-            Controls.Add(recordAttendanceBtn);
             Controls.Add(dbtestbtn);
-            Controls.Add(RecordAttendanceBtn);
-            Controls.Add(CheckOutTime);
-            Controls.Add(CheckInTime);
+            Controls.Add(button1);
+            Controls.Add(dateTimePicker3);
+            Controls.Add(dateTimePicker2);
             Controls.Add(label4);
             Controls.Add(label3);
-            Controls.Add(EmpIdTxt);
+            Controls.Add(textBox1);
             Controls.Add(label2);
-            Controls.Add(DatePicker);
+            Controls.Add(dateTimePicker1);
             Controls.Add(label1);
             Margin = new Padding(3, 4, 3, 4);
-            Name = "RecordAttendanceForm";
+            Name = "MngRecordAttendanceForm";
             Text = "RecordAttendanceForm";
-            Load += RecordAttendanceForm_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -176,14 +159,14 @@
         #endregion
 
         private Label label1;
-        private DateTimePicker DatePicker;
+        private DateTimePicker dateTimePicker1;
         private Label label2;
-        private TextBox EmpIdTxt;
+        private TextBox textBox1;
         private Label label3;
         private Label label4;
-        private DateTimePicker CheckInTime;
-        private DateTimePicker CheckOutTime;
+        private DateTimePicker dateTimePicker2;
+        private DateTimePicker dateTimePicker3;
+        private Button button1;
         private Button dbtestbtn;
-        private Button RecordAttendanceBtn;
     }
 }

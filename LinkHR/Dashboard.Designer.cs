@@ -80,7 +80,7 @@
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Padding = new Padding(6, 3, 0, 3);
             menuStrip1.RenderMode = ToolStripRenderMode.Professional;
-            menuStrip1.Size = new Size(1332, 30);
+            menuStrip1.Size = new Size(1325, 30);
             menuStrip1.TabIndex = 0;
             menuStrip1.Text = "menuStrip1";
             menuStrip1.ItemClicked += menuStrip1_ItemClicked;
@@ -168,7 +168,7 @@
             sidepanel.Location = new Point(0, 30);
             sidepanel.Margin = new Padding(0);
             sidepanel.Name = "sidepanel";
-            sidepanel.Size = new Size(250, 723);
+            sidepanel.Size = new Size(250, 719);
             sidepanel.TabIndex = 1;
             // 
             // button2
@@ -216,7 +216,7 @@
             logoutButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             logoutButton.BackColor = SystemColors.ControlDark;
             logoutButton.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            logoutButton.Location = new Point(11, 663);
+            logoutButton.Location = new Point(11, 659);
             logoutButton.Name = "logoutButton";
             logoutButton.Size = new Size(225, 48);
             logoutButton.TabIndex = 0;
@@ -256,7 +256,7 @@
             mainPanel.Location = new Point(250, 30);
             mainPanel.Margin = new Padding(0);
             mainPanel.Name = "mainPanel";
-            mainPanel.Size = new Size(1082, 723);
+            mainPanel.Size = new Size(1075, 719);
             mainPanel.TabIndex = 2;
             // 
             // panel3
@@ -345,8 +345,9 @@
             announcements.Controls.Add(panel1);
             announcements.Location = new Point(26, 104);
             announcements.Name = "announcements";
-            announcements.Size = new Size(1017, 221);
+            announcements.Size = new Size(1010, 221);
             announcements.TabIndex = 4;
+            announcements.Paint += announcements_Paint;
             // 
             // panel1
             // 
@@ -355,7 +356,7 @@
             panel1.Controls.Add(label3);
             panel1.Location = new Point(3, 3);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1014, 55);
+            panel1.Size = new Size(1007, 55);
             panel1.TabIndex = 0;
             // 
             // label3
@@ -383,7 +384,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1332, 753);
+            ClientSize = new Size(1325, 749);
             Controls.Add(mainPanel);
             Controls.Add(sidepanel);
             Controls.Add(menuStrip1);
