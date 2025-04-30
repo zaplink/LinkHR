@@ -144,7 +144,7 @@ namespace LinkHR
             }
             catch (SqlException ex)
             {
-                if (ex.Number == 2627) // Violation of UNIQUE constraint (e.g., duplicate username or email)
+                if (ex.Number == 2627) // Violation of UNIQUE constraint
                 {
                     MessageBox.Show("Username, email, or employee ID already exists. Please use a different one.", "Duplicate Entry", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
