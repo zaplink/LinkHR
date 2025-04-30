@@ -32,7 +32,7 @@
             label2 = new Label();
             label3 = new Label();
             textBoxFirstName = new TextBox();
-            textBoxId = new TextBox();
+            textBoxEmployeeId = new TextBox();
             label4 = new Label();
             label5 = new Label();
             label6 = new Label();
@@ -41,13 +41,12 @@
             label9 = new Label();
             label11 = new Label();
             dateTimePickerDOB = new DateTimePicker();
-            radioButton1 = new RadioButton();
+            radioButtonMale = new RadioButton();
             radioButton2 = new RadioButton();
-            textBox3 = new TextBox();
-            textBox4 = new TextBox();
-            textBox5 = new TextBox();
-            comboBoxDepartment = new ComboBox();
-            dateTimePicker2 = new DateTimePicker();
+            textBoxContactNo = new TextBox();
+            textBoxEmail = new TextBox();
+            textBoxAddress = new TextBox();
+            dateTimePickerJoiningDate = new DateTimePicker();
             registerButton = new Button();
             textBoxLastName = new TextBox();
             label10 = new Label();
@@ -55,12 +54,13 @@
             label16 = new Label();
             label15 = new Label();
             label13 = new Label();
-            textBox9 = new TextBox();
-            textBox7 = new TextBox();
-            textBox8 = new TextBox();
+            textBoxConfirmPassword = new TextBox();
+            textBoxPassword = new TextBox();
+            textBoxUsername = new TextBox();
             label14 = new Label();
             label12 = new Label();
-            button1 = new Button();
+            buttonClear = new Button();
+            comboBoxDepartment = new ComboBox();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -101,12 +101,12 @@
             textBoxFirstName.Size = new Size(251, 27);
             textBoxFirstName.TabIndex = 3;
             // 
-            // textBoxId
+            // textBoxEmployeeId
             // 
-            textBoxId.Location = new Point(160, 188);
-            textBoxId.Name = "textBoxId";
-            textBoxId.Size = new Size(251, 27);
-            textBoxId.TabIndex = 4;
+            textBoxEmployeeId.Location = new Point(160, 188);
+            textBoxEmployeeId.Name = "textBoxEmployeeId";
+            textBoxEmployeeId.Size = new Size(251, 27);
+            textBoxEmployeeId.TabIndex = 4;
             // 
             // label4
             // 
@@ -180,16 +180,16 @@
             dateTimePickerDOB.Size = new Size(250, 27);
             dateTimePickerDOB.TabIndex = 14;
             // 
-            // radioButton1
+            // radioButtonMale
             // 
-            radioButton1.AutoSize = true;
-            radioButton1.Location = new Point(160, 276);
-            radioButton1.Name = "radioButton1";
-            radioButton1.Size = new Size(63, 24);
-            radioButton1.TabIndex = 15;
-            radioButton1.TabStop = true;
-            radioButton1.Text = "Male";
-            radioButton1.UseVisualStyleBackColor = true;
+            radioButtonMale.AutoSize = true;
+            radioButtonMale.Location = new Point(160, 276);
+            radioButtonMale.Name = "radioButtonMale";
+            radioButtonMale.Size = new Size(63, 24);
+            radioButtonMale.TabIndex = 15;
+            radioButtonMale.TabStop = true;
+            radioButtonMale.Text = "Male";
+            radioButtonMale.UseVisualStyleBackColor = true;
             // 
             // radioButton2
             // 
@@ -202,42 +202,33 @@
             radioButton2.Text = "Female";
             radioButton2.UseVisualStyleBackColor = true;
             // 
-            // textBox3
+            // textBoxContactNo
             // 
-            textBox3.Location = new Point(160, 306);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(251, 27);
-            textBox3.TabIndex = 17;
+            textBoxContactNo.Location = new Point(160, 306);
+            textBoxContactNo.Name = "textBoxContactNo";
+            textBoxContactNo.Size = new Size(251, 27);
+            textBoxContactNo.TabIndex = 17;
             // 
-            // textBox4
+            // textBoxEmail
             // 
-            textBox4.Location = new Point(160, 344);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(251, 27);
-            textBox4.TabIndex = 18;
+            textBoxEmail.Location = new Point(160, 344);
+            textBoxEmail.Name = "textBoxEmail";
+            textBoxEmail.Size = new Size(251, 27);
+            textBoxEmail.TabIndex = 18;
             // 
-            // textBox5
+            // textBoxAddress
             // 
-            textBox5.Location = new Point(160, 377);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(251, 27);
-            textBox5.TabIndex = 19;
+            textBoxAddress.Location = new Point(160, 377);
+            textBoxAddress.Name = "textBoxAddress";
+            textBoxAddress.Size = new Size(251, 27);
+            textBoxAddress.TabIndex = 19;
             // 
-            // comboBoxDepartment
+            // dateTimePickerJoiningDate
             // 
-            comboBoxDepartment.FormattingEnabled = true;
-            comboBoxDepartment.Items.AddRange(new object[] { "Dep A", "Dep B", "Dep C" });
-            comboBoxDepartment.Location = new Point(161, 413);
-            comboBoxDepartment.Name = "comboBoxDepartment";
-            comboBoxDepartment.Size = new Size(250, 28);
-            comboBoxDepartment.TabIndex = 20;
-            // 
-            // dateTimePicker2
-            // 
-            dateTimePicker2.Location = new Point(163, 465);
-            dateTimePicker2.Name = "dateTimePicker2";
-            dateTimePicker2.Size = new Size(250, 27);
-            dateTimePicker2.TabIndex = 22;
+            dateTimePickerJoiningDate.Location = new Point(163, 465);
+            dateTimePickerJoiningDate.Name = "dateTimePickerJoiningDate";
+            dateTimePickerJoiningDate.Size = new Size(250, 27);
+            dateTimePickerJoiningDate.TabIndex = 22;
             // 
             // registerButton
             // 
@@ -275,9 +266,9 @@
             panel1.Controls.Add(label16);
             panel1.Controls.Add(label15);
             panel1.Controls.Add(label13);
-            panel1.Controls.Add(textBox9);
-            panel1.Controls.Add(textBox7);
-            panel1.Controls.Add(textBox8);
+            panel1.Controls.Add(textBoxConfirmPassword);
+            panel1.Controls.Add(textBoxPassword);
+            panel1.Controls.Add(textBoxUsername);
             panel1.Controls.Add(label14);
             panel1.Location = new Point(485, 236);
             panel1.Name = "panel1";
@@ -311,26 +302,26 @@
             label13.TabIndex = 35;
             label13.Text = "Password:";
             // 
-            // textBox9
+            // textBoxConfirmPassword
             // 
-            textBox9.Location = new Point(137, 189);
-            textBox9.Name = "textBox9";
-            textBox9.Size = new Size(251, 27);
-            textBox9.TabIndex = 34;
+            textBoxConfirmPassword.Location = new Point(137, 189);
+            textBoxConfirmPassword.Name = "textBoxConfirmPassword";
+            textBoxConfirmPassword.Size = new Size(251, 27);
+            textBoxConfirmPassword.TabIndex = 34;
             // 
-            // textBox7
+            // textBoxPassword
             // 
-            textBox7.Location = new Point(137, 125);
-            textBox7.Name = "textBox7";
-            textBox7.Size = new Size(251, 27);
-            textBox7.TabIndex = 32;
+            textBoxPassword.Location = new Point(137, 125);
+            textBoxPassword.Name = "textBoxPassword";
+            textBoxPassword.Size = new Size(251, 27);
+            textBoxPassword.TabIndex = 32;
             // 
-            // textBox8
+            // textBoxUsername
             // 
-            textBox8.Location = new Point(137, 53);
-            textBox8.Name = "textBox8";
-            textBox8.Size = new Size(251, 27);
-            textBox8.TabIndex = 30;
+            textBoxUsername.Location = new Point(137, 53);
+            textBoxUsername.Name = "textBoxUsername";
+            textBoxUsername.Size = new Size(251, 27);
+            textBoxUsername.TabIndex = 30;
             // 
             // label14
             // 
@@ -352,35 +343,45 @@
             label12.TabIndex = 30;
             label12.Text = "Create Employee Account";
             // 
-            // button1
+            // buttonClear
             // 
-            button1.BackColor = SystemColors.ButtonHighlight;
-            button1.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold);
-            button1.Location = new Point(24, 560);
-            button1.Name = "button1";
-            button1.Size = new Size(199, 52);
-            button1.TabIndex = 31;
-            button1.Text = "Clear";
-            button1.UseVisualStyleBackColor = false;
+            buttonClear.BackColor = SystemColors.ButtonHighlight;
+            buttonClear.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold);
+            buttonClear.Location = new Point(24, 560);
+            buttonClear.Name = "buttonClear";
+            buttonClear.Size = new Size(199, 52);
+            buttonClear.TabIndex = 31;
+            buttonClear.Text = "Clear";
+            buttonClear.UseVisualStyleBackColor = false;
+            buttonClear.Click += buttonClear_Click_1;
+            // 
+            // comboBoxDepartment
+            // 
+            comboBoxDepartment.FormattingEnabled = true;
+            comboBoxDepartment.Items.AddRange(new object[] { "HR", "Finance", "Engineering", "Marketing", "Sales" });
+            comboBoxDepartment.Location = new Point(160, 421);
+            comboBoxDepartment.Name = "comboBoxDepartment";
+            comboBoxDepartment.Size = new Size(249, 28);
+            comboBoxDepartment.TabIndex = 32;
             // 
             // AddEmployeeForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(982, 654);
-            Controls.Add(button1);
+            Controls.Add(comboBoxDepartment);
+            Controls.Add(buttonClear);
             Controls.Add(label12);
             Controls.Add(panel1);
             Controls.Add(textBoxLastName);
             Controls.Add(label10);
             Controls.Add(registerButton);
-            Controls.Add(dateTimePicker2);
-            Controls.Add(comboBoxDepartment);
-            Controls.Add(textBox5);
-            Controls.Add(textBox4);
-            Controls.Add(textBox3);
+            Controls.Add(dateTimePickerJoiningDate);
+            Controls.Add(textBoxAddress);
+            Controls.Add(textBoxEmail);
+            Controls.Add(textBoxContactNo);
             Controls.Add(radioButton2);
-            Controls.Add(radioButton1);
+            Controls.Add(radioButtonMale);
             Controls.Add(dateTimePickerDOB);
             Controls.Add(label11);
             Controls.Add(label9);
@@ -389,7 +390,7 @@
             Controls.Add(label6);
             Controls.Add(label5);
             Controls.Add(label4);
-            Controls.Add(textBoxId);
+            Controls.Add(textBoxEmployeeId);
             Controls.Add(textBoxFirstName);
             Controls.Add(label3);
             Controls.Add(label2);
@@ -409,7 +410,7 @@
         private Label label2;
         private Label label3;
         private TextBox textBoxFirstName;
-        private TextBox textBoxId;
+        private TextBox textBoxEmployeeId;
         private Label label4;
         private Label label5;
         private Label label6;
@@ -418,25 +419,25 @@
         private Label label9;
         private Label label11;
         private DateTimePicker dateTimePickerDOB;
-        private RadioButton radioButton1;
+        private RadioButton radioButtonMale;
         private RadioButton radioButton2;
-        private TextBox textBox3;
-        private TextBox textBox4;
-        private TextBox textBox5;
-        private ComboBox comboBoxDepartment;
-        private DateTimePicker dateTimePicker2;
+        private TextBox textBoxContactNo;
+        private TextBox textBoxEmail;
+        private TextBox textBoxAddress;
+        private DateTimePicker dateTimePickerJoiningDate;
         private Button registerButton;
         private TextBox textBoxLastName;
         private Label label10;
         private Panel panel1;
-        private TextBox textBox7;
-        private TextBox textBox8;
+        private TextBox textBoxPassword;
+        private TextBox textBoxUsername;
         private Label label14;
         private Label label12;
-        private TextBox textBox9;
+        private TextBox textBoxConfirmPassword;
         private Label label16;
         private Label label15;
         private Label label13;
-        private Button button1;
+        private Button buttonClear;
+        private ComboBox comboBoxDepartment;
     }
 }
