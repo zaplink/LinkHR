@@ -1,68 +1,99 @@
-﻿using Microsoft.Data.SqlClient;
+﻿using System;
+using System.Collections.Generic;
+using System.Drawing;
+using System.Threading;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using Microsoft.Data.SqlClient;
 
 namespace LinkHR
 {
     public partial class RecordAttendanceForm : Form
     {
         private System.Windows.Forms.Timer searchTimer;
-
         private bool suppressTextChanged = false;
+        private CancellationTokenSource searchCts;
+        private string selectedEmployeeId = null;
 
         public RecordAttendanceForm()
         {
             InitializeComponent();
 
             searchTimer = new System.Windows.Forms.Timer();
-            searchTimer.Interval = 300;
+            searchTimer.Interval = 400;
             searchTimer.Tick += SearchTimer_Tick;
 
-            CheckInTime.Format = DateTimePickerFormat.Time;
+            CheckInTime.Format = DateTimePickerFormat.Custom;
+            CheckInTime.CustomFormat = "hh:mm tt";
             CheckInTime.ShowUpDown = true;
 
-            CheckOutTime.Format = DateTimePickerFormat.Time;
+            CheckOutTime.Format = DateTimePickerFormat.Custom;
+            CheckOutTime.CustomFormat = "hh:mm tt";
             CheckOutTime.ShowUpDown = true;
 
             DatePicker.Format = DateTimePickerFormat.Short;
             DatePicker.ShowUpDown = false;
+            DatePicker.MaxDate = DateTime.Today;
 
             EmployeeListBox.Visible = false;
-
             RecordAttendanceBtn.Enabled = false;
 
+            EmpIdTxt.Click += EmpIdTxt_Click;
+            this.Click += HideListBoxOnOutsideClick;
+            EmpIdTxt.TextChanged += EmpIdTxt_TextChanged;
+            EmployeeListBox.MouseClick += EmployeeListBox_MouseClick;
+            SaveCheckIn.CheckedChanged += SaveCheckIn_CheckedChanged;
+            SaveCheckOut.CheckedChanged += SaveCheckOut_CheckedChanged;
         }
 
-        private void RecordAttendance(string empID, DateOnly date, TimeOnly checkIn, TimeOnly checkOut)
+        private void RecordAttendanceBtn_Click(object sender, EventArgs e)
+        {
+            string empId = EmpIdTxt.Text;
+            DateOnly date = DateOnly.FromDateTime(DatePicker.Value);
+
+            TimeOnly? checkIn = SaveCheckIn.Checked ? TimeOnly.FromDateTime(CheckInTime.Value).TruncateToMinutes() : (TimeOnly?)null;
+            TimeOnly? checkOut = SaveCheckOut.Checked ? TimeOnly.FromDateTime(CheckOutTime.Value).TruncateToMinutes() : (TimeOnly?)null;
+
+            if (!checkIn.HasValue && !checkOut.HasValue)
+            {
+                MessageBox.Show("Please select at least one of Check-In or Check-Out.");
+                return;
+            }
+
+            RecordAttendance(empId, date, checkIn, checkOut);
+
+            var (lastDate, inStr, outStr) = GetLastAttendance(empId);
+            EmpLastAttendanceDateFill.Text = lastDate == DateOnly.MinValue ? "_" : lastDate.ToString("yyyy-MM-dd");
+            EmpLastCheckInFill.Text = inStr;
+            EmpLastCheckOutFill.Text = outStr;
+        }
+
+        private void RecordAttendance(string empID, DateOnly date, TimeOnly? checkIn, TimeOnly? checkOut)
         {
             try
             {
-                using (SqlConnection conn = DBConnector.GetConnection())
+                using SqlConnection conn = DBConnector.GetConnection();
+                conn.Open();
+                string query = @"INSERT INTO Attendance (employee_id, date, check_in, check_out, hours_worked) 
+                                 VALUES (@empID, @date, @checkIn, @checkOut, @hoursWorked)";
+                using SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@empID", empID);
+                cmd.Parameters.AddWithValue("@date", date);
+                cmd.Parameters.AddWithValue("@checkIn", checkIn.HasValue ? checkIn.Value : DBNull.Value);
+                cmd.Parameters.AddWithValue("@checkOut", checkOut.HasValue ? checkOut.Value : DBNull.Value);
+
+                if (checkIn.HasValue && checkOut.HasValue)
                 {
-                    conn.Open();
-
-                    string query = "INSERT INTO Attendance (employee_id, date, check_in, check_out, hours_worked) VALUES (@empID, @date, @checkIn, @checkOut, @hoursWorked)";
-                    using (SqlCommand cmd = new SqlCommand(query, conn))
-                    {
-                        cmd.Parameters.AddWithValue("@empID", empID);
-                        cmd.Parameters.AddWithValue("@date", date);
-                        cmd.Parameters.AddWithValue("@checkIn", checkIn);
-                        cmd.Parameters.AddWithValue("@checkOut", checkOut);
-
-                        try
-                        {
-                            double hoursWorked = CalculateHoursWorked(checkIn, checkOut);
-                            cmd.Parameters.AddWithValue("@hoursWorked", hoursWorked);
-                        }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show(ex.Message);
-                            return;
-                        }
-
-                        int rowsAffected = cmd.ExecuteNonQuery();
-                        Console.WriteLine($"Insert successful. Rows affected: {rowsAffected}");
-                        MessageBox.Show("SUCCESS: Attendance recorded!");
-                    }
+                    double hours = CalculateHoursWorked(checkIn.Value, checkOut.Value);
+                    cmd.Parameters.AddWithValue("@hoursWorked", hours);
                 }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@hoursWorked", DBNull.Value);
+                }
+
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("SUCCESS: Attendance recorded!");
             }
             catch (Exception ex)
             {
@@ -70,31 +101,12 @@ namespace LinkHR
             }
         }
 
-        private double CalculateHoursWorked(TimeOnly chekIn, TimeOnly chekOut)
+        private double CalculateHoursWorked(TimeOnly ci, TimeOnly co)
         {
+            if (co > ci)
+                return (co - ci).TotalHours;
 
-            if (chekOut > chekIn)
-            {
-                TimeSpan duration = chekOut - chekIn;
-                double totalHours = duration.TotalHours;
-
-                return totalHours;
-            }
-            else
-            {
-                throw new Exception("ERROR: Check-out time must be after check-in time!");
-            }
-        }
-
-        private void RecordAttendanceBtn_Click(object sender, EventArgs e)
-        {
-            string empId = EmpIdTxt.Text;
-
-            DateOnly date = DateOnly.FromDateTime(DatePicker.Value);
-            TimeOnly checkIn = TimeOnly.FromDateTime(CheckInTime.Value);
-            TimeOnly checkOut = TimeOnly.FromDateTime(CheckOutTime.Value);
-
-            RecordAttendance(empId, date, checkIn, checkOut);
+            throw new Exception("ERROR: Check-out time must be after check-in time!");
         }
 
         public class Employee
@@ -104,200 +116,258 @@ namespace LinkHR
             public string lastName { get; set; }
             public string email { get; set; }
             public string phone { get; set; }
-
-            public string Display => $"{id} \t {firstName} \t {lastName}";
+            public string department { get; set; }
+            public string lastAttendanceDate { get; set; }
+            public string lastCheckIn { get; set; }
+            public string lastCheckOut { get; set; }
+            public string Display => $"{id}\t{firstName}\t{lastName}\t{lastAttendanceDate}\t{lastCheckIn}\t{lastCheckOut}";
         }
 
-        private List<Employee> SearchEmployees(string searchQuery)
+        private List<Employee> SearchEmployees(string search)
         {
-            List<Employee> employees = new List<Employee>();
-
+            var list = new List<Employee>();
             try
             {
-                using (SqlConnection conn = DBConnector.GetConnection())
+                using SqlConnection conn = DBConnector.GetConnection();
+                conn.Open();
+                string sql = @"SELECT username, first_name, last_name, contact_no, email, department_id
+                               FROM Employee
+                               WHERE username LIKE @q OR contact_no LIKE @q OR first_name LIKE @q OR last_name LIKE @q";
+                using SqlCommand cmd = new SqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@q", "%" + search + "%");
+                using SqlDataReader rdr = cmd.ExecuteReader();
+                while (rdr.Read())
                 {
-                    conn.Open();
-                    string query = "SELECT username, first_name, last_name, contact_no, email FROM Employee WHERE username LIKE @searchQuery OR first_name LIKE @searchQuery OR last_name LIKE @searchQuery";
-
-                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    string empId = rdr["username"].ToString();
+                    var (d, ci, co) = GetLastAttendance(empId);
+                    string dep = GetDepartment(rdr["department_id"].ToString());
+                    list.Add(new Employee
                     {
-                        cmd.Parameters.AddWithValue("@searchQuery", "%" + searchQuery + "%");
-
-                        SqlDataReader reader = cmd.ExecuteReader();
-                        while (reader.Read())
-                        {
-                            employees.Add(new Employee
-                            {
-                                id = reader["username"].ToString(),
-                                firstName = reader["first_name"].ToString(),
-                                lastName = reader["last_name"].ToString(),
-                                phone = reader["contact_no"].ToString(),
-                                email = reader["email"].ToString()
-                                
-                            });
-                        }
-                    }
+                        id = empId,
+                        firstName = rdr["first_name"].ToString(),
+                        lastName = rdr["last_name"].ToString(),
+                        phone = rdr["contact_no"].ToString(),
+                        email = rdr["email"].ToString(),
+                        department = dep,
+                        lastAttendanceDate = d == DateOnly.MinValue ? "_" : d.ToString("yyyy-MM-dd"),
+                        lastCheckIn = ci,
+                        lastCheckOut = co
+                    });
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error retrieving data: " + ex.Message);
             }
-
-            return employees;
+            return list;
         }
 
         private void EmpIdTxt_TextChanged(object sender, EventArgs e)
         {
-
             if (suppressTextChanged) return;
-
             RecordAttendanceBtn.Enabled = false;
             ResetEmployeeDetails();
-
             searchTimer.Stop();
-
-
             searchTimer.Start();
-            
         }
 
-
-        private void SearchTimer_Tick(object sender, EventArgs e)
+        private async void SearchTimer_Tick(object sender, EventArgs e)
         {
-
             searchTimer.Stop();
 
-            string searchQuery = EmpIdTxt.Text.Trim();
+            searchCts?.Cancel();
+            searchCts = new CancellationTokenSource();
+            var token = searchCts.Token;
 
-            if (!string.IsNullOrEmpty(searchQuery))
+            string q = EmpIdTxt.Text.Trim();
+            if (string.IsNullOrEmpty(q)) { EmployeeListBox.Visible = false; return; }
+
+            EmployeeListBox.DataSource = null;
+            EmployeeListBox.Items.Clear();
+            EmployeeListBox.Items.Add("Searching...");
+            PositionListBoxUnderTextBox();
+            EmployeeListBox.BringToFront();
+            EmployeeListBox.Visible = true;
+
+            try
             {
-                List<Employee> employees = SearchEmployees(searchQuery);
+                var emps = await Task.Run(() => SearchEmployees(q), token);
+                if (token.IsCancellationRequested) return;
 
-                Console.WriteLine($"Found {employees.Count} employees.");
-
-                if (employees.Count > 0)
+                BeginInvoke(new Action(() =>
                 {
-                    EmployeeListBox.DataSource = employees;
-                    EmployeeListBox.DisplayMember = "Display";
-                    PositionListBoxUnderTextBox();
-                    EmployeeListBox.Visible = true;
-                }
-                else
-                {
-                    EmployeeListBox.DataSource = null;
-                    EmployeeListBox.Visible = false;
-                }
+                    if (emps.Count > 0)
+                    {
+                        EmployeeListBox.DataSource = emps;
+                        EmployeeListBox.DisplayMember = "Display";
+                        PositionListBoxUnderTextBox();
+                        EmployeeListBox.BringToFront();
+                        EmployeeListBox.Visible = true;
+                    }
+                    else
+                    {
+                        EmployeeListBox.DataSource = null;
+                        EmployeeListBox.Items.Clear();
+                        EmployeeListBox.Items.Add("No results");
+                    }
+                }));
             }
-            else
-            {
-                EmployeeListBox.DataSource = null;
-                EmployeeListBox.Visible = false;
-            }
+            catch (OperationCanceledException) { }
         }
 
         private void EmployeeListBox_MouseClick(object sender, MouseEventArgs e)
         {
-            int index = EmployeeListBox.IndexFromPoint(e.Location);
-            if (index != ListBox.NoMatches)
-            {
-                var selectedEmployee = (Employee)EmployeeListBox.Items[index];
-
-                suppressTextChanged = true;
-                EmpIdTxt.Text = selectedEmployee.id;
-                suppressTextChanged = false;
-
-                EmployeeListBox.Visible = false;
-
-                RecordAttendanceBtn.Enabled = true;
-
-                ShowEmployeeDetails(selectedEmployee);
-            }
+            int idx = EmployeeListBox.IndexFromPoint(e.Location);
+            if (idx == ListBox.NoMatches) return;
+            var sel = (Employee)EmployeeListBox.Items[idx];
+            suppressTextChanged = true;
+            EmpIdTxt.Text = sel.id;
+            suppressTextChanged = false;
+            selectedEmployeeId = sel.id;
+            EmployeeListBox.Visible = false;
+            RecordAttendanceBtn.Enabled = true;
+            ShowEmployeeDetails(sel);
         }
+
+        private void EmpIdTxt_Click(object sender, EventArgs e)
+        {
+            string q = EmpIdTxt.Text.Trim();
+            var emps = SearchEmployees(q);
+            if (emps.Count > 0)
+            {
+                EmployeeListBox.DataSource = emps;
+                EmployeeListBox.DisplayMember = "Display";
+                PositionListBoxUnderTextBox();
+                EmployeeListBox.BringToFront();
+                EmployeeListBox.Visible = true;
+            }
+            else EmployeeListBox.Visible = false;
+        }
+
         private void HideListBoxOnOutsideClick(object sender, EventArgs e)
         {
-            Point cursor = this.PointToClient(Cursor.Position);
-            if (!EmployeeListBox.Bounds.Contains(cursor) && !EmpIdTxt.Bounds.Contains(cursor))
+            Point c = this.PointToClient(Cursor.Position);
+            if (!EmployeeListBox.Bounds.Contains(c) && !EmpIdTxt.Bounds.Contains(c))
             {
                 EmployeeListBox.Visible = false;
-
-                if (!IsValidEmployee(EmpIdTxt.Text))
-                {
-                    RecordAttendanceBtn.Enabled = false;
-                    ResetEmployeeDetails();
-                }
+                if (!IsValidEmployee(EmpIdTxt.Text)) { RecordAttendanceBtn.Enabled = false; ResetEmployeeDetails(); }
             }
-        }
-
-        private void RecordAttendanceForm_Load(object sender, EventArgs e)
-        {
-            this.Controls.Add(EmployeeListBox);
-            EmployeeListBox.BringToFront();
-            this.Click += HideListBoxOnOutsideClick;
-            ResetEmployeeDetails();
         }
 
         protected override void OnMouseDown(MouseEventArgs e)
         {
             base.OnMouseDown(e);
-            if (!EmployeeListBox.Bounds.Contains(PointToClient(MousePosition)) &&
-                !EmpIdTxt.Bounds.Contains(PointToClient(MousePosition)))
-            {
+            Point p = PointToClient(MousePosition);
+            if (!EmployeeListBox.Bounds.Contains(p) && !EmpIdTxt.Bounds.Contains(p))
                 EmployeeListBox.Visible = false;
-            }
         }
 
         private void PositionListBoxUnderTextBox()
         {
-            var textBoxLocation = EmpIdTxt.PointToScreen(Point.Empty);
-            var formLocation = this.PointToScreen(Point.Empty);
-            int x = textBoxLocation.X - formLocation.X;
-            int y = textBoxLocation.Y - formLocation.Y + EmpIdTxt.Height;
-
-            EmployeeListBox.Location = new Point(x, y);
+            var tb = EmpIdTxt.PointToScreen(Point.Empty);
+            var frm = PointToScreen(Point.Empty);
+            EmployeeListBox.Location = new Point(tb.X - frm.X, tb.Y - frm.Y + EmpIdTxt.Height);
             EmployeeListBox.Width = EmpIdTxt.Width;
         }
 
-        private void EmpIdTxt_Click(object sender, EventArgs e)
-        {
-            string searchQuery = EmpIdTxt.Text.Trim();
-            List<Employee> employees = SearchEmployees(searchQuery);
+        private bool IsValidEmployee(string empId) => SearchEmployees(empId).Exists(e => e.id.Equals(empId, StringComparison.OrdinalIgnoreCase));
 
-            if (employees.Count > 0)
-            {
-                EmployeeListBox.DataSource = employees;
-                EmployeeListBox.DisplayMember = "Display";
-                PositionListBoxUnderTextBox();
-                EmployeeListBox.Visible = true;
-            }
-            else
-            {
-                EmployeeListBox.Visible = false;
-            }
-        }
-
-        private bool IsValidEmployee(string empId)
+        private void ShowEmployeeDetails(Employee s)
         {
-            return SearchEmployees(empId).Exists(e => e.id.Equals(empId, StringComparison.OrdinalIgnoreCase));
-        }
-
-        private void ShowEmployeeDetails(Employee selectedEmployee)
-        {
-            EmpIdFill.Text = selectedEmployee.id;
-            EmpFirstNameFill.Text = selectedEmployee.firstName;
-            EmpLastNameFill.Text = selectedEmployee.lastName;
-            EmpPhoneFill.Text = selectedEmployee.phone;
-            EmpEmailFill.Text = selectedEmployee.email;
+            EmpIdFill.Text = s.id;
+            EmpFirstNameFill.Text = s.firstName;
+            EmpLastNameFill.Text = s.lastName;
+            EmpPhoneFill.Text = s.phone;
+            EmpEmailFill.Text = s.email;
+            EmpDepartmentFill.Text = s.department;
+            EmpLastAttendanceDateFill.Text = s.lastAttendanceDate;
+            EmpLastCheckInFill.Text = s.lastCheckIn;
+            EmpLastCheckOutFill.Text = s.lastCheckOut;
         }
 
         private void ResetEmployeeDetails()
         {
-            EmpIdFill.Text = "_";
-            EmpFirstNameFill.Text = "_";
-            EmpLastNameFill.Text = "_";
-            EmpPhoneFill.Text = "_";
-            EmpEmailFill.Text = "_";
+            EmpIdFill.Text = EmpFirstNameFill.Text = EmpLastNameFill.Text = EmpPhoneFill.Text = EmpEmailFill.Text = EmpDepartmentFill.Text = EmpLastAttendanceDateFill.Text = EmpLastCheckInFill.Text = EmpLastCheckOutFill.Text = "_";
+            selectedEmployeeId = null;
+        }
+
+        private (DateOnly date, string checkIn, string checkOut) GetLastAttendance(string empId)
+        {
+            try
+            {
+                using SqlConnection conn = DBConnector.GetConnection();
+                conn.Open();
+                DateTime? ld;
+                using (var cmdD = new SqlCommand("SELECT MAX([date]) FROM Attendance WHERE employee_id=@empId", conn))
+                {
+                    cmdD.Parameters.AddWithValue("@empId", empId);
+                    var r = cmdD.ExecuteScalar();
+                    ld = r == DBNull.Value ? null : (DateTime?)r;
+                }
+                if (ld == null) return (DateOnly.MinValue, "_", "_");
+
+                using (var cmd = new SqlCommand(@"SELECT MAX(check_in) AS ci, MAX(check_out) AS co FROM Attendance WHERE employee_id=@empId AND [date]=@lastDate", conn))
+                {
+                    cmd.Parameters.AddWithValue("@empId", empId);
+                    cmd.Parameters.AddWithValue("@lastDate", ld.Value);
+                    using var rdr = cmd.ExecuteReader();
+                    if (rdr.Read())
+                    {
+                        string fmt(object v)
+                        {
+                            if (v == DBNull.Value) return "_";
+                            if (v is TimeSpan ts) return DateTime.Today.Add(ts).ToString("hh:mm tt");
+                            return Convert.ToDateTime(v).ToString("hh:mm tt");
+                        }
+                        return (DateOnly.FromDateTime(ld.Value), fmt(rdr["ci"]), fmt(rdr["co"]));
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error fetching last attendance: " + ex.Message);
+            }
+            return (DateOnly.MinValue, "_", "_");
+        }
+
+        private string GetDepartment(string depId)
+        {
+            try
+            {
+                using SqlConnection conn = DBConnector.GetConnection();
+                conn.Open();
+                using var cmd = new SqlCommand("SELECT name FROM Department WHERE id=@depId", conn);
+                cmd.Parameters.AddWithValue("@depId", depId);
+                var r = cmd.ExecuteScalar();
+                return r == null ? "_" : r.ToString();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error fetching department: " + ex.Message);
+                return "_";
+            }
+        }
+
+        private void SaveCheckIn_CheckedChanged(object sender, EventArgs e) => UpdateRecordButtonState();
+
+        private void SaveCheckOut_CheckedChanged(object sender, EventArgs e) => UpdateRecordButtonState();
+
+        private void UpdateRecordButtonState()
+        {
+            bool isEmpValid = !string.IsNullOrEmpty(selectedEmployeeId) &&
+                              selectedEmployeeId.Equals(EmpIdTxt.Text.Trim(), StringComparison.OrdinalIgnoreCase);
+
+            RecordAttendanceBtn.Enabled = (SaveCheckIn.Checked || SaveCheckOut.Checked) && isEmpValid;
+        }
+
+        private void RecordAttendanceForm_Load(object sender, EventArgs e)
+        {
+            ResetEmployeeDetails();
         }
     }
 
+    public static class TimeOnlyExtensions
+    {
+        public static TimeOnly TruncateToMinutes(this TimeOnly t) => new TimeOnly(t.Hour, t.Minute);
+    }
 }
