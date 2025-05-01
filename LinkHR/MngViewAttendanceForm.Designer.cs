@@ -28,185 +28,191 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label1 = new Label();
-            dateTimePicker1 = new DateTimePicker();
+            FromDate = new DateTimePicker();
             label2 = new Label();
             label3 = new Label();
-            dateTimePicker2 = new DateTimePicker();
+            ToDate = new DateTimePicker();
             label4 = new Label();
-            textBox1 = new TextBox();
-            dataGridView1 = new DataGridView();
-            Date = new DataGridViewTextBoxColumn();
-            CheckIn = new DataGridViewTextBoxColumn();
-            CheckOut = new DataGridViewTextBoxColumn();
-            HoursWorked = new DataGridViewTextBoxColumn();
-            button1 = new Button();
+            EmpIdTxt = new TextBox();
+            AttendanceDataGrid = new DataGridView();
+            ViewAttendanceBtn = new Button();
             label5 = new Label();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            groupBox1 = new GroupBox();
+            groupBox2 = new GroupBox();
+            groupBox3 = new GroupBox();
+            EmpTotalWorkingHoursFill = new Label();
+            EmployeeListBox = new ListBox();
+            ((System.ComponentModel.ISupportInitialize)AttendanceDataGrid).BeginInit();
+            groupBox1.SuspendLayout();
+            groupBox2.SuspendLayout();
+            groupBox3.SuspendLayout();
             SuspendLayout();
             // 
-            // label1
+            // FromDate
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(26, 56);
-            label1.Name = "label1";
-            label1.Size = new Size(48, 20);
-            label1.TabIndex = 0;
-            label1.Text = "Date :";
-            // 
-            // dateTimePicker1
-            // 
-            dateTimePicker1.Location = new Point(174, 48);
-            dateTimePicker1.Margin = new Padding(3, 4, 3, 4);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(228, 27);
-            dateTimePicker1.TabIndex = 1;
-            dateTimePicker1.ValueChanged += dateTimePicker1_ValueChanged;
+            FromDate.Location = new Point(21, 47);
+            FromDate.Name = "FromDate";
+            FromDate.Size = new Size(200, 23);
+            FromDate.TabIndex = 1;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(112, 56);
+            label2.Location = new Point(21, 24);
             label2.Name = "label2";
-            label2.Size = new Size(43, 20);
+            label2.Size = new Size(35, 15);
             label2.TabIndex = 2;
             label2.Text = "From";
-            label2.Click += label2_Click;
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(424, 56);
+            label3.Location = new Point(267, 24);
             label3.Name = "label3";
-            label3.Size = new Size(25, 20);
+            label3.Size = new Size(19, 15);
             label3.TabIndex = 3;
             label3.Text = "To";
-            label3.Click += label3_Click;
             // 
-            // dateTimePicker2
+            // ToDate
             // 
-            dateTimePicker2.Location = new Point(469, 48);
-            dateTimePicker2.Margin = new Padding(3, 4, 3, 4);
-            dateTimePicker2.Name = "dateTimePicker2";
-            dateTimePicker2.Size = new Size(228, 27);
-            dateTimePicker2.TabIndex = 4;
+            ToDate.Location = new Point(267, 47);
+            ToDate.Name = "ToDate";
+            ToDate.Size = new Size(200, 23);
+            ToDate.TabIndex = 4;
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(26, 128);
+            label4.Location = new Point(23, 24);
             label4.Name = "label4";
-            label4.Size = new Size(86, 20);
+            label4.Size = new Size(68, 15);
             label4.TabIndex = 5;
             label4.Text = "Employee : ";
-            label4.Click += label4_Click;
             // 
-            // textBox1
+            // EmpIdTxt
             // 
-            textBox1.Location = new Point(142, 117);
-            textBox1.Margin = new Padding(3, 4, 3, 4);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(183, 27);
-            textBox1.TabIndex = 6;
-            textBox1.TextChanged += textBox1_TextChanged;
+            EmpIdTxt.Location = new Point(100, 21);
+            EmpIdTxt.Name = "EmpIdTxt";
+            EmpIdTxt.Size = new Size(206, 23);
+            EmpIdTxt.TabIndex = 6;
             // 
-            // dataGridView1
+            // AttendanceDataGrid
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Date, CheckIn, CheckOut, HoursWorked });
-            dataGridView1.Location = new Point(26, 257);
-            dataGridView1.Margin = new Padding(3, 4, 3, 4);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(506, 88);
-            dataGridView1.TabIndex = 7;
+            AttendanceDataGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            AttendanceDataGrid.Location = new Point(10, 28);
+            AttendanceDataGrid.Name = "AttendanceDataGrid";
+            AttendanceDataGrid.Size = new Size(479, 260);
+            AttendanceDataGrid.TabIndex = 7;
             // 
-            // Date
+            // ViewAttendanceBtn
             // 
-            Date.HeaderText = "Date";
-            Date.MinimumWidth = 6;
-            Date.Name = "Date";
-            Date.Width = 125;
-            // 
-            // CheckIn
-            // 
-            CheckIn.HeaderText = "Check-In";
-            CheckIn.MinimumWidth = 6;
-            CheckIn.Name = "CheckIn";
-            CheckIn.Width = 125;
-            // 
-            // CheckOut
-            // 
-            CheckOut.HeaderText = "Check-Out";
-            CheckOut.MinimumWidth = 6;
-            CheckOut.Name = "CheckOut";
-            CheckOut.Width = 125;
-            // 
-            // HoursWorked
-            // 
-            HoursWorked.HeaderText = "Hours Worked";
-            HoursWorked.MinimumWidth = 6;
-            HoursWorked.Name = "HoursWorked";
-            HoursWorked.Width = 125;
-            // 
-            // button1
-            // 
-            button1.Location = new Point(383, 116);
-            button1.Margin = new Padding(3, 4, 3, 4);
-            button1.Name = "button1";
-            button1.Size = new Size(189, 31);
-            button1.TabIndex = 8;
-            button1.Text = "View Attendance";
-            button1.UseVisualStyleBackColor = true;
+            ViewAttendanceBtn.Location = new Point(23, 68);
+            ViewAttendanceBtn.Name = "ViewAttendanceBtn";
+            ViewAttendanceBtn.Size = new Size(283, 32);
+            ViewAttendanceBtn.TabIndex = 8;
+            ViewAttendanceBtn.Text = "View Attendance";
+            ViewAttendanceBtn.UseVisualStyleBackColor = true;
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(26, 203);
+            label5.Location = new Point(22, 28);
             label5.Name = "label5";
-            label5.Size = new Size(151, 20);
+            label5.Size = new Size(121, 15);
             label5.TabIndex = 9;
             label5.Text = "Total Working Hours: ";
-            label5.Click += label5_Click;
             // 
-            // MngViewAttendanceForm
+            // groupBox1
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            groupBox1.Controls.Add(FromDate);
+            groupBox1.Controls.Add(label2);
+            groupBox1.Controls.Add(label3);
+            groupBox1.Controls.Add(ToDate);
+            groupBox1.Location = new Point(325, 12);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new Size(495, 88);
+            groupBox1.TabIndex = 10;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "Filter Date";
+            // 
+            // groupBox2
+            // 
+            groupBox2.Controls.Add(AttendanceDataGrid);
+            groupBox2.Location = new Point(23, 150);
+            groupBox2.Name = "groupBox2";
+            groupBox2.Size = new Size(495, 294);
+            groupBox2.TabIndex = 11;
+            groupBox2.TabStop = false;
+            groupBox2.Text = "Full Details";
+            // 
+            // groupBox3
+            // 
+            groupBox3.Controls.Add(EmpTotalWorkingHoursFill);
+            groupBox3.Controls.Add(label5);
+            groupBox3.Location = new Point(532, 150);
+            groupBox3.Name = "groupBox3";
+            groupBox3.Size = new Size(288, 62);
+            groupBox3.TabIndex = 12;
+            groupBox3.TabStop = false;
+            groupBox3.Text = "Summary";
+            // 
+            // EmpTotalWorkingHoursFill
+            // 
+            EmpTotalWorkingHoursFill.AutoSize = true;
+            EmpTotalWorkingHoursFill.Location = new Point(162, 28);
+            EmpTotalWorkingHoursFill.Name = "EmpTotalWorkingHoursFill";
+            EmpTotalWorkingHoursFill.Size = new Size(115, 15);
+            EmpTotalWorkingHoursFill.TabIndex = 10;
+            EmpTotalWorkingHoursFill.Text = "Total Working Hours";
+            // 
+            // EmployeeListBox
+            // 
+            EmployeeListBox.FormattingEnabled = true;
+            EmployeeListBox.ItemHeight = 15;
+            EmployeeListBox.Location = new Point(100, 50);
+            EmployeeListBox.Name = "EmployeeListBox";
+            EmployeeListBox.Size = new Size(206, 94);
+            EmployeeListBox.TabIndex = 13;
+            // 
+            // ViewAttendanceForm
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(914, 600);
-            Controls.Add(label5);
-            Controls.Add(button1);
-            Controls.Add(dataGridView1);
-            Controls.Add(textBox1);
+            ClientSize = new Size(832, 450);
+            Controls.Add(EmployeeListBox);
+            Controls.Add(groupBox3);
+            Controls.Add(groupBox2);
+            Controls.Add(ViewAttendanceBtn);
+            Controls.Add(groupBox1);
+            Controls.Add(EmpIdTxt);
             Controls.Add(label4);
-            Controls.Add(dateTimePicker2);
-            Controls.Add(label3);
-            Controls.Add(label2);
-            Controls.Add(dateTimePicker1);
-            Controls.Add(label1);
-            Margin = new Padding(3, 4, 3, 4);
-            Name = "MngViewAttendanceForm";
+            Name = "ViewAttendanceForm";
             Text = "ViewAttendanceForm";
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            Load += ViewAttendanceForm_Load;
+            ((System.ComponentModel.ISupportInitialize)AttendanceDataGrid).EndInit();
+            groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
+            groupBox2.ResumeLayout(false);
+            groupBox3.ResumeLayout(false);
+            groupBox3.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-
-        private Label label1;
-        private DateTimePicker dateTimePicker1;
+        private DateTimePicker FromDate;
         private Label label2;
         private Label label3;
-        private DateTimePicker dateTimePicker2;
+        private DateTimePicker ToDate;
         private Label label4;
-        private TextBox textBox1;
-        private DataGridView dataGridView1;
-        private DataGridViewTextBoxColumn Date;
-        private DataGridViewTextBoxColumn CheckIn;
-        private DataGridViewTextBoxColumn CheckOut;
-        private DataGridViewTextBoxColumn HoursWorked;
-        private Button button1;
+        private TextBox EmpIdTxt;
+        private DataGridView AttendanceDataGrid;
+        private Button ViewAttendanceBtn;
         private Label label5;
+        private GroupBox groupBox1;
+        private GroupBox groupBox2;
+        private GroupBox groupBox3;
+        private Label EmpTotalWorkingHoursFill;
+        private ListBox EmployeeListBox;
     }
 }
