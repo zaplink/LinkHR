@@ -34,6 +34,8 @@ namespace LinkHR
             LeavesDataGrid.MultiSelect = false;
             LeavesDataGrid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             LeavesDataGrid.Columns.Clear();
+
+            LeavesDataGrid.Columns.Add(new DataGridViewTextBoxColumn { Name = "LeaveID", HeaderText = "ID", DataPropertyName = "id", Visible = false }); // Important
             LeavesDataGrid.Columns.Add(new DataGridViewTextBoxColumn { Name = "EmployeeID", HeaderText = "Employee ID", DataPropertyName = "employee_id" });
             LeavesDataGrid.Columns.Add(new DataGridViewTextBoxColumn { Name = "RequestedDate", HeaderText = "Requested Date", DataPropertyName = "requested_date" });
             LeavesDataGrid.Columns.Add(new DataGridViewTextBoxColumn { Name = "FromDate", HeaderText = "From Date", DataPropertyName = "from_date" });
@@ -55,8 +57,6 @@ namespace LinkHR
             EmpIdTxt.Click += EmpIdTxt_Click;
             EmployeeListBox.MouseClick += EmployeeListBox_MouseClick;
             this.Click += HideListBoxOnOutsideClick;
-
-            EmployeeListBox.Visible = false;
 
             suppressTextChanged = true;
             EmpIdTxt.Text = "[All Employees]";
@@ -186,7 +186,7 @@ namespace LinkHR
             {
                 using SqlConnection conn = DBConnector.GetConnection();
                 conn.Open();
-                string sql = @"SELECT employee_id, from_date, to_date, type, status, requested_date, 
+                string sql = @"SELECT id, employee_id, from_date, to_date, type, status, requested_date, 
                                COALESCE(CAST(manager_id AS VARCHAR), '_') AS manager_display
                                FROM Leaves
                                WHERE (@empId IS NULL OR employee_id = @empId)
@@ -236,31 +236,44 @@ namespace LinkHR
         private void UpdateLeaveStatus(string newStatus)
         {
             if (LeavesDataGrid.SelectedRows.Count != 1) return;
+
             var row = LeavesDataGrid.SelectedRows[0];
-            string empId = row.Cells["EmployeeID"].Value.ToString();
-            DateTime from = Convert.ToDateTime(row.Cells["FromDate"].Value);
-            DateTime to = Convert.ToDateTime(row.Cells["ToDate"].Value);
+            string leaveId = row.Cells["LeaveID"].Value.ToString();
 
             try
             {
                 using SqlConnection conn = DBConnector.GetConnection();
                 conn.Open();
-                string sql = @"UPDATE Leaves SET status = @status, manager_id = @managerId
-                               WHERE employee_id = @empId AND from_date = @from AND to_date = @to";
-                using SqlCommand cmd = new SqlCommand(sql, conn);
-                cmd.Parameters.AddWithValue("@status", newStatus);
-                cmd.Parameters.AddWithValue("@managerId", int.Parse(CurrentSession.Username.Replace("mng", "")));
-                cmd.Parameters.AddWithValue("@empId", int.Parse(empId));
-                cmd.Parameters.AddWithValue("@from", from);
-                cmd.Parameters.AddWithValue("@to", to);
-                cmd.ExecuteNonQuery();
+
+                // Get manager ID from Manager table using CurrentSession.Username
+                int managerId = -1;
+                using (SqlCommand getIdCmd = new SqlCommand("SELECT id FROM Manager WHERE username = @username", conn))
+                {
+                    getIdCmd.Parameters.AddWithValue("@username", CurrentSession.Username);
+                    object result = getIdCmd.ExecuteScalar();
+                    if (result == null)
+                    {
+                        MessageBox.Show("Manager ID not found.");
+                        return;
+                    }
+                    managerId = Convert.ToInt32(result);
+                }
+
+                // Update the specific leave request
+                using (SqlCommand cmd = new SqlCommand("UPDATE Leaves SET status = @status, manager_id = @managerId WHERE id = @leaveId", conn))
+                {
+                    cmd.Parameters.AddWithValue("@status", newStatus);
+                    cmd.Parameters.AddWithValue("@managerId", managerId);
+                    cmd.Parameters.AddWithValue("@leaveId", int.Parse(leaveId));
+                    cmd.ExecuteNonQuery();
+                }
+
+                LoadLeaveData();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Update failed: " + ex.Message);
             }
-
-            LoadLeaveData();
         }
 
         public class Employee
