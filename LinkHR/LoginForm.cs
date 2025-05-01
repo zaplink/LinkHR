@@ -133,14 +133,6 @@ namespace LinkHR
             this.Hide();
         }
 
-        // Handle LoginForm closing to exit the application
-        private void LoginForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            if (e.CloseReason == CloseReason.UserClosing)
-            {
-                Application.Exit(); // Exit the application when the user closes the LoginForm
-            }
-        }
 
         // Method to reset the form's state (clear username and password fields)
         public void ResetForm()
@@ -152,5 +144,11 @@ namespace LinkHR
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
         }
+
+        private void exitButton_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
     }
 }
