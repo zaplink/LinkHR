@@ -82,6 +82,7 @@
             buttonSearch.TabIndex = 3;
             buttonSearch.Text = "Search";
             buttonSearch.UseVisualStyleBackColor = true;
+            buttonSearch.Click += buttonSearch_Click_1;
             // 
             // label3
             // 
@@ -158,6 +159,7 @@
             buttonRemove.TabIndex = 11;
             buttonRemove.Text = "Remove Employee";
             buttonRemove.UseVisualStyleBackColor = false;
+            buttonRemove.Click += buttonRemove_Click_1;
             // 
             // buttonClear
             // 
@@ -167,6 +169,7 @@
             buttonClear.TabIndex = 12;
             buttonClear.Text = "Clear";
             buttonClear.UseVisualStyleBackColor = true;
+            buttonClear.Click += buttonClear_Click_1;
             // 
             // textBoxEmployeeId
             // 
