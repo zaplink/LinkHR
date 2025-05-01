@@ -94,7 +94,7 @@ namespace LinkHR
 
         private void leavesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            loadform(new EmpViewLeaves());
+            loadform(new MngViewLeaves());
         }
 
         private void reportsToolStripMenuItem_Click(object sender, EventArgs e)
