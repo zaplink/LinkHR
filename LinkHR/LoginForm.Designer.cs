@@ -35,6 +35,8 @@
             textBox2 = new TextBox();
             label4 = new Label();
             button2 = new Button();
+            exitButton = new Button();
+            label5 = new Label();
             SuspendLayout();
             // 
             // label1
@@ -75,7 +77,7 @@
             textBox1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             textBox1.Location = new Point(79, 236);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(334, 27);
+            textBox1.Size = new Size(328, 27);
             textBox1.TabIndex = 3;
             textBox1.TextChanged += textBox1_TextChanged_1;
             // 
@@ -84,7 +86,7 @@
             textBox2.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             textBox2.Location = new Point(79, 339);
             textBox2.Name = "textBox2";
-            textBox2.Size = new Size(334, 27);
+            textBox2.Size = new Size(328, 27);
             textBox2.TabIndex = 5;
             textBox2.TextChanged += textBox2_TextChanged;
             // 
@@ -102,19 +104,44 @@
             // 
             button2.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             button2.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button2.Location = new Point(79, 433);
+            button2.Location = new Point(79, 442);
             button2.Name = "button2";
-            button2.Size = new Size(334, 44);
+            button2.Size = new Size(328, 44);
             button2.TabIndex = 7;
             button2.Text = "Login";
             button2.UseVisualStyleBackColor = true;
             button2.Click += button2_Click_1;
             // 
+            // exitButton
+            // 
+            exitButton.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            exitButton.BackColor = SystemColors.ActiveBorder;
+            exitButton.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            exitButton.Location = new Point(79, 536);
+            exitButton.Name = "exitButton";
+            exitButton.Size = new Size(328, 44);
+            exitButton.TabIndex = 8;
+            exitButton.Text = "Exit";
+            exitButton.UseVisualStyleBackColor = false;
+            exitButton.Click += exitButton_Click;
+            // 
+            // label5
+            // 
+            label5.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            label5.AutoSize = true;
+            label5.Location = new Point(79, 513);
+            label5.Name = "label5";
+            label5.Size = new Size(319, 20);
+            label5.TabIndex = 9;
+            label5.Text = "─────────── Exit from the system ──────────";
+            // 
             // LoginForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(520, 575);
+            ClientSize = new Size(514, 634);
+            Controls.Add(label5);
+            Controls.Add(exitButton);
             Controls.Add(button2);
             Controls.Add(textBox2);
             Controls.Add(label4);
@@ -139,5 +166,7 @@
         private TextBox textBox2;
         private Label label4;
         private Button button2;
+        private Button exitButton;
+        private Label label5;
     }
 }
