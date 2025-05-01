@@ -32,127 +32,138 @@
             label5 = new Label();
             label6 = new Label();
             label7 = new Label();
-            label9 = new Label();
-            comboBox2 = new ComboBox();
-            dateTimePicker1 = new DateTimePicker();
-            dateTimePicker2 = new DateTimePicker();
-            textBox4 = new TextBox();
-            button1 = new Button();
-            button2 = new Button();
+            LeaveTypeCombo = new ComboBox();
+            FromDatePicker = new DateTimePicker();
+            ToDatePicker = new DateTimePicker();
+            SubmitLeaveBtn = new Button();
+            groupBox1 = new GroupBox();
+            LeaveHistoryGrid = new DataGridView();
+            groupBox2 = new GroupBox();
+            groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)LeaveHistoryGrid).BeginInit();
+            groupBox2.SuspendLayout();
             SuspendLayout();
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(91, 37);
+            label4.Location = new Point(374, 39);
             label4.Name = "label4";
-            label4.Size = new Size(80, 20);
+            label4.Size = new Size(70, 15);
             label4.TabIndex = 3;
-            label4.Text = "Leave type";
+            label4.Text = "Leave Type :";
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(73, 129);
+            label5.Location = new Point(64, 97);
             label5.Name = "label5";
-            label5.Size = new Size(0, 20);
+            label5.Size = new Size(0, 15);
             label5.TabIndex = 4;
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(97, 105);
+            label6.Location = new Point(15, 39);
             label6.Name = "label6";
-            label6.Size = new Size(79, 20);
+            label6.Size = new Size(68, 15);
             label6.TabIndex = 5;
-            label6.Text = "From Date";
+            label6.Text = "From Date :";
             // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(98, 166);
+            label7.Location = new Point(15, 110);
             label7.Name = "label7";
-            label7.Size = new Size(61, 20);
+            label7.Size = new Size(52, 15);
             label7.TabIndex = 6;
-            label7.Text = "To Date";
+            label7.Text = "To Date :";
             // 
-            // label9
+            // LeaveTypeCombo
             // 
-            label9.AutoSize = true;
-            label9.Location = new Point(98, 245);
-            label9.Name = "label9";
-            label9.Size = new Size(57, 20);
-            label9.TabIndex = 8;
-            label9.Text = "Reason";
+            LeaveTypeCombo.FormattingEnabled = true;
+            LeaveTypeCombo.Items.AddRange(new object[] { "Casual ", "Sick", "Half Day" });
+            LeaveTypeCombo.Location = new Point(459, 36);
+            LeaveTypeCombo.Margin = new Padding(3, 2, 3, 2);
+            LeaveTypeCombo.Name = "LeaveTypeCombo";
+            LeaveTypeCombo.Size = new Size(214, 23);
+            LeaveTypeCombo.TabIndex = 12;
             // 
-            // comboBox2
+            // FromDatePicker
             // 
-            comboBox2.FormattingEnabled = true;
-            comboBox2.Items.AddRange(new object[] { "Casual ", "Sick", "Half Day" });
-            comboBox2.Location = new Point(300, 37);
-            comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(244, 28);
-            comboBox2.TabIndex = 12;
+            FromDatePicker.Location = new Point(98, 36);
+            FromDatePicker.Margin = new Padding(3, 2, 3, 2);
+            FromDatePicker.Name = "FromDatePicker";
+            FromDatePicker.Size = new Size(214, 23);
+            FromDatePicker.TabIndex = 13;
             // 
-            // dateTimePicker1
+            // ToDatePicker
             // 
-            dateTimePicker1.Location = new Point(300, 98);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(244, 27);
-            dateTimePicker1.TabIndex = 13;
+            ToDatePicker.Location = new Point(99, 104);
+            ToDatePicker.Margin = new Padding(3, 2, 3, 2);
+            ToDatePicker.Name = "ToDatePicker";
+            ToDatePicker.Size = new Size(213, 23);
+            ToDatePicker.TabIndex = 14;
             // 
-            // dateTimePicker2
+            // SubmitLeaveBtn
             // 
-            dateTimePicker2.Location = new Point(301, 166);
-            dateTimePicker2.Name = "dateTimePicker2";
-            dateTimePicker2.Size = new Size(243, 27);
-            dateTimePicker2.TabIndex = 14;
+            SubmitLeaveBtn.Location = new Point(374, 92);
+            SubmitLeaveBtn.Margin = new Padding(3, 2, 3, 2);
+            SubmitLeaveBtn.Name = "SubmitLeaveBtn";
+            SubmitLeaveBtn.Size = new Size(299, 37);
+            SubmitLeaveBtn.TabIndex = 21;
+            SubmitLeaveBtn.Text = "Submit Request";
+            SubmitLeaveBtn.UseVisualStyleBackColor = true;
             // 
-            // textBox4
+            // groupBox1
             // 
-            textBox4.Location = new Point(300, 229);
-            textBox4.Multiline = true;
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(243, 106);
-            textBox4.TabIndex = 16;
+            groupBox1.Controls.Add(label4);
+            groupBox1.Controls.Add(LeaveTypeCombo);
+            groupBox1.Controls.Add(SubmitLeaveBtn);
+            groupBox1.Controls.Add(label6);
+            groupBox1.Controls.Add(label7);
+            groupBox1.Controls.Add(ToDatePicker);
+            groupBox1.Controls.Add(FromDatePicker);
+            groupBox1.Location = new Point(12, 12);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new Size(695, 154);
+            groupBox1.TabIndex = 23;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "Submit a Leave Request";
             // 
-            // button1
+            // LeaveHistoryGrid
             // 
-            button1.Location = new Point(91, 382);
-            button1.Name = "button1";
-            button1.Size = new Size(150, 49);
-            button1.TabIndex = 21;
-            button1.Text = "Submit";
-            button1.UseVisualStyleBackColor = true;
+            LeaveHistoryGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            LeaveHistoryGrid.Location = new Point(0, 22);
+            LeaveHistoryGrid.Name = "LeaveHistoryGrid";
+            LeaveHistoryGrid.Size = new Size(688, 232);
+            LeaveHistoryGrid.TabIndex = 24;
             // 
-            // button2
+            // groupBox2
             // 
-            button2.Location = new Point(300, 382);
-            button2.Name = "button2";
-            button2.Size = new Size(142, 49);
-            button2.TabIndex = 22;
-            button2.Text = "Cancel";
-            button2.UseVisualStyleBackColor = true;
+            groupBox2.Controls.Add(LeaveHistoryGrid);
+            groupBox2.Location = new Point(12, 187);
+            groupBox2.Name = "groupBox2";
+            groupBox2.Size = new Size(688, 254);
+            groupBox2.TabIndex = 25;
+            groupBox2.TabStop = false;
+            groupBox2.Text = "My Leave Request History";
             // 
             // EmpLeaveForm
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1153, 604);
-            Controls.Add(button2);
-            Controls.Add(button1);
-            Controls.Add(textBox4);
-            Controls.Add(dateTimePicker2);
-            Controls.Add(dateTimePicker1);
-            Controls.Add(comboBox2);
-            Controls.Add(label9);
-            Controls.Add(label7);
-            Controls.Add(label6);
+            ClientSize = new Size(1009, 453);
+            Controls.Add(groupBox2);
+            Controls.Add(groupBox1);
             Controls.Add(label5);
-            Controls.Add(label4);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "EmpLeaveForm";
             Text = "LeaveForm";
-            Load += LeaveForm_Load;
+            groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)LeaveHistoryGrid).EndInit();
+            groupBox2.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -162,12 +173,12 @@
         private Label label5;
         private Label label6;
         private Label label7;
-        private Label label9;
-        private ComboBox comboBox2;
-        private DateTimePicker dateTimePicker1;
-        private DateTimePicker dateTimePicker2;
-        private TextBox textBox4;
-        private Button button1;
-        private Button button2;
+        private ComboBox LeaveTypeCombo;
+        private DateTimePicker FromDatePicker;
+        private DateTimePicker ToDatePicker;
+        private Button SubmitLeaveBtn;
+        private GroupBox groupBox1;
+        private DataGridView LeaveHistoryGrid;
+        private GroupBox groupBox2;
     }
 }

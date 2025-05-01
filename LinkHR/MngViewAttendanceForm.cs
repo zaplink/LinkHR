@@ -21,7 +21,6 @@ namespace LinkHR
         {
             InitializeComponent();
 
-            // Initialize employee search debounce timer
             searchTimer = new System.Windows.Forms.Timer();
             searchTimer.Interval = 400;
             searchTimer.Tick += SearchTimer_Tick;
@@ -37,39 +36,14 @@ namespace LinkHR
             this.Click += HideListBoxOnOutsideClick;
 
             EmployeeListBox.Visible = false;
-
             AttendanceDataGrid.AutoGenerateColumns = false;
 
-            AttendanceDataGrid.Columns.Clear();
-            AttendanceDataGrid.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                DataPropertyName = "date",
-                HeaderText = "Date",
-                AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
-            });
-            AttendanceDataGrid.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                DataPropertyName = "check_in",
-                HeaderText = "Check In",
-                AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
-            });
-            AttendanceDataGrid.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                DataPropertyName = "check_out",
-                HeaderText = "Check Out",
-                AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
-            });
-            AttendanceDataGrid.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                DataPropertyName = "hours_worked",
-                HeaderText = "Hours Worked",
-                AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
-            });
 
-            AttendanceDataGrid.RowHeadersVisible = false;
-            AttendanceDataGrid.AllowUserToAddRows = false;
-            AttendanceDataGrid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            AttendanceDataGrid.MultiSelect = false;
+            suppressTextChanged = true;
+            EmpIdTxt.Text = "[All Employees]";
+            suppressTextChanged = false;
+            selectedEmployeeId = null;
+            ViewAttendanceBtn.Enabled = true;
 
         }
 
@@ -143,9 +117,9 @@ namespace LinkHR
             if (idx == ListBox.NoMatches) return;
             var sel = (Employee)EmployeeListBox.Items[idx];
             suppressTextChanged = true;
-            EmpIdTxt.Text = sel.id;
+            EmpIdTxt.Text = sel.Display;
             suppressTextChanged = false;
-            selectedEmployeeId = sel.id;
+            selectedEmployeeId = sel.id == "0" ? null : sel.id;
             EmployeeListBox.Visible = false;
             ViewAttendanceBtn.Enabled = true;
         }
@@ -168,18 +142,25 @@ namespace LinkHR
             EmployeeListBox.Width = EmpIdTxt.Width;
         }
 
-        private bool IsValidEmployee(string empId) =>
-            SearchEmployees(empId).Exists(e => e.id.Equals(empId, StringComparison.OrdinalIgnoreCase));
+        private bool IsValidEmployee(string empDisplayText)
+        {
+            var emps = SearchEmployees("");
+            return emps.Any(e => e.Display.Equals(empDisplayText, StringComparison.OrdinalIgnoreCase));
+        }
 
         private List<Employee> SearchEmployees(string search)
         {
-            var list = new List<Employee>();
+            var list = new List<Employee>
+            {
+                new Employee { id = "0", firstName = "[All", lastName = "Employees]" }
+            };
+
             try
             {
                 using SqlConnection conn = DBConnector.GetConnection();
                 conn.Open();
-                string sql = @"SELECT username, first_name, last_name FROM Employee
-                               WHERE username LIKE @q OR first_name LIKE @q OR last_name LIKE @q";
+                string sql = @"SELECT id, first_name, last_name FROM Employee
+                               WHERE first_name LIKE @q OR last_name LIKE @q OR CAST(id AS NVARCHAR) LIKE @q";
                 using SqlCommand cmd = new SqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@q", "%" + search + "%");
                 using SqlDataReader rdr = cmd.ExecuteReader();
@@ -187,7 +168,7 @@ namespace LinkHR
                 {
                     list.Add(new Employee
                     {
-                        id = rdr["username"].ToString(),
+                        id = rdr["id"].ToString(),
                         firstName = rdr["first_name"].ToString(),
                         lastName = rdr["last_name"].ToString()
                     });
@@ -197,6 +178,7 @@ namespace LinkHR
             {
                 MessageBox.Show("Error retrieving employees: " + ex.Message);
             }
+
             return list;
         }
 
@@ -205,12 +187,12 @@ namespace LinkHR
             public string id { get; set; }
             public string firstName { get; set; }
             public string lastName { get; set; }
-            public string Display => $"{id}\t{firstName}\t{lastName}";
+            public string Display => id == "0" ? "[All Employees]" : $"{id} {firstName} {lastName}";
         }
 
         private void ViewAttendanceBtn_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(selectedEmployeeId))
+            if (string.IsNullOrWhiteSpace(selectedEmployeeId) && EmpIdTxt.Text != "[All Employees]")
             {
                 MessageBox.Show("Please select a valid employee.");
                 return;
@@ -225,28 +207,73 @@ namespace LinkHR
             {
                 using SqlConnection conn = DBConnector.GetConnection();
                 conn.Open();
-                string query = @"SELECT date, check_in, check_out, hours_worked
-                                 FROM Attendance
-                                 WHERE employee_id = @empId AND date BETWEEN @from AND @to
-                                 ORDER BY date";
-                using SqlCommand cmd = new SqlCommand(query, conn);
-                cmd.Parameters.AddWithValue("@empId", empId);
+
+                string query;
+                SqlCommand cmd;
+
+                if (string.IsNullOrEmpty(empId))
+                {
+                    query = @"SELECT employee_id, date, check_in, check_out, hours_worked
+                              FROM Attendance
+                              WHERE date BETWEEN @from AND @to
+                              ORDER BY employee_id, date";
+                    cmd = new SqlCommand(query, conn);
+                }
+                else
+                {
+                    query = @"SELECT date, check_in, check_out, hours_worked
+                              FROM Attendance
+                              WHERE employee_id = @empId AND date BETWEEN @from AND @to
+                              ORDER BY date";
+                    cmd = new SqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@empId", empId);
+                }
+
                 cmd.Parameters.AddWithValue("@from", from);
                 cmd.Parameters.AddWithValue("@to", to);
+
                 using SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
                 adapter.Fill(dt);
 
-                AttendanceDataGrid.AutoGenerateColumns = false;
+                AttendanceDataGrid.Columns.Clear();
+
+                if (string.IsNullOrEmpty(empId))
+                {
+                    AttendanceDataGrid.Columns.Add(new DataGridViewTextBoxColumn
+                    {
+                        DataPropertyName = "employee_id",
+                        HeaderText = "Employee ID",
+                        AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+                    });
+                }
+
+                AttendanceDataGrid.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    DataPropertyName = "date",
+                    HeaderText = "Date",
+                    AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+                });
+                AttendanceDataGrid.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    DataPropertyName = "check_in",
+                    HeaderText = "Check In",
+                    AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+                });
+                AttendanceDataGrid.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    DataPropertyName = "check_out",
+                    HeaderText = "Check Out",
+                    AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+                });
+                AttendanceDataGrid.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    DataPropertyName = "hours_worked",
+                    HeaderText = "Hours Worked",
+                    AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+                });
+
                 AttendanceDataGrid.DataSource = dt;
-
-                AttendanceDataGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-
-                AttendanceDataGrid.RowHeadersVisible = false;
-                AttendanceDataGrid.AllowUserToAddRows = false;
-                AttendanceDataGrid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-                AttendanceDataGrid.MultiSelect = false;
-
 
                 double totalHours = 0;
                 foreach (DataRow row in dt.Rows)
@@ -254,10 +281,8 @@ namespace LinkHR
                     if (row["hours_worked"] != DBNull.Value)
                         totalHours += Convert.ToDouble(row["hours_worked"]);
                 }
+
                 EmpTotalWorkingHoursFill.Text = totalHours.ToString("0.00");
-
-                // Console.WriteLine($"Rows loaded: {dt.Rows.Count}\nColumns: {string.Join(", ", dt.Columns.Cast<DataColumn>().Select(c => c.ColumnName))}");
-
             }
             catch (Exception ex)
             {
@@ -265,9 +290,6 @@ namespace LinkHR
             }
         }
 
-        private void ViewAttendanceForm_Load(object sender, EventArgs e)
-        {
-
-        }
+        private void ViewAttendanceForm_Load(object sender, EventArgs e) { }
     }
 }
