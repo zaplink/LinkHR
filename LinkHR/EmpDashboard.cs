@@ -18,12 +18,36 @@ namespace LinkHR
             this.StartPosition = FormStartPosition.CenterScreen;
         }
 
+
+        private Form activeForm = null;
+
+        private void loadform(Form childForm)
+        {
+            if (activeForm != null)
+                activeForm.Close();
+
+            activeForm = childForm;
+            childForm.TopLevel = false;
+            childForm.FormBorderStyle = FormBorderStyle.None;
+            childForm.Dock = DockStyle.Fill;
+
+            mainPanel.Controls.Add(childForm);
+            mainPanel.Tag = childForm;
+            childForm.BringToFront();
+            childForm.Show();
+        }
+
         private void logoutButton_Click(object sender, EventArgs e)
         {
             LoginForm loginForm = new LoginForm();
             loginForm.Show();
             loginForm.ResetForm();
             this.Close();
+        }
+
+        private void leavesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            loadform(new EmpLeaveForm());
         }
     }
 }
