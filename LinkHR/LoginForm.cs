@@ -67,6 +67,8 @@ namespace LinkHR
                                 string role = reader["role"].ToString();
                                 if (role == "admin")
                                 {
+                                    CurrentSession.Username = username;
+                                    CurrentSession.Role = role;
                                     OpenDashboard(new AdminDashboard());
                                     return;
                                 }
@@ -88,6 +90,8 @@ namespace LinkHR
                                 string role = reader["role"].ToString();
                                 if (role == "mng")
                                 {
+                                    CurrentSession.Username = username;
+                                    CurrentSession.Role = role;
                                     OpenDashboard(new MngDashboard());
                                     return;
                                 }
@@ -110,6 +114,8 @@ namespace LinkHR
                                 string role = reader["role"].ToString();
                                 if (role == "emp")
                                 {
+                                    CurrentSession.Username = username;
+                                    CurrentSession.Role = role;
                                     OpenDashboard(new EmpDashboard());
                                     return;
                                 }

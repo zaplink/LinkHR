@@ -84,17 +84,17 @@ namespace LinkHR
 
         private void recordAttendanceToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            loadform(new RecordAttendanceForm());
+            loadform(new MngRecordAttendanceForm());
         }
 
         private void viewAttendanceToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            loadform(new ViewAttendanceForm());
+            loadform(new MngViewAttendanceForm());
         }
 
         private void leavesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            loadform(new EmpViewLeaves());
+            loadform(new MngViewLeaves());
         }
 
         private void reportsToolStripMenuItem_Click(object sender, EventArgs e)
