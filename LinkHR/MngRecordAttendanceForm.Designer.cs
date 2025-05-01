@@ -42,10 +42,6 @@
             EmpIdLbl = new Label();
             EmpFirstNameLbl = new Label();
             EmpLastNameLbl = new Label();
-            EmpEmailLbl = new Label();
-            EmpPhoneLbl = new Label();
-            EmpEmailFill = new Label();
-            EmpPhoneFill = new Label();
             EmpLastNameFill = new Label();
             EmpFirstNameFill = new Label();
             EmpIdFill = new Label();
@@ -79,7 +75,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(22, 45);
+            label1.Location = new Point(22, 58);
             label1.Name = "label1";
             label1.Size = new Size(37, 15);
             label1.TabIndex = 0;
@@ -87,7 +83,7 @@
             // 
             // DatePicker
             // 
-            DatePicker.Location = new Point(75, 39);
+            DatePicker.Location = new Point(75, 52);
             DatePicker.Margin = new Padding(3, 2, 3, 2);
             DatePicker.Name = "DatePicker";
             DatePicker.Size = new Size(176, 23);
@@ -109,13 +105,12 @@
             EmpIdTxt.Name = "EmpIdTxt";
             EmpIdTxt.Size = new Size(260, 23);
             EmpIdTxt.TabIndex = 3;
-            EmpIdTxt.Click += EmpIdTxt_Click;
             EmpIdTxt.TextChanged += EmpIdTxt_TextChanged;
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(22, 105);
+            label3.Location = new Point(22, 118);
             label3.Name = "label3";
             label3.Size = new Size(64, 15);
             label3.TabIndex = 4;
@@ -124,7 +119,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(22, 193);
+            label4.Location = new Point(22, 206);
             label4.Name = "label4";
             label4.Size = new Size(74, 15);
             label4.TabIndex = 5;
@@ -133,7 +128,7 @@
             // CheckInTime
             // 
             CheckInTime.Format = DateTimePickerFormat.Time;
-            CheckInTime.Location = new Point(22, 132);
+            CheckInTime.Location = new Point(22, 145);
             CheckInTime.Margin = new Padding(3, 2, 3, 2);
             CheckInTime.Name = "CheckInTime";
             CheckInTime.Size = new Size(176, 23);
@@ -142,7 +137,7 @@
             // CheckOutTime
             // 
             CheckOutTime.Format = DateTimePickerFormat.Time;
-            CheckOutTime.Location = new Point(22, 220);
+            CheckOutTime.Location = new Point(22, 233);
             CheckOutTime.Margin = new Padding(3, 2, 3, 2);
             CheckOutTime.Name = "CheckOutTime";
             CheckOutTime.Size = new Size(176, 23);
@@ -150,7 +145,7 @@
             // 
             // RecordAttendanceBtn
             // 
-            RecordAttendanceBtn.Location = new Point(22, 286);
+            RecordAttendanceBtn.Location = new Point(22, 304);
             RecordAttendanceBtn.Margin = new Padding(3, 2, 3, 2);
             RecordAttendanceBtn.Name = "RecordAttendanceBtn";
             RecordAttendanceBtn.Size = new Size(306, 33);
@@ -196,42 +191,6 @@
             EmpLastNameLbl.TabIndex = 14;
             EmpLastNameLbl.Text = "Last Name :";
             // 
-            // EmpEmailLbl
-            // 
-            EmpEmailLbl.AutoSize = true;
-            EmpEmailLbl.Location = new Point(28, 171);
-            EmpEmailLbl.Name = "EmpEmailLbl";
-            EmpEmailLbl.Size = new Size(42, 15);
-            EmpEmailLbl.TabIndex = 16;
-            EmpEmailLbl.Text = "Email :";
-            // 
-            // EmpPhoneLbl
-            // 
-            EmpPhoneLbl.AutoSize = true;
-            EmpPhoneLbl.Location = new Point(28, 135);
-            EmpPhoneLbl.Name = "EmpPhoneLbl";
-            EmpPhoneLbl.Size = new Size(69, 15);
-            EmpPhoneLbl.TabIndex = 15;
-            EmpPhoneLbl.Text = "Phone No. :";
-            // 
-            // EmpEmailFill
-            // 
-            EmpEmailFill.AutoSize = true;
-            EmpEmailFill.Location = new Point(127, 171);
-            EmpEmailFill.Name = "EmpEmailFill";
-            EmpEmailFill.Size = new Size(36, 15);
-            EmpEmailFill.TabIndex = 21;
-            EmpEmailFill.Text = "Email";
-            // 
-            // EmpPhoneFill
-            // 
-            EmpPhoneFill.AutoSize = true;
-            EmpPhoneFill.Location = new Point(127, 135);
-            EmpPhoneFill.Name = "EmpPhoneFill";
-            EmpPhoneFill.Size = new Size(63, 15);
-            EmpPhoneFill.TabIndex = 20;
-            EmpPhoneFill.Text = "Phone No.";
-            // 
             // EmpLastNameFill
             // 
             EmpLastNameFill.AutoSize = true;
@@ -262,7 +221,7 @@
             // SaveCheckIn
             // 
             SaveCheckIn.AutoSize = true;
-            SaveCheckIn.Location = new Point(217, 137);
+            SaveCheckIn.Location = new Point(217, 150);
             SaveCheckIn.Name = "SaveCheckIn";
             SaveCheckIn.Size = new Size(101, 19);
             SaveCheckIn.TabIndex = 22;
@@ -272,7 +231,7 @@
             // SaveCheckOut
             // 
             SaveCheckOut.AutoSize = true;
-            SaveCheckOut.Location = new Point(217, 225);
+            SaveCheckOut.Location = new Point(217, 238);
             SaveCheckOut.Name = "SaveCheckOut";
             SaveCheckOut.Size = new Size(111, 19);
             SaveCheckOut.TabIndex = 23;
@@ -282,7 +241,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(28, 204);
+            label6.Location = new Point(28, 139);
             label6.Name = "label6";
             label6.Size = new Size(76, 15);
             label6.TabIndex = 24;
@@ -314,7 +273,7 @@
             groupBox1.Controls.Add(EmpLastCheckInFill);
             groupBox1.Controls.Add(label7);
             groupBox1.Controls.Add(label8);
-            groupBox1.Location = new Point(12, 329);
+            groupBox1.Location = new Point(12, 251);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(345, 133);
             groupBox1.TabIndex = 29;
@@ -364,16 +323,12 @@
             groupBox2.Controls.Add(EmpFirstNameLbl);
             groupBox2.Controls.Add(EmpLastNameLbl);
             groupBox2.Controls.Add(label6);
-            groupBox2.Controls.Add(EmpPhoneLbl);
-            groupBox2.Controls.Add(EmpEmailLbl);
             groupBox2.Controls.Add(EmpIdFill);
-            groupBox2.Controls.Add(EmpEmailFill);
             groupBox2.Controls.Add(EmpFirstNameFill);
-            groupBox2.Controls.Add(EmpPhoneFill);
             groupBox2.Controls.Add(EmpLastNameFill);
             groupBox2.Location = new Point(12, 59);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(345, 249);
+            groupBox2.Size = new Size(345, 175);
             groupBox2.TabIndex = 30;
             groupBox2.TabStop = false;
             groupBox2.Text = "Employee Profile Details";
@@ -381,7 +336,7 @@
             // EmpDepartmentFill
             // 
             EmpDepartmentFill.AutoSize = true;
-            EmpDepartmentFill.Location = new Point(127, 204);
+            EmpDepartmentFill.Location = new Point(127, 139);
             EmpDepartmentFill.Name = "EmpDepartmentFill";
             EmpDepartmentFill.Size = new Size(70, 15);
             EmpDepartmentFill.TabIndex = 25;
@@ -400,12 +355,12 @@
             groupBox3.Controls.Add(RecordAttendanceBtn);
             groupBox3.Location = new Point(408, 12);
             groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(351, 350);
+            groupBox3.Size = new Size(351, 372);
             groupBox3.TabIndex = 31;
             groupBox3.TabStop = false;
             groupBox3.Text = "Update Attendace Details";
             // 
-            // RecordAttendanceForm
+            // MngRecordAttendanceForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -416,9 +371,9 @@
             Controls.Add(EmployeeListBox);
             Controls.Add(EmpIdTxt);
             Controls.Add(label2);
-            Name = "RecordAttendanceForm";
+            Name = "MngRecordAttendanceForm";
             Text = "RecordAttendanceForm";
-            Load += RecordAttendanceForm_Load;
+            Load += MngRecordAttendanceForm_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             groupBox2.ResumeLayout(false);
@@ -444,10 +399,6 @@
         private Label EmpIdLbl;
         private Label EmpFirstNameLbl;
         private Label EmpLastNameLbl;
-        private Label EmpEmailLbl;
-        private Label EmpPhoneLbl;
-        private Label EmpEmailFill;
-        private Label EmpPhoneFill;
         private Label EmpLastNameFill;
         private Label EmpFirstNameFill;
         private Label EmpIdFill;

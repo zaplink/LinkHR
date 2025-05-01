@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
+using System.Data.SqlClient;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -38,8 +38,6 @@ namespace LinkHR
             EmployeeListBox.Visible = false;
             RecordAttendanceBtn.Enabled = false;
 
-            EmpIdTxt.Click += EmpIdTxt_Click;
-            this.Click += HideListBoxOnOutsideClick;
             EmpIdTxt.TextChanged += EmpIdTxt_TextChanged;
             EmployeeListBox.MouseClick += EmployeeListBox_MouseClick;
             SaveCheckIn.CheckedChanged += SaveCheckIn_CheckedChanged;
@@ -114,8 +112,6 @@ namespace LinkHR
             public string id { get; set; }
             public string firstName { get; set; }
             public string lastName { get; set; }
-            public string email { get; set; }
-            public string phone { get; set; }
             public string department { get; set; }
             public string lastAttendanceDate { get; set; }
             public string lastCheckIn { get; set; }
@@ -130,15 +126,15 @@ namespace LinkHR
             {
                 using SqlConnection conn = DBConnector.GetConnection();
                 conn.Open();
-                string sql = @"SELECT username, first_name, last_name, contact_no, email, department_id
+                string sql = @"SELECT id, first_name, last_name, department_id
                                FROM Employee
-                               WHERE username LIKE @q OR contact_no LIKE @q OR first_name LIKE @q OR last_name LIKE @q";
+                               WHERE id LIKE @q OR first_name LIKE @q OR last_name LIKE @q";
                 using SqlCommand cmd = new SqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@q", "%" + search + "%");
                 using SqlDataReader rdr = cmd.ExecuteReader();
                 while (rdr.Read())
                 {
-                    string empId = rdr["username"].ToString();
+                    string empId = rdr["id"].ToString();
                     var (d, ci, co) = GetLastAttendance(empId);
                     string dep = GetDepartment(rdr["department_id"].ToString());
                     list.Add(new Employee
@@ -146,8 +142,6 @@ namespace LinkHR
                         id = empId,
                         firstName = rdr["first_name"].ToString(),
                         lastName = rdr["last_name"].ToString(),
-                        phone = rdr["contact_no"].ToString(),
-                        email = rdr["email"].ToString(),
                         department = dep,
                         lastAttendanceDate = d == DateOnly.MinValue ? "_" : d.ToString("yyyy-MM-dd"),
                         lastCheckIn = ci,
@@ -229,56 +223,23 @@ namespace LinkHR
             ShowEmployeeDetails(sel);
         }
 
-        private void EmpIdTxt_Click(object sender, EventArgs e)
-        {
-            string q = EmpIdTxt.Text.Trim();
-            var emps = SearchEmployees(q);
-            if (emps.Count > 0)
-            {
-                EmployeeListBox.DataSource = emps;
-                EmployeeListBox.DisplayMember = "Display";
-                PositionListBoxUnderTextBox();
-                EmployeeListBox.BringToFront();
-                EmployeeListBox.Visible = true;
-            }
-            else EmployeeListBox.Visible = false;
-        }
+        private void SaveCheckIn_CheckedChanged(object sender, EventArgs e) => UpdateRecordButtonState();
 
-        private void HideListBoxOnOutsideClick(object sender, EventArgs e)
-        {
-            Point c = this.PointToClient(Cursor.Position);
-            if (!EmployeeListBox.Bounds.Contains(c) && !EmpIdTxt.Bounds.Contains(c))
-            {
-                EmployeeListBox.Visible = false;
-                if (!IsValidEmployee(EmpIdTxt.Text)) { RecordAttendanceBtn.Enabled = false; ResetEmployeeDetails(); }
-            }
-        }
+        private void SaveCheckOut_CheckedChanged(object sender, EventArgs e) => UpdateRecordButtonState();
 
-        protected override void OnMouseDown(MouseEventArgs e)
+        private void UpdateRecordButtonState()
         {
-            base.OnMouseDown(e);
-            Point p = PointToClient(MousePosition);
-            if (!EmployeeListBox.Bounds.Contains(p) && !EmpIdTxt.Bounds.Contains(p))
-                EmployeeListBox.Visible = false;
-        }
+            bool isEmpValid = !string.IsNullOrEmpty(selectedEmployeeId) &&
+                              selectedEmployeeId.Equals(EmpIdTxt.Text.Trim(), StringComparison.OrdinalIgnoreCase);
 
-        private void PositionListBoxUnderTextBox()
-        {
-            var tb = EmpIdTxt.PointToScreen(Point.Empty);
-            var frm = PointToScreen(Point.Empty);
-            EmployeeListBox.Location = new Point(tb.X - frm.X, tb.Y - frm.Y + EmpIdTxt.Height);
-            EmployeeListBox.Width = EmpIdTxt.Width;
+            RecordAttendanceBtn.Enabled = (SaveCheckIn.Checked || SaveCheckOut.Checked) && isEmpValid;
         }
-
-        private bool IsValidEmployee(string empId) => SearchEmployees(empId).Exists(e => e.id.Equals(empId, StringComparison.OrdinalIgnoreCase));
 
         private void ShowEmployeeDetails(Employee s)
         {
             EmpIdFill.Text = s.id;
             EmpFirstNameFill.Text = s.firstName;
             EmpLastNameFill.Text = s.lastName;
-            EmpPhoneFill.Text = s.phone;
-            EmpEmailFill.Text = s.email;
             EmpDepartmentFill.Text = s.department;
             EmpLastAttendanceDateFill.Text = s.lastAttendanceDate;
             EmpLastCheckInFill.Text = s.lastCheckIn;
@@ -287,7 +248,7 @@ namespace LinkHR
 
         private void ResetEmployeeDetails()
         {
-            EmpIdFill.Text = EmpFirstNameFill.Text = EmpLastNameFill.Text = EmpPhoneFill.Text = EmpEmailFill.Text = EmpDepartmentFill.Text = EmpLastAttendanceDateFill.Text = EmpLastCheckInFill.Text = EmpLastCheckOutFill.Text = "_";
+            EmpIdFill.Text = EmpFirstNameFill.Text = EmpLastNameFill.Text = EmpDepartmentFill.Text = EmpLastAttendanceDateFill.Text = EmpLastCheckInFill.Text = EmpLastCheckOutFill.Text = "_";
             selectedEmployeeId = null;
         }
 
@@ -348,19 +309,15 @@ namespace LinkHR
             }
         }
 
-        private void SaveCheckIn_CheckedChanged(object sender, EventArgs e) => UpdateRecordButtonState();
-
-        private void SaveCheckOut_CheckedChanged(object sender, EventArgs e) => UpdateRecordButtonState();
-
-        private void UpdateRecordButtonState()
+        private void PositionListBoxUnderTextBox()
         {
-            bool isEmpValid = !string.IsNullOrEmpty(selectedEmployeeId) &&
-                              selectedEmployeeId.Equals(EmpIdTxt.Text.Trim(), StringComparison.OrdinalIgnoreCase);
-
-            RecordAttendanceBtn.Enabled = (SaveCheckIn.Checked || SaveCheckOut.Checked) && isEmpValid;
+            var tb = EmpIdTxt.PointToScreen(Point.Empty);
+            var frm = PointToScreen(Point.Empty);
+            EmployeeListBox.Location = new Point(tb.X - frm.X, tb.Y - frm.Y + EmpIdTxt.Height);
+            EmployeeListBox.Width = EmpIdTxt.Width;
         }
 
-        private void RecordAttendanceForm_Load(object sender, EventArgs e)
+        private void MngRecordAttendanceForm_Load(object sender, EventArgs e)
         {
             ResetEmployeeDetails();
         }
