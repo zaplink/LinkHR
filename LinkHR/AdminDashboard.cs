@@ -96,5 +96,15 @@ namespace LinkHR
         {
             loadform(new ReportAttendence());
         }
+
+        private void registerManagerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            loadform(new RegisterManager());
+        }
+
+        private void removeMToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            loadform(new RemoveManager());
+        }
     }
 }

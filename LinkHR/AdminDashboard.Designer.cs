@@ -34,6 +34,9 @@
             detailsToolStripMenuItem = new ToolStripMenuItem();
             removeEmployeeToolStripMenuItem = new ToolStripMenuItem();
             viewEmployeeToolStripMenuItem = new ToolStripMenuItem();
+            managersToolStripMenuItem = new ToolStripMenuItem();
+            registerManagerToolStripMenuItem = new ToolStripMenuItem();
+            removeMToolStripMenuItem = new ToolStripMenuItem();
             attendenceToolStripMenuItem = new ToolStripMenuItem();
             recordAttendanceToolStripMenuItem = new ToolStripMenuItem();
             viewAttendanceToolStripMenuItem = new ToolStripMenuItem();
@@ -45,9 +48,6 @@
             label1 = new Label();
             adminPanel = new Panel();
             label2 = new Label();
-            managersToolStripMenuItem = new ToolStripMenuItem();
-            registerManagerToolStripMenuItem = new ToolStripMenuItem();
-            removeMToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             panel1.SuspendLayout();
             adminPanel.SuspendLayout();
@@ -82,23 +82,44 @@
             // detailsToolStripMenuItem
             // 
             detailsToolStripMenuItem.Name = "detailsToolStripMenuItem";
-            detailsToolStripMenuItem.Size = new Size(224, 26);
+            detailsToolStripMenuItem.Size = new Size(216, 26);
             detailsToolStripMenuItem.Text = "Register Employee";
             detailsToolStripMenuItem.Click += detailsToolStripMenuItem_Click;
             // 
             // removeEmployeeToolStripMenuItem
             // 
             removeEmployeeToolStripMenuItem.Name = "removeEmployeeToolStripMenuItem";
-            removeEmployeeToolStripMenuItem.Size = new Size(224, 26);
+            removeEmployeeToolStripMenuItem.Size = new Size(216, 26);
             removeEmployeeToolStripMenuItem.Text = "Remove Employee";
             removeEmployeeToolStripMenuItem.Click += removeEmployeeToolStripMenuItem_Click;
             // 
             // viewEmployeeToolStripMenuItem
             // 
             viewEmployeeToolStripMenuItem.Name = "viewEmployeeToolStripMenuItem";
-            viewEmployeeToolStripMenuItem.Size = new Size(224, 26);
+            viewEmployeeToolStripMenuItem.Size = new Size(216, 26);
             viewEmployeeToolStripMenuItem.Text = "View Employee";
             viewEmployeeToolStripMenuItem.Click += viewEmployeeToolStripMenuItem_Click;
+            // 
+            // managersToolStripMenuItem
+            // 
+            managersToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { registerManagerToolStripMenuItem, removeMToolStripMenuItem });
+            managersToolStripMenuItem.Name = "managersToolStripMenuItem";
+            managersToolStripMenuItem.Size = new Size(88, 24);
+            managersToolStripMenuItem.Text = "Managers";
+            // 
+            // registerManagerToolStripMenuItem
+            // 
+            registerManagerToolStripMenuItem.Name = "registerManagerToolStripMenuItem";
+            registerManagerToolStripMenuItem.Size = new Size(224, 26);
+            registerManagerToolStripMenuItem.Text = "Register Manager";
+            registerManagerToolStripMenuItem.Click += registerManagerToolStripMenuItem_Click;
+            // 
+            // removeMToolStripMenuItem
+            // 
+            removeMToolStripMenuItem.Name = "removeMToolStripMenuItem";
+            removeMToolStripMenuItem.Size = new Size(224, 26);
+            removeMToolStripMenuItem.Text = "Remove Manager";
+            removeMToolStripMenuItem.Click += removeMToolStripMenuItem_Click;
             // 
             // attendenceToolStripMenuItem
             // 
@@ -198,25 +219,6 @@
             label2.Size = new Size(135, 35);
             label2.TabIndex = 4;
             label2.Text = "Welcome..!";
-            // 
-            // managersToolStripMenuItem
-            // 
-            managersToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { registerManagerToolStripMenuItem, removeMToolStripMenuItem });
-            managersToolStripMenuItem.Name = "managersToolStripMenuItem";
-            managersToolStripMenuItem.Size = new Size(88, 24);
-            managersToolStripMenuItem.Text = "Managers";
-            // 
-            // registerManagerToolStripMenuItem
-            // 
-            registerManagerToolStripMenuItem.Name = "registerManagerToolStripMenuItem";
-            registerManagerToolStripMenuItem.Size = new Size(224, 26);
-            registerManagerToolStripMenuItem.Text = "Register Manager";
-            // 
-            // removeMToolStripMenuItem
-            // 
-            removeMToolStripMenuItem.Name = "removeMToolStripMenuItem";
-            removeMToolStripMenuItem.Size = new Size(224, 26);
-            removeMToolStripMenuItem.Text = "Remove Manager";
             // 
             // AdminDashboard
             // 
