@@ -30,12 +30,17 @@
         {
             label1 = new Label();
             dataGridView1 = new DataGridView();
-            Column1 = new DataGridViewTextBoxColumn();
-            Column2 = new DataGridViewTextBoxColumn();
-            Column5 = new DataGridViewTextBoxColumn();
-            Column3 = new DataGridViewTextBoxColumn();
-            Column4 = new DataGridViewTextBoxColumn();
-            Column6 = new DataGridViewTextBoxColumn();
+            id = new DataGridViewTextBoxColumn();
+            first_name = new DataGridViewTextBoxColumn();
+            last_name = new DataGridViewTextBoxColumn();
+            dob = new DataGridViewTextBoxColumn();
+            contact_no = new DataGridViewTextBoxColumn();
+            address = new DataGridViewTextBoxColumn();
+            email = new DataGridViewTextBoxColumn();
+            department_name = new DataGridViewTextBoxColumn();
+            gender = new DataGridViewTextBoxColumn();
+            joining_date = new DataGridViewTextBoxColumn();
+            role = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -52,61 +57,95 @@
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column5, Column3, Column4, Column6 });
-            dataGridView1.Location = new Point(50, 75);
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { id, first_name, last_name, dob, contact_no, address, email, department_name, gender, joining_date, role });
+            dataGridView1.Location = new Point(26, 100);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(803, 487);
+            dataGridView1.Size = new Size(1016, 555);
             dataGridView1.TabIndex = 1;
-            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
-            // Column1
+            // id
             // 
-            Column1.HeaderText = "First name";
-            Column1.MinimumWidth = 6;
-            Column1.Name = "Column1";
-            Column1.Width = 125;
+            id.HeaderText = "ID";
+            id.MinimumWidth = 6;
+            id.Name = "id";
+            id.Width = 125;
             // 
-            // Column2
+            // first_name
             // 
-            Column2.HeaderText = "Last name";
-            Column2.MinimumWidth = 6;
-            Column2.Name = "Column2";
-            Column2.Width = 125;
+            first_name.HeaderText = "First name";
+            first_name.MinimumWidth = 6;
+            first_name.Name = "first_name";
+            first_name.Width = 125;
             // 
-            // Column5
+            // last_name
             // 
-            Column5.HeaderText = "Position";
-            Column5.MinimumWidth = 6;
-            Column5.Name = "Column5";
-            Column5.Width = 125;
+            last_name.HeaderText = "Last name";
+            last_name.MinimumWidth = 6;
+            last_name.Name = "last_name";
+            last_name.Width = 125;
             // 
-            // Column3
+            // dob
             // 
-            Column3.HeaderText = "Birthday";
-            Column3.MinimumWidth = 6;
-            Column3.Name = "Column3";
-            Column3.Width = 125;
+            dob.HeaderText = "Birthday";
+            dob.MinimumWidth = 6;
+            dob.Name = "dob";
+            dob.Width = 125;
             // 
-            // Column4
+            // contact_no
             // 
-            Column4.HeaderText = "Phone no.";
-            Column4.MinimumWidth = 6;
-            Column4.Name = "Column4";
-            Column4.Width = 125;
+            contact_no.HeaderText = "Phone no";
+            contact_no.MinimumWidth = 6;
+            contact_no.Name = "contact_no";
+            contact_no.Width = 125;
             // 
-            // Column6
+            // address
             // 
-            Column6.HeaderText = "Address";
-            Column6.MinimumWidth = 6;
-            Column6.Name = "Column6";
-            Column6.Width = 125;
+            address.HeaderText = "Address";
+            address.MinimumWidth = 6;
+            address.Name = "address";
+            address.Width = 125;
+            // 
+            // email
+            // 
+            email.HeaderText = "Email";
+            email.MinimumWidth = 6;
+            email.Name = "email";
+            email.Width = 125;
+            // 
+            // department_name
+            // 
+            department_name.HeaderText = "Department";
+            department_name.MinimumWidth = 6;
+            department_name.Name = "department_name";
+            department_name.Width = 125;
+            // 
+            // gender
+            // 
+            gender.HeaderText = "Gender";
+            gender.MinimumWidth = 6;
+            gender.Name = "gender";
+            gender.Width = 125;
+            // 
+            // joining_date
+            // 
+            joining_date.HeaderText = "Joining Date";
+            joining_date.MinimumWidth = 6;
+            joining_date.Name = "joining_date";
+            joining_date.Width = 125;
+            // 
+            // role
+            // 
+            role.HeaderText = "Role";
+            role.MinimumWidth = 6;
+            role.Name = "role";
+            role.Width = 125;
             // 
             // EmployeeListForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(996, 594);
+            ClientSize = new Size(1064, 676);
             Controls.Add(dataGridView1);
             Controls.Add(label1);
             Name = "EmployeeListForm";
@@ -120,11 +159,16 @@
 
         private Label label1;
         private DataGridView dataGridView1;
-        private DataGridViewTextBoxColumn Column1;
-        private DataGridViewTextBoxColumn Column2;
-        private DataGridViewTextBoxColumn Column5;
-        private DataGridViewTextBoxColumn Column3;
-        private DataGridViewTextBoxColumn Column4;
-        private DataGridViewTextBoxColumn Column6;
+        private DataGridViewTextBoxColumn id;
+        private DataGridViewTextBoxColumn first_name;
+        private DataGridViewTextBoxColumn last_name;
+        private DataGridViewTextBoxColumn dob;
+        private DataGridViewTextBoxColumn contact_no;
+        private DataGridViewTextBoxColumn address;
+        private DataGridViewTextBoxColumn email;
+        private DataGridViewTextBoxColumn department_name;
+        private DataGridViewTextBoxColumn gender;
+        private DataGridViewTextBoxColumn joining_date;
+        private DataGridViewTextBoxColumn role;
     }
 }
