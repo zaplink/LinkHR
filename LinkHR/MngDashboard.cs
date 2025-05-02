@@ -104,7 +104,7 @@ namespace LinkHR
 
         private void reportsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            loadform(new ReportAttendence());
+            loadform(new MngReportsForm());
         }
 
         private void homeToolStripMenuItem_Click(object sender, EventArgs e)
