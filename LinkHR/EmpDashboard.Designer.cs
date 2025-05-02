@@ -125,7 +125,8 @@
             // 
             saleryToolStripMenuItem.Name = "saleryToolStripMenuItem";
             saleryToolStripMenuItem.Size = new Size(50, 20);
-            saleryToolStripMenuItem.Text = "Salery";
+            saleryToolStripMenuItem.Text = "Salary";
+            saleryToolStripMenuItem.Click += saleryToolStripMenuItem_Click;
             // 
             // leavesToolStripMenuItem
             // 
