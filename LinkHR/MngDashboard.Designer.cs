@@ -44,7 +44,6 @@
             panel2 = new Panel();
             label1 = new Label();
             mngPanel = new Panel();
-            label2 = new Label();
             salaryToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             panel1.SuspendLayout();
@@ -189,16 +188,6 @@
             mngPanel.Name = "mngPanel";
             mngPanel.Size = new Size(947, 538);
             mngPanel.TabIndex = 3;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 15F);
-            label2.Location = new Point(63, 42);
-            label2.Name = "label2";
-            label2.Size = new Size(107, 28);
-            label2.TabIndex = 5;
-            label2.Text = "Welcome..!";
             // 
             // salaryToolStripMenuItem
             // 
