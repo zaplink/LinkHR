@@ -112,6 +112,9 @@ namespace LinkHR
             loadform(new HomeManager());
         }
 
-
+        private void salaryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            loadform(new MngSalaryForm());
+        }
     }
 }   

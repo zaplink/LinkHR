@@ -60,6 +60,9 @@ namespace LinkHR
             loadform(new HomeEmployee());
         }
 
-
+        private void saleryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            loadform(new EmpSalaryForm());
+        }
     }
 }
