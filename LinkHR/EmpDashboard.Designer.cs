@@ -48,10 +48,10 @@
             mainPanel.Controls.Add(panel1);
             mainPanel.Dock = DockStyle.Fill;
             mainPanel.Font = new Font("Microsoft Sans Serif", 8.25F);
-            mainPanel.Location = new Point(0, 24);
+            mainPanel.Location = new Point(0, 30);
             mainPanel.Margin = new Padding(0);
             mainPanel.Name = "mainPanel";
-            mainPanel.Size = new Size(1166, 538);
+            mainPanel.Size = new Size(1333, 719);
             mainPanel.TabIndex = 5;
             // 
             // panel1
@@ -62,9 +62,8 @@
             panel1.Controls.Add(label1);
             panel1.Dock = DockStyle.Left;
             panel1.Location = new Point(0, 0);
-            panel1.Margin = new Padding(3, 2, 3, 2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(219, 538);
+            panel1.Size = new Size(250, 719);
             panel1.TabIndex = 0;
             // 
             // logoutButton
@@ -72,10 +71,9 @@
             logoutButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             logoutButton.BackColor = SystemColors.ControlDark;
             logoutButton.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            logoutButton.Location = new Point(10, 493);
-            logoutButton.Margin = new Padding(3, 2, 3, 2);
+            logoutButton.Location = new Point(11, 659);
             logoutButton.Name = "logoutButton";
-            logoutButton.Size = new Size(197, 36);
+            logoutButton.Size = new Size(225, 48);
             logoutButton.TabIndex = 3;
             logoutButton.Text = "Logout";
             logoutButton.UseVisualStyleBackColor = false;
@@ -85,10 +83,9 @@
             // 
             panel2.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             panel2.BackgroundImage = Properties.Resources.employee;
-            panel2.Location = new Point(46, 96);
-            panel2.Margin = new Padding(3, 2, 3, 2);
+            panel2.Location = new Point(53, 128);
             panel2.Name = "panel2";
-            panel2.Size = new Size(105, 90);
+            panel2.Size = new Size(120, 120);
             panel2.TabIndex = 2;
             // 
             // label1
@@ -96,9 +93,9 @@
             label1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 13F, FontStyle.Bold);
-            label1.Location = new Point(48, 48);
+            label1.Location = new Point(55, 64);
             label1.Name = "label1";
-            label1.Size = new Size(97, 25);
+            label1.Size = new Size(117, 30);
             label1.TabIndex = 1;
             label1.Text = "Username";
             // 
@@ -109,17 +106,18 @@
             menuStrip1.Items.AddRange(new ToolStripItem[] { homeToolStripMenuItem, saleryToolStripMenuItem, leavesToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Padding = new Padding(5, 2, 0, 2);
+            menuStrip1.Padding = new Padding(6, 3, 0, 3);
             menuStrip1.RenderMode = ToolStripRenderMode.Professional;
-            menuStrip1.Size = new Size(1166, 24);
+            menuStrip1.Size = new Size(1333, 30);
             menuStrip1.TabIndex = 3;
             menuStrip1.Text = "menuStrip1";
             // 
             // homeToolStripMenuItem
             // 
             homeToolStripMenuItem.Name = "homeToolStripMenuItem";
-            homeToolStripMenuItem.Size = new Size(52, 20);
+            homeToolStripMenuItem.Size = new Size(64, 24);
             homeToolStripMenuItem.Text = "Home";
+            homeToolStripMenuItem.Click += homeToolStripMenuItem_Click;
             // 
             // saleryToolStripMenuItem
             // 
@@ -131,20 +129,20 @@
             // leavesToolStripMenuItem
             // 
             leavesToolStripMenuItem.Name = "leavesToolStripMenuItem";
-            leavesToolStripMenuItem.Size = new Size(54, 20);
+            leavesToolStripMenuItem.Size = new Size(67, 24);
             leavesToolStripMenuItem.Text = "Leaves";
             leavesToolStripMenuItem.Click += leavesToolStripMenuItem_Click;
             // 
             // EmpDashboard
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1166, 562);
+            ClientSize = new Size(1333, 749);
             Controls.Add(mainPanel);
             Controls.Add(menuStrip1);
-            Margin = new Padding(3, 2, 3, 2);
             Name = "EmpDashboard";
             Text = "EmpDashboard";
+            Load += EmpDashboard_Load;
             mainPanel.ResumeLayout(false);
             panel1.ResumeLayout(false);
             panel1.PerformLayout();

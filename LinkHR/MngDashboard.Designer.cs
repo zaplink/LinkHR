@@ -48,7 +48,6 @@
             salaryToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             panel1.SuspendLayout();
-            mngPanel.SuspendLayout();
             SuspendLayout();
             // 
             // menuStrip1
@@ -69,6 +68,7 @@
             homeToolStripMenuItem.Name = "homeToolStripMenuItem";
             homeToolStripMenuItem.Size = new Size(52, 20);
             homeToolStripMenuItem.Text = "Home";
+            homeToolStripMenuItem.Click += homeToolStripMenuItem_Click;
             // 
             // employeesToolStripMenuItem
             // 
@@ -183,7 +183,6 @@
             // 
             // mngPanel
             // 
-            mngPanel.Controls.Add(label2);
             mngPanel.Dock = DockStyle.Fill;
             mngPanel.Location = new Point(219, 24);
             mngPanel.Margin = new Padding(3, 2, 3, 2);
@@ -219,12 +218,11 @@
             Margin = new Padding(3, 2, 3, 2);
             Name = "MngDashboard";
             Text = "MngDashboard";
+            Load += MngDashboard_Load_1;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
-            mngPanel.ResumeLayout(false);
-            mngPanel.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -244,7 +242,6 @@
         private ToolStripMenuItem reportsToolStripMenuItem;
         private Panel panel1;
         private Panel mngPanel;
-        private Label label2;
         private Panel panel2;
         private Label label1;
         private Button logoutButton;

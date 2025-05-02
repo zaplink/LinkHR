@@ -18,6 +18,11 @@ namespace LinkHR
             this.StartPosition = FormStartPosition.CenterScreen;
         }
 
+        private void EmpDashboard_Load(object sender, EventArgs e)
+        {
+            loadform(new HomeEmployee());
+        }
+
 
         private Form activeForm = null;
 
@@ -48,6 +53,11 @@ namespace LinkHR
         private void leavesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             loadform(new EmpLeaveForm());
+        }
+
+        private void homeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            loadform(new HomeEmployee());
         }
 
         private void saleryToolStripMenuItem_Click(object sender, EventArgs e)
