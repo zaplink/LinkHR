@@ -52,6 +52,11 @@ namespace LinkHR
             }
         }
 
+        // Add the Load event handler to display HomeManager by default
+        private void MngDashboard_Load_1(object sender, EventArgs e)
+        {
+            loadform(new HomeManager());
+        }
 
 
         private void logoutButton_Click(object sender, EventArgs e)
@@ -101,5 +106,12 @@ namespace LinkHR
         {
             loadform(new ReportAttendence());
         }
+
+        private void homeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            loadform(new HomeManager());
+        }
+
+
     }
-}
+}   

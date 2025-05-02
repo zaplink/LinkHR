@@ -44,10 +44,8 @@
             panel2 = new Panel();
             label1 = new Label();
             mngPanel = new Panel();
-            label2 = new Label();
             menuStrip1.SuspendLayout();
             panel1.SuspendLayout();
-            mngPanel.SuspendLayout();
             SuspendLayout();
             // 
             // menuStrip1
@@ -68,6 +66,7 @@
             homeToolStripMenuItem.Name = "homeToolStripMenuItem";
             homeToolStripMenuItem.Size = new Size(64, 24);
             homeToolStripMenuItem.Text = "Home";
+            homeToolStripMenuItem.Click += homeToolStripMenuItem_Click;
             // 
             // employeesToolStripMenuItem
             // 
@@ -179,22 +178,11 @@
             // 
             // mngPanel
             // 
-            mngPanel.Controls.Add(label2);
             mngPanel.Dock = DockStyle.Fill;
             mngPanel.Location = new Point(250, 30);
             mngPanel.Name = "mngPanel";
             mngPanel.Size = new Size(1082, 723);
             mngPanel.TabIndex = 3;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 15F);
-            label2.Location = new Point(72, 56);
-            label2.Name = "label2";
-            label2.Size = new Size(135, 35);
-            label2.TabIndex = 5;
-            label2.Text = "Welcome..!";
             // 
             // MngDashboard
             // 
@@ -206,12 +194,11 @@
             Controls.Add(menuStrip1);
             Name = "MngDashboard";
             Text = "MngDashboard";
+            Load += MngDashboard_Load_1;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
-            mngPanel.ResumeLayout(false);
-            mngPanel.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -231,7 +218,6 @@
         private ToolStripMenuItem reportsToolStripMenuItem;
         private Panel panel1;
         private Panel mngPanel;
-        private Label label2;
         private Panel panel2;
         private Label label1;
         private Button logoutButton;
