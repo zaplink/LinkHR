@@ -19,6 +19,11 @@ namespace LinkHR
 
         }
 
+        private void AdminDashboard_Load(object sender, EventArgs e)
+        {
+            loadform(new HomeAdmin());
+        }
+
         private Form activeForm = null;
 
         private void loadform(Form childForm)
@@ -106,5 +111,11 @@ namespace LinkHR
         {
             loadform(new RemoveManager());
         }
+
+        private void homeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            loadform(new HomeAdmin());
+        }
+
     }
 }

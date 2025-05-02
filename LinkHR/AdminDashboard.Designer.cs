@@ -71,6 +71,7 @@
             homeToolStripMenuItem.Name = "homeToolStripMenuItem";
             homeToolStripMenuItem.Size = new Size(64, 24);
             homeToolStripMenuItem.Text = "Home";
+            homeToolStripMenuItem.Click += homeToolStripMenuItem_Click;
             // 
             // employeesToolStripMenuItem
             // 
@@ -110,14 +111,14 @@
             // registerManagerToolStripMenuItem
             // 
             registerManagerToolStripMenuItem.Name = "registerManagerToolStripMenuItem";
-            registerManagerToolStripMenuItem.Size = new Size(224, 26);
+            registerManagerToolStripMenuItem.Size = new Size(209, 26);
             registerManagerToolStripMenuItem.Text = "Register Manager";
             registerManagerToolStripMenuItem.Click += registerManagerToolStripMenuItem_Click;
             // 
             // removeMToolStripMenuItem
             // 
             removeMToolStripMenuItem.Name = "removeMToolStripMenuItem";
-            removeMToolStripMenuItem.Size = new Size(224, 26);
+            removeMToolStripMenuItem.Size = new Size(209, 26);
             removeMToolStripMenuItem.Text = "Remove Manager";
             removeMToolStripMenuItem.Click += removeMToolStripMenuItem_Click;
             // 
@@ -230,6 +231,7 @@
             Controls.Add(menuStrip1);
             Name = "AdminDashboard";
             Text = "AdminDashboard";
+            Load += AdminDashboard_Load;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             panel1.ResumeLayout(false);
