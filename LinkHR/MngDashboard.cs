@@ -101,5 +101,10 @@ namespace LinkHR
         {
             loadform(new ReportAttendence());
         }
+
+        private void salaryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            loadform(new MngSalaryForm());
+        }
     }
 }
