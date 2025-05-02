@@ -79,7 +79,7 @@ namespace LinkHR
                 ForeColor = System.Drawing.Color.Black,
                 TitleBackColor = System.Drawing.Color.LightGray,
                 TitleForeColor = System.Drawing.Color.Black,
-                CalendarDimensions = new System.Drawing.Size(1, 1) // Display 2 months horizontally
+                CalendarDimensions = new System.Drawing.Size(2, 1) // Display 2 months horizontally
             };
 
             // Set today's date as the selected date

@@ -28,12 +28,210 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "HomeEmployee";
+            lblWelcome = new Label();
+            panel1 = new Panel();
+            txtUsername = new TextBox();
+            label8 = new Label();
+            txtPhoneNo = new TextBox();
+            txtEmail = new TextBox();
+            txtName = new TextBox();
+            txtEmployeeId = new TextBox();
+            label7 = new Label();
+            label6 = new Label();
+            label5 = new Label();
+            label4 = new Label();
+            panel4 = new Panel();
+            label9 = new Label();
+            calendarPanel = new Panel();
+            label3 = new Label();
+            panel1.SuspendLayout();
+            panel4.SuspendLayout();
+            SuspendLayout();
+            // 
+            // lblWelcome
+            // 
+            lblWelcome.AutoSize = true;
+            lblWelcome.Font = new Font("Segoe UI Semibold", 13.2000008F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblWelcome.Location = new Point(63, 46);
+            lblWelcome.Name = "lblWelcome";
+            lblWelcome.Size = new Size(129, 31);
+            lblWelcome.TabIndex = 1;
+            lblWelcome.Text = "Welcome..!";
+            // 
+            // panel1
+            // 
+            panel1.Controls.Add(txtUsername);
+            panel1.Controls.Add(label8);
+            panel1.Controls.Add(txtPhoneNo);
+            panel1.Controls.Add(txtEmail);
+            panel1.Controls.Add(txtName);
+            panel1.Controls.Add(txtEmployeeId);
+            panel1.Controls.Add(label7);
+            panel1.Controls.Add(label6);
+            panel1.Controls.Add(label5);
+            panel1.Controls.Add(label4);
+            panel1.Location = new Point(63, 201);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(448, 396);
+            panel1.TabIndex = 41;
+            // 
+            // txtUsername
+            // 
+            txtUsername.Location = new Point(159, 183);
+            txtUsername.Name = "txtUsername";
+            txtUsername.Size = new Size(238, 27);
+            txtUsername.TabIndex = 38;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new Point(15, 190);
+            label8.Name = "label8";
+            label8.Size = new Size(82, 20);
+            label8.TabIndex = 37;
+            label8.Text = "Username :";
+            // 
+            // txtPhoneNo
+            // 
+            txtPhoneNo.Location = new Point(159, 300);
+            txtPhoneNo.Name = "txtPhoneNo";
+            txtPhoneNo.Size = new Size(238, 27);
+            txtPhoneNo.TabIndex = 36;
+            // 
+            // txtEmail
+            // 
+            txtEmail.Location = new Point(159, 242);
+            txtEmail.Name = "txtEmail";
+            txtEmail.Size = new Size(238, 27);
+            txtEmail.TabIndex = 35;
+            // 
+            // txtName
+            // 
+            txtName.Location = new Point(159, 123);
+            txtName.Name = "txtName";
+            txtName.Size = new Size(238, 27);
+            txtName.TabIndex = 34;
+            // 
+            // txtEmployeeId
+            // 
+            txtEmployeeId.Location = new Point(159, 65);
+            txtEmployeeId.Name = "txtEmployeeId";
+            txtEmployeeId.Size = new Size(238, 27);
+            txtEmployeeId.TabIndex = 33;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new Point(15, 307);
+            label7.Name = "label7";
+            label7.Size = new Size(74, 20);
+            label7.TabIndex = 32;
+            label7.Text = "Phone no.";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(15, 249);
+            label6.Name = "label6";
+            label6.Size = new Size(53, 20);
+            label6.TabIndex = 31;
+            label6.Text = "Email :";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(15, 130);
+            label5.Name = "label5";
+            label5.Size = new Size(56, 20);
+            label5.TabIndex = 30;
+            label5.Text = "Name :";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(15, 72);
+            label4.Name = "label4";
+            label4.Size = new Size(101, 20);
+            label4.TabIndex = 29;
+            label4.Text = "Employee ID :";
+            // 
+            // panel4
+            // 
+            panel4.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            panel4.BackColor = SystemColors.ButtonShadow;
+            panel4.Controls.Add(label9);
+            panel4.Location = new Point(572, 146);
+            panel4.Name = "panel4";
+            panel4.Size = new Size(480, 55);
+            panel4.TabIndex = 42;
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label9.Location = new Point(26, 17);
+            label9.Name = "label9";
+            label9.Size = new Size(78, 23);
+            label9.TabIndex = 1;
+            label9.Text = "Calendar";
+            // 
+            // calendarPanel
+            // 
+            calendarPanel.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            calendarPanel.BackColor = SystemColors.ButtonHighlight;
+            calendarPanel.Location = new Point(572, 204);
+            calendarPanel.Name = "calendarPanel";
+            calendarPanel.Size = new Size(480, 393);
+            calendarPanel.TabIndex = 43;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 11F);
+            label3.Location = new Point(63, 163);
+            label3.Name = "label3";
+            label3.Size = new Size(124, 25);
+            label3.TabIndex = 44;
+            label3.Text = "Your Account";
+            // 
+            // HomeEmployee
+            // 
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(1064, 676);
+            Controls.Add(label3);
+            Controls.Add(panel4);
+            Controls.Add(calendarPanel);
+            Controls.Add(panel1);
+            Controls.Add(lblWelcome);
+            Name = "HomeEmployee";
+            Text = "HomeEmployee";
+            Load += HomeEmployee_Load;
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
+            panel4.ResumeLayout(false);
+            panel4.PerformLayout();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
+
+        private Label lblWelcome;
+        private Panel panel1;
+        private TextBox txtUsername;
+        private Label label8;
+        private TextBox txtPhoneNo;
+        private TextBox txtEmail;
+        private TextBox txtName;
+        private TextBox txtEmployeeId;
+        private Label label7;
+        private Label label6;
+        private Label label5;
+        private Label label4;
+        private Panel panel4;
+        private Label label9;
+        private Panel calendarPanel;
+        private Label label3;
     }
 }
