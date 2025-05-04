@@ -35,6 +35,8 @@
             removeEmployeeToolStripMenuItem = new ToolStripMenuItem();
             viewEmployeeToolStripMenuItem = new ToolStripMenuItem();
             attendenceToolStripMenuItem = new ToolStripMenuItem();
+            recordAttendanceToolStripMenuItem = new ToolStripMenuItem();
+            viewAttendanceToolStripMenuItem = new ToolStripMenuItem();
             leavesToolStripMenuItem = new ToolStripMenuItem();
             reportsToolStripMenuItem = new ToolStripMenuItem();
             sidepanel = new Panel();
@@ -45,28 +47,28 @@
             img = new Panel();
             label1 = new Label();
             mainPanel = new Panel();
+            panel3 = new Panel();
+            panel4 = new Panel();
+            label4 = new Label();
             panel5 = new Panel();
             label6 = new Label();
-            panel3 = new Panel();
             panel2 = new Panel();
+            panel6 = new Panel();
+            label5 = new Label();
             announcements = new Panel();
             panel1 = new Panel();
             label3 = new Label();
             label2 = new Label();
-            panel4 = new Panel();
-            panel6 = new Panel();
-            label4 = new Label();
-            label5 = new Label();
             menuStrip1.SuspendLayout();
             sidepanel.SuspendLayout();
             mainPanel.SuspendLayout();
-            panel5.SuspendLayout();
             panel3.SuspendLayout();
+            panel4.SuspendLayout();
+            panel5.SuspendLayout();
             panel2.SuspendLayout();
+            panel6.SuspendLayout();
             announcements.SuspendLayout();
             panel1.SuspendLayout();
-            panel4.SuspendLayout();
-            panel6.SuspendLayout();
             SuspendLayout();
             // 
             // menuStrip1
@@ -76,8 +78,9 @@
             menuStrip1.Items.AddRange(new ToolStripItem[] { homeToolStripMenuItem, employeesToolStripMenuItem, attendenceToolStripMenuItem, leavesToolStripMenuItem, reportsToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
+            menuStrip1.Padding = new Padding(6, 3, 0, 3);
             menuStrip1.RenderMode = ToolStripRenderMode.Professional;
-            menuStrip1.Size = new Size(1325, 28);
+            menuStrip1.Size = new Size(1325, 30);
             menuStrip1.TabIndex = 0;
             menuStrip1.Text = "menuStrip1";
             menuStrip1.ItemClicked += menuStrip1_ItemClicked;
@@ -118,10 +121,25 @@
             // 
             // attendenceToolStripMenuItem
             // 
+            attendenceToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { recordAttendanceToolStripMenuItem, viewAttendanceToolStripMenuItem });
             attendenceToolStripMenuItem.Name = "attendenceToolStripMenuItem";
             attendenceToolStripMenuItem.Size = new Size(99, 24);
             attendenceToolStripMenuItem.Text = "Attendence";
             attendenceToolStripMenuItem.Click += attendenceToolStripMenuItem_Click;
+            // 
+            // recordAttendanceToolStripMenuItem
+            // 
+            recordAttendanceToolStripMenuItem.Name = "recordAttendanceToolStripMenuItem";
+            recordAttendanceToolStripMenuItem.Size = new Size(219, 26);
+            recordAttendanceToolStripMenuItem.Text = "Record Attendance";
+            recordAttendanceToolStripMenuItem.Click += recordAttendanceToolStripMenuItem_Click;
+            // 
+            // viewAttendanceToolStripMenuItem
+            // 
+            viewAttendanceToolStripMenuItem.Name = "viewAttendanceToolStripMenuItem";
+            viewAttendanceToolStripMenuItem.Size = new Size(219, 26);
+            viewAttendanceToolStripMenuItem.Text = "View Attendance";
+            viewAttendanceToolStripMenuItem.Click += viewAttendanceToolStripMenuItem_Click;
             // 
             // leavesToolStripMenuItem
             // 
@@ -147,10 +165,10 @@
             sidepanel.Controls.Add(img);
             sidepanel.Controls.Add(label1);
             sidepanel.Dock = DockStyle.Left;
-            sidepanel.Location = new Point(0, 28);
+            sidepanel.Location = new Point(0, 30);
             sidepanel.Margin = new Padding(0);
             sidepanel.Name = "sidepanel";
-            sidepanel.Size = new Size(250, 756);
+            sidepanel.Size = new Size(250, 719);
             sidepanel.TabIndex = 1;
             // 
             // button2
@@ -172,7 +190,7 @@
             button1.BackColor = SystemColors.ControlDarkDark;
             button1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button1.ForeColor = SystemColors.Window;
-            button1.Location = new Point(40, 442);
+            button1.Location = new Point(40, 443);
             button1.Name = "button1";
             button1.Size = new Size(155, 51);
             button1.TabIndex = 3;
@@ -198,7 +216,7 @@
             logoutButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             logoutButton.BackColor = SystemColors.ControlDark;
             logoutButton.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            logoutButton.Location = new Point(12, 696);
+            logoutButton.Location = new Point(11, 659);
             logoutButton.Name = "logoutButton";
             logoutButton.Size = new Size(225, 48);
             logoutButton.TabIndex = 0;
@@ -220,7 +238,7 @@
             label1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 13F, FontStyle.Bold);
-            label1.Location = new Point(40, 58);
+            label1.Location = new Point(40, 59);
             label1.Name = "label1";
             label1.Size = new Size(155, 30);
             label1.TabIndex = 0;
@@ -235,11 +253,40 @@
             mainPanel.Controls.Add(label2);
             mainPanel.Dock = DockStyle.Fill;
             mainPanel.Font = new Font("Microsoft Sans Serif", 8.25F);
-            mainPanel.Location = new Point(250, 28);
+            mainPanel.Location = new Point(250, 30);
             mainPanel.Margin = new Padding(0);
             mainPanel.Name = "mainPanel";
-            mainPanel.Size = new Size(1075, 756);
+            mainPanel.Size = new Size(1075, 719);
             mainPanel.TabIndex = 2;
+            // 
+            // panel3
+            // 
+            panel3.BackColor = SystemColors.ButtonHighlight;
+            panel3.Controls.Add(panel4);
+            panel3.Controls.Add(panel5);
+            panel3.Location = new Point(555, 361);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(480, 371);
+            panel3.TabIndex = 7;
+            // 
+            // panel4
+            // 
+            panel4.BackColor = SystemColors.ButtonShadow;
+            panel4.Controls.Add(label4);
+            panel4.Location = new Point(0, 0);
+            panel4.Name = "panel4";
+            panel4.Size = new Size(480, 55);
+            panel4.TabIndex = 3;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label4.Location = new Point(26, 17);
+            label4.Name = "label4";
+            label4.Size = new Size(78, 23);
+            label4.TabIndex = 1;
+            label4.Text = "Calendar";
             // 
             // panel5
             // 
@@ -263,16 +310,6 @@
             label6.Text = "Quick access";
             label6.Click += label6_Click;
             // 
-            // panel3
-            // 
-            panel3.BackColor = SystemColors.ButtonHighlight;
-            panel3.Controls.Add(panel4);
-            panel3.Controls.Add(panel5);
-            panel3.Location = new Point(556, 361);
-            panel3.Name = "panel3";
-            panel3.Size = new Size(480, 371);
-            panel3.TabIndex = 7;
-            // 
             // panel2
             // 
             panel2.BackColor = SystemColors.ButtonHighlight;
@@ -282,6 +319,25 @@
             panel2.Size = new Size(411, 368);
             panel2.TabIndex = 6;
             // 
+            // panel6
+            // 
+            panel6.BackColor = SystemColors.ButtonShadow;
+            panel6.Controls.Add(label5);
+            panel6.Location = new Point(0, 1);
+            panel6.Name = "panel6";
+            panel6.Size = new Size(411, 55);
+            panel6.TabIndex = 4;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label5.Location = new Point(27, 13);
+            label5.Name = "label5";
+            label5.Size = new Size(95, 23);
+            label5.TabIndex = 2;
+            label5.Text = "Quick Start";
+            // 
             // announcements
             // 
             announcements.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
@@ -289,8 +345,9 @@
             announcements.Controls.Add(panel1);
             announcements.Location = new Point(26, 104);
             announcements.Name = "announcements";
-            announcements.Size = new Size(1010, 222);
+            announcements.Size = new Size(1010, 221);
             announcements.TabIndex = 4;
+            announcements.Paint += announcements_Paint;
             // 
             // panel1
             // 
@@ -316,56 +373,18 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 15F);
-            label2.Location = new Point(26, 34);
+            label2.Location = new Point(26, 35);
             label2.Name = "label2";
             label2.Size = new Size(135, 35);
             label2.TabIndex = 3;
             label2.Text = "Welcome..!";
             label2.Click += label2_Click;
             // 
-            // panel4
-            // 
-            panel4.BackColor = SystemColors.ButtonShadow;
-            panel4.Controls.Add(label4);
-            panel4.Location = new Point(0, 0);
-            panel4.Name = "panel4";
-            panel4.Size = new Size(480, 55);
-            panel4.TabIndex = 3;
-            // 
-            // panel6
-            // 
-            panel6.BackColor = SystemColors.ButtonShadow;
-            panel6.Controls.Add(label5);
-            panel6.Location = new Point(0, 1);
-            panel6.Name = "panel6";
-            panel6.Size = new Size(411, 55);
-            panel6.TabIndex = 4;
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.Location = new Point(26, 17);
-            label4.Name = "label4";
-            label4.Size = new Size(78, 23);
-            label4.TabIndex = 1;
-            label4.Text = "Calendar";
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label5.Location = new Point(27, 13);
-            label5.Name = "label5";
-            label5.Size = new Size(95, 23);
-            label5.TabIndex = 2;
-            label5.Text = "Quick Start";
-            // 
             // Dashboard
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1325, 784);
+            ClientSize = new Size(1325, 749);
             Controls.Add(mainPanel);
             Controls.Add(sidepanel);
             Controls.Add(menuStrip1);
@@ -378,17 +397,17 @@
             sidepanel.PerformLayout();
             mainPanel.ResumeLayout(false);
             mainPanel.PerformLayout();
+            panel3.ResumeLayout(false);
+            panel4.ResumeLayout(false);
+            panel4.PerformLayout();
             panel5.ResumeLayout(false);
             panel5.PerformLayout();
-            panel3.ResumeLayout(false);
             panel2.ResumeLayout(false);
+            panel6.ResumeLayout(false);
+            panel6.PerformLayout();
             announcements.ResumeLayout(false);
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
-            panel4.ResumeLayout(false);
-            panel4.PerformLayout();
-            panel6.ResumeLayout(false);
-            panel6.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -424,5 +443,7 @@
         private Panel panel6;
         private Label label4;
         private Label label5;
+        private ToolStripMenuItem recordAttendanceToolStripMenuItem;
+        private ToolStripMenuItem viewAttendanceToolStripMenuItem;
     }
 }

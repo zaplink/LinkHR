@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -48,7 +48,7 @@ namespace LinkHR
 
         private void leavesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            loadform(new LeaveForm());
+            loadform(new EmpLeaveForm());
         }
 
         private void removeEmployeeToolStripMenuItem_Click(object sender, EventArgs e)
@@ -68,7 +68,7 @@ namespace LinkHR
 
         private void reportsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            loadform(new ReportsForm());
+            loadform(new MngReportsForm());
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -107,6 +107,21 @@ namespace LinkHR
         }
 
         private void panel5_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void recordAttendanceToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            loadform(new MngRecordAttendanceForm());
+        }
+
+        private void viewAttendanceToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            loadform(new MngViewAttendanceForm());
+        }
+
+        private void announcements_Paint(object sender, PaintEventArgs e)
         {
 
         }

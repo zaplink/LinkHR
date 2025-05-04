@@ -1,19 +1,27 @@
-﻿using System;
+﻿using Microsoft.Data.SqlClient;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
-using Microsoft.Data.SqlClient;
 
 namespace LinkHR
 {
-    public partial class RemoveEmployeeForm : Form
+    public partial class RemoveManager : Form
     {
-        public event EventHandler EmployeeRemoved;
+        // Event to notify other forms (e.g., ManagerListForm) of removal
+        public event EventHandler ManagerRemoved;
 
-        public RemoveEmployeeForm()
+        public RemoveManager()
         {
             InitializeComponent();
         }
 
-        private void buttonSearch_Click_1(object sender, EventArgs e)
+        private void buttonSearch_Click(object sender, EventArgs e)
         {
             string searchTerm = textBoxSearch.Text.Trim();
 
@@ -40,14 +48,13 @@ namespace LinkHR
                             // Search by ID (exact match)
                             query = @"
                                 SELECT 
-                                    e.id,
-                                    e.first_name,
-                                    e.last_name,
-                                    d.name AS department_name,
-                                    e.role
-                                FROM Employee e
-                                LEFT JOIN Department d ON e.department_id = d.id
-                                WHERE e.id = @searchId";
+                                    id,
+                                    first_name,
+                                    last_name,
+                                    email,
+                                    contact_no
+                                FROM Manager
+                                WHERE id = @searchId";
                             cmd.CommandText = query;
                             cmd.Parameters.AddWithValue("@searchId", searchId);
                         }
@@ -56,15 +63,14 @@ namespace LinkHR
                             // Search by first_name or last_name (partial match)
                             query = @"
                                 SELECT 
-                                    e.id,
-                                    e.first_name,
-                                    e.last_name,
-                                    d.name AS department_name,
-                                    e.role
-                                FROM Employee e
-                                LEFT JOIN Department d ON e.department_id = d.id
-                                WHERE e.first_name LIKE '%' + @searchTerm + '%' 
-                                   OR e.last_name LIKE '%' + @searchTerm + '%'";
+                                    id,
+                                    first_name,
+                                    last_name,
+                                    email,
+                                    contact_no
+                                FROM Manager
+                                WHERE first_name LIKE '%' + @searchTerm + '%' 
+                                   OR last_name LIKE '%' + @searchTerm + '%'";
                             cmd.CommandText = query;
                             cmd.Parameters.AddWithValue("@searchTerm", searchTerm);
                         }
@@ -73,15 +79,15 @@ namespace LinkHR
                         {
                             if (reader.Read())
                             {
-                                // Populate the fields with employee details
-                                textBoxEmployeeId.Text = reader["id"].ToString();
+                                // Populate the fields with manager details
+                                textBoxManagerId.Text = reader["id"].ToString();
                                 textBoxName.Text = $"{reader["first_name"]} {reader["last_name"]}";
-                                textBoxDepartment.Text = reader["department_name"]?.ToString() ?? "N/A";
-                                textBoxPosition.Text = reader["role"]?.ToString() ?? "N/A";
+                                textBoxEmail.Text = reader["email"]?.ToString() ?? "N/A";
+                                textBoxPhoneNo.Text = reader["contact_no"]?.ToString() ?? "N/A";
                             }
                             else
                             {
-                                MessageBox.Show("No employee found with the given ID or name.", "Not Found", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                MessageBox.Show("No manager found with the given ID or name.", "Not Found", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 ClearFields();
                             }
                         }
@@ -90,20 +96,21 @@ namespace LinkHR
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error searching for employee: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error searching for manager: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        private void buttonRemove_Click_1(object sender, EventArgs e)
+        private void buttonRemove_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(textBoxEmployeeId.Text))
+            if (string.IsNullOrWhiteSpace(textBoxManagerId.Text))
             {
-                MessageBox.Show("Please search for an employee to remove.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please search for a manager to remove.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
+            // Confirm removal
             DialogResult result = MessageBox.Show(
-                $"Are you sure you want to remove employee ID {textBoxEmployeeId.Text}? This action is irreversible.",
+                $"Are you sure you want to remove manager ID {textBoxManagerId.Text}? This action is irreversible.",
                 "Confirm Removal",
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Warning);
@@ -119,32 +126,33 @@ namespace LinkHR
                 {
                     conn.Open();
 
-                    string query = "DELETE FROM Employee WHERE id = @id";
+                    // Delete the manager by ID
+                    string query = "DELETE FROM Manager WHERE id = @id";
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
-                        cmd.Parameters.AddWithValue("@id", int.Parse(textBoxEmployeeId.Text));
+                        cmd.Parameters.AddWithValue("@id", int.Parse(textBoxManagerId.Text));
 
                         int rowsAffected = cmd.ExecuteNonQuery();
                         if (rowsAffected > 0)
                         {
-                            MessageBox.Show("Employee removed successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show("Manager removed successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             ClearFields();
-                            EmployeeRemoved?.Invoke(this, EventArgs.Empty);
+                            ManagerRemoved?.Invoke(this, EventArgs.Empty); // Notify other forms
                         }
                         else
                         {
-                            MessageBox.Show("Failed to remove employee. Employee not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("Failed to remove manager. Manager not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error removing employee: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error removing manager: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        private void buttonClear_Click_1(object sender, EventArgs e)
+        private void buttonClear_Click(object sender, EventArgs e)
         {
             ClearFields();
         }
@@ -152,13 +160,12 @@ namespace LinkHR
         private void ClearFields()
         {
             textBoxSearch.Clear();
-            textBoxEmployeeId.Clear();
+            textBoxManagerId.Clear();
             textBoxName.Clear();
-            textBoxDepartment.Clear();
-            textBoxPosition.Clear();
+            textBoxEmail.Clear();
+            textBoxPhoneNo.Clear();
         }
 
-        private void label4_Click(object sender, EventArgs e) { }
-        private void label5_Click(object sender, EventArgs e) { }
+
     }
 }

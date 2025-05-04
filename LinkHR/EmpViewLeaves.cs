@@ -10,24 +10,14 @@ using System.Windows.Forms;
 
 namespace LinkHR
 {
-    public partial class LeaveForm : Form
+    public partial class EmpViewLeaves : Form
     {
-        public LeaveForm()
+        public EmpViewLeaves()
         {
             InitializeComponent();
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }

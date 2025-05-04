@@ -28,33 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label1 = new Label();
             SuspendLayout();
             // 
-            // label1
+            // AttendenceForm
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 12F);
-            label1.Location = new Point(26, 22);
-            label1.Name = "label1";
-            label1.Size = new Size(389, 28);
-            label1.TabIndex = 0;
-            label1.Text = "Mark daily or shift Attendence of employee";
-            // 
-            // Attendence
-            // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
-            Controls.Add(label1);
-            Name = "Attendence";
+            ClientSize = new Size(700, 338);
+            Margin = new Padding(3, 2, 3, 2);
+            Name = "AttendenceForm";
             Text = "Attendence";
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
-
-        private Label label1;
     }
 }
